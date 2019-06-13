@@ -1,0 +1,42 @@
+{
+	"name": "PandaWP",
+	"description": "",
+	"authors": [{
+		"name": "Jakub Jetleb",
+		"email": "jakubjetleb@gmail.com"
+	}],
+	"repositories": [{
+		"type": "package",
+		"package": {
+			"name": "kt-wp-framework",
+			"version": "1.0",
+			"source": {
+				"url": "https://github.com/ktstudio/WP-Framework.git",
+				"type": "git",
+				"reference": "develop"
+			}
+		}
+	}],
+	"require": {
+		"php": ">=5.4.0",
+		"kt-wp-framework": ">=1.0"
+
+	},
+	"autoload": {
+		"files": [
+			"Init.php"
+		],
+		"psr-4": {
+			"Components\\": "Components",
+			"Services\\": "Services",
+			"Extensions\\": "Extensions",
+			"Utils\\": "Utils",
+			"Enums\\": "Enums",
+			"Presenters\\": "Presenters",
+			"Models\\": "Models",
+			"Configs\\": "Configs",
+			"Interfaces\\": "Interfaces",
+			"Helpers\\": "Helpers"
+		}
+	}
+}

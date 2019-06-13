@@ -1,0 +1,302 @@
+//Map section
+.map-section {
+}
+
+//Arrange appointment
+.arrange-appointment {
+	background: $gradient-01;
+	border-radius: 2px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	justify-content: space-between;
+	box-shadow: 0 15px 25px 0 #3631313b;
+	padding: 9px 50px;
+	padding-right: 5px;
+
+	margin-bottom: -85px;
+	z-index: 2;
+
+	.base-subsubheading {
+		margin-bottom: $baseline * 0.3;
+		color: $color-white;
+		transform: none;
+	}
+
+	p {
+		margin-bottom: 0;
+		color: $color-white;
+		transform: none;
+	}
+}
+
+.arrange-appointment-text {
+	position: relative;
+	padding-left: 60px;
+	transform: translateY(-3px);
+
+	img {
+		position: absolute;
+		top: 4px;
+		left: 0;
+	}
+}
+
+.arrange-appointment-button {
+	padding: 37px 50px;
+	position: relative;
+	overflow: hidden;
+
+	.decoration {
+		position: absolute;
+		height: 680px;
+		width: 380px;
+		top: -315px;
+		right: 0;
+		z-index: 1;
+		opacity: 0.3;
+	}
+
+	.btn {
+		position: relative;
+		z-index: 2;
+		width: 283px;
+	}
+}
+
+//Map section img
+.map-section-img {
+	max-width: 1920px;
+	height: 570px;
+
+	background: $image-placeholder-bg-color;
+
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	z-index: 1;
+
+	overflow: hidden;
+
+	.img {
+		height: 570px;
+		max-width: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+//Map section pin
+.map-section-pin {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translateX(-103px);
+
+	display: flex;
+
+	align-content: center;
+
+	.pin {
+		flex-shrink: 0;
+		margin-right: 13px;
+		width: 37px;
+		height: 66px;
+		transform: translateY(25px);
+	}
+
+	a {
+		background: $gradient-01;
+		padding: 18px 30px;
+		display: flex;
+		align-items: center;
+		border-radius: 100px;
+		font-size: 23px;
+		color: $color-secondary-lightest;
+
+		img {
+			width: 80px;
+			height: 42px;
+			margin-right: 25px;
+			flex-shrink: 0;
+		}
+
+		span {
+			transform: translateY(2px);
+		}
+	}
+}
+
+//Up to tablet landscape - up to 1199px
+@media (max-width: map-get($grid-breakpoints, xl) - 1px) {
+	//Arrange appointment
+	.arrange-appointment {
+		padding-left: 30px;
+	}
+
+	.arrange-appointment-text {
+		img {
+			top: 0px;
+		}
+	}
+
+	.arrange-appointment-button {
+		padding: 20px 30px;
+		flex-shrink: 0;
+	}
+}
+
+//Up to tablet portrait - up to 991px
+@media (max-width: map-get($grid-breakpoints, lg) - 1px) {
+	//Arrange appointment
+	.arrange-appointment {
+		padding: 30px 30px;
+	}
+
+	.arrange-appointment-text {
+		padding-left: 0;
+
+		img {
+			display: none;
+		}
+	}
+
+	.arrange-appointment-button {
+		padding: 0;
+		padding-left: 30px;
+
+		.decoration {
+			display: none;
+		}
+	}
+
+	//Map section img
+	.map-section-img {
+		height: $baseline * 18;
+
+		.img {
+			left: calc(50% - 150px);
+		}
+	}
+
+	//Map section pin
+	.map-section-pin {
+		left: calc(50% - 150px);
+
+		a {
+			img {
+				margin-right: 20px;
+			}
+		}
+	}
+}
+
+//Up to phone landscape - up to 767px
+@media (max-width: map-get($grid-breakpoints, md) - 1px) {
+	//Arrange appointment
+	.arrange-appointment {
+		flex-direction: column;
+		text-align: center;
+		padding-bottom: 20px;
+		max-width: 550px;
+		margin-left: auto;
+		margin-right: auto;
+
+		margin-bottom: $baseline;
+	}
+
+	.arrange-appointment-text {
+		margin-bottom: $baseline * 0.5;
+	}
+
+	.arrange-appointment-button {
+		padding-left: 0;
+
+		.btn {
+			width: 100%;
+		}
+	}
+
+	//Map section img
+	.map-section-img {
+		height: auto;
+		background: transparent;
+
+		.img {
+			display: none;
+		}
+	}
+
+	//Map section pin
+	.map-section-pin {
+		position: relative;
+		left: auto;
+
+		padding-left: 30px;
+		padding-right: 30px;
+
+		transform: none;
+
+		.pin {
+			display: none;
+		}
+
+		a {
+			margin-left: auto;
+			margin-right: auto;
+
+			padding: 18px 25px;
+			font-size: 21px;
+
+			img {
+				width: 70px;
+				height: 37px;
+				margin-right: 15px;
+			}
+		}
+	}
+}
+
+//Phone portrait - up to 575px
+@media (max-width: map-get($grid-breakpoints, sm) - 1px) {
+	//Arrange appointment
+	.arrange-appointment {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.arrange-appointment-button {
+		width: 100%;
+		max-width: 250px;
+
+		.btn {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	//Map section pin
+	.map-section-pin {
+		a {
+			border-radius: 20px;
+			text-align: center;
+
+			flex-direction: column;
+
+			padding: 15px 20px;
+			padding-bottom: 20px;
+			font-size: 21px;
+
+			img {
+				width: 70px;
+				height: 37px;
+				margin-right: 0;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}

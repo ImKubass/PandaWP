@@ -1,0 +1,128 @@
+/* purgecss start ignore */
+
+//Employees item
+.employee {
+	padding: $baseline * 1.5 $baseline;
+	box-shadow: 0 0 0 1px $color-secondary-lightest, inset 0 0 0 1px $color-secondary-lightest;
+
+	max-width: 310px;
+
+	.employee-img {
+		margin: 0 auto;
+		margin-bottom: $baseline;
+	}
+
+	& > * {
+		max-width: 100%;
+	}
+}
+
+.employees-item-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+}
+
+//Employee img
+.employee-img {
+	flex-shrink: 0;
+	position: relative;
+	overflow: hidden;
+	background: $image-placeholder-bg-color;
+	border-radius: 100%;
+
+	width: 150px;
+	height: 150px;
+}
+
+//Employee name
+.employee-name {
+	margin-bottom: 0;
+	text-align: center;
+	color: $color-primary;
+	margin-bottom: $baseline * 0.5;
+}
+
+//Employee title
+.employee-title {
+	font-size: $base-text-font-size;
+	transform: translateY($base-text-offset);
+	margin-bottom: $baseline;
+	text-align: center;
+}
+
+//Employee text
+.employee-text {
+	text-align: center;
+	font-size: $base-text-font-size;
+	margin-bottom: $baseline * 0.5;
+}
+
+.employee-name + .employee-text {
+	margin-top: $baseline;
+}
+
+//Employee contact
+.employee-contact {
+	display: block;
+	transform: translateY(5px);
+	text-align: center;
+	margin-bottom: $baseline * 0.5;
+
+	&:last-child {
+		margin-bottom: $baseline;
+	}
+
+	img {
+		height: 18px;
+		height: 18px;
+		display: inline-block;
+		transform: translateY(-1px);
+		margin-right: 5px;
+	}
+
+	span {
+		font-size: $base-text-font-size;
+		color: $color-text;
+	}
+}
+
+a.employee-contact {
+	text-decoration: none;
+
+	span {
+		color: $link-text-color;
+	}
+
+	&:hover {
+		span {
+			text-decoration: underline;
+		}
+	}
+}
+
+.employee-email {
+	img {
+		width: 19px;
+		height: 16px;
+		transform: translateY(-1px);
+		margin-right: 7px;
+	}
+}
+
+//Up to tablet portrait - up to 991px
+@media (max-width: map-get($grid-breakpoints, lg) - 1px) {
+	.employees-item {
+		margin-bottom: $baseline * 3;
+	}
+}
+
+//Phone portrait - up to 575px
+@media (max-width: map-get($grid-breakpoints, sm) - 1px) {
+	.employees-item {
+		max-width: 400px;
+	}
+}
+
+/* purgecss end ignore */

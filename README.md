@@ -183,3 +183,5 @@ Windows:
 not yet... sorry
 
 
+## Nasazení na work
+[Návod zde](https://docs.google.com/document/d/1Mr0yezJXPcblc6HL1OCLKL7THuPD9lYXjZInNQOn0ww/edit)

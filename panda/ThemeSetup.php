@@ -94,6 +94,7 @@ $config->initialize();
 
 
 // TODO: Move it somewhere else
+// Load cdn Fancybox only on pages where is gallery
 add_action("wp_enqueue_scripts", "fancybox_method_enque_script_callback");
 function fancybox_method_enque_script_callback()
 {

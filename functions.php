@@ -1,6 +1,6 @@
 <?php
 
-$ktInitfile = TEMPLATEPATH . "/panda/vendor/kt-wp-framework/kt_init.inc.php";
+$ktInitfile = TEMPLATEPATH . "/kt/kt_init.inc.php";
 if (file_exists($ktInitfile)) {
     require($ktInitfile);
 } else {

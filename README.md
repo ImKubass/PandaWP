@@ -1,5 +1,5 @@
 # PandaWP
-Wordpress framework snažící se otrhnout se od strukutry a workflow nativního wordpressu. Snaha o přiblížení se více symfony workflow a komponentnární strukturu.
+Wordpress framework, který se snaží otrhnout se od strukutry a workflow nativního wordpressu. Snaha o přiblížení se více symfony workflow a komponentnární strukturu.
 PandaWP je prozatím zavislá na [WPframeworku](http://www.wpframework.cz/), poskytující sadu komponent na vytváření formulářů, metaboxů. Nebo sadu základních presentérů a modulů.
 
 

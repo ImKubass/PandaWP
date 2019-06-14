@@ -1,5 +1,5 @@
 # PandaWP
-Wordpress framework, který se snaží otrhnout se od strukutry a workflow nativního wordpressu. Snaha o přiblížení se více symfony workflow a komponentnární strukturu.
+Wordpress framework, který se snaží otrhnout od strukutry a workflow nativního wordpressu. Snaha o přiblížení více symfony workflow a komponentnární strukturu.
 PandaWP je prozatím zavislá na [WPframeworku](http://www.wpframework.cz/), poskytující sadu komponent na vytváření formulářů, metaboxů. Nebo sadu základních presentérů a modulů.
 
 
@@ -33,9 +33,9 @@ Přičemž není třeba definovat všechny tyto adresáře, ale pouze ty, které
 Zde obecně platí, že jednotlivé soubory šablony začínají prefixem, který určuje o jaký typ souboru jde, takže např. pro jednotlivé různé stránky (rozuměj page templaty) budou začínat jejich soubory vždy „page-“ atd., viz:
 
 
-- **page**_-{template_name}_.php
-- **sidebar**_-{type/location}_.php
-- **single**_-{post_type}_.php
+- **page**-{*template_name*}.php
+- **sidebar**-{*type/location*}.php
+- **single**-{*post_type*}_php
 
 ## Rozložení projektu
 
@@ -72,7 +72,7 @@ Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 ### Enums
 Soubory s pevnými výčtovými typy
 ### Extensions
-Rozšíření tříd třetích stran např. GoogleApi
+Rozšíření tříd třetích stran např. GoogleApi nebo Twig.
 ### Js
 Speciální JavaScriptové soubory, například pro AjaxHandle. Nebo JavaScript na straně administrace.
 
@@ -100,13 +100,12 @@ Nestabilní a prudce se měnící. Kdo ví jak to bude zítra 🙄
 Objekt slouží pro přípravu dat. Model data stahuje z DB, připravuje do potřebných struktur a pomocí připravených funkcí je vrací. Velmi často využívá definované data z Configu.
 
 ### Config
-zde jsou definované formuláře, různé statické prvky, názvy tabulek nebo sloupců (v případě využití vlastní tabulkové struktury) a řada potřebných constant.
+Zde jsou definované formuláře, různé statické prvky, názvy tabulek nebo sloupců (v případě využití vlastní tabulkové struktury) a řada potřebných constant.
 ### Factory
 Objekt sloužící k přípravě vytvoření objektu.
 ### Presenter
-> Velké pochybnosti a pravděpodobně bude zrušen a nebude se používat.
 
-> Měl by být nahrazen Controlerem a který bude používat šablonovací systém (Twig) 
+> Měl by být nahrazen Controlerem, který bude používat šablonovací systém (Twig) 
 
 Když už se Model a Config postarají o přípravu dat, presenter je bude všechny vracet a zobrazovat na frontendu vašeho webového projektu.
 
@@ -114,8 +113,30 @@ Když už se Model a Config postarají o přípravu dat, presenter je bude všec
 ## Komponenta
 Mystická bytost nebývalích rozměrů a tvarů.
 
+Logická část, která obsahuje veškeré potřebné části architektury(Model, Config), které s komponentou přímo souvísí. Název souborů odpovídá názvu složky(komponenty).
+
+	PageContact/
+	|--PageContact.php
+	|--PageContactConfig.php
+	|--PageContactModel.php
+	|--PageContactFactory.php
+
+Do komponenty zasahuje i kodér. Nic méně, vzajemně si nezasahujete do "svých" souborů. Je potřeba dbát na stejné pojmenování komponent, aby nevznikaly dvě složky se stejným významem. Proto je potřeba spolupracovat s kodérem.
+
+	Post/
+	|--Post.scss
+	|--Post.js
+	|--Post.html
+	|--Post.php
+	|--PostConfig.php
+	|--PostModel.php
+	|--PostFactory.php
+
+
+## Konvence psaní k=odu
+
 ## Wordpress pluginy
-Wordpress pluginům se vyhýbáme. Nicméně pár jich používáme.
+Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
 - Yoast - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
 
@@ -123,7 +144,7 @@ Wordpress pluginům se vyhýbáme. Nicméně pár jich používáme.
 
  - TinyMce Advanced - Rozšiřuje zádladní WYSIWIG Editor.
 
- - Safe SVG - Podpora svgček.
+ - Safe SVG - Podpora uploadu SVG formátu.
 
  - Regenerate Thumbnails - Přeregeneruje rozměry obrázků.
 
@@ -155,9 +176,10 @@ Wordpress pluginům se vyhýbáme. Nicméně pár jich používáme.
 5. Nainstalovat wordpress (konfigurace wordpressu)
 6. [Instalace PandaWP](#Instalace)
 
-Docela otrava ne? Co to zkrátit na dva kroky? Pomocí WP-CLI
-1. [Spustit script](#wp-cli)
-2. [Instalace PandaWP](#Instalace)
+Docela otrava ne? Co to zkrátit na tři kroky? Pomocí WP-CLI
+1. Inicializovat/naklonovat repozitář projektu
+2. [Spustit script](#wp-cli)
+3. Napsat název složky projektu
 
 ## WP CLI
 
@@ -170,6 +192,8 @@ Zakládání nového projektu je celkem otrava plná dokola opakujících se pat
 4. **Vytvoří** databázi
 5. **Nainstaluje** wordpress a vytvoří admina
 6. **Smaže** nepotřebné pluginy
+7. Stáhne repozitář PandaWP do složky s šablonama.
+8. Spustí **composer install** a aktivuje šablonu.
 7. Připadně doinstaluje češtinu a nastaví ji.
 8. Zruší **revize** a zapne WP_DEBUG v wp-config.php
 9. Nainstaluje používané pluginy a aktivuje je.
@@ -181,6 +205,20 @@ MAC OS:
 
 Windows:
 not yet... sorry
+
+## WorkFlow
+Vývoj by se dal rozdělit na dvě části. Definice a Nasazení
+
+### Definice
+Definice je první část vývoje, při němž se definují CustomPostTypy, Configy, Modely. Připrava administrace, aby se dala naplnit a připrava backendu. Podklady pro definice zajištuje projektový manážer. Který určuje, co všechno je potřeba nadefinovat a nastavit. V této části vývoje není potřeba výstup od kodéra, jelikož zatím nic nevypisujeme.
+
+
+### Nasazení
+Část vývoje již závislá kodérovi. Používáme připravené komponenty od kodéra, které měníme ze statických šablon na dynamicky chovajíci se komponenty a začínáme oživovat web k životu. Od projektového manažera máme k dispozici jakou si "mapu" (marvelapp), kde je popsané, kde se co má vypisovat.
+
+![Vertical grid example](https://i.imgur.com/KHyzHdA.png)
+
+
 
 
 ## Nasazení na work

@@ -9,11 +9,7 @@ use Components\PageTheme\PageThemeConfig;
 
 use Components\FooterHeaderSettings\FooterHeaderSettingsConfig;
 use Components\ProductTermBrand\ProductTermBrandConfig;
-use Components\ProductTermAirSupply\ProductTermAirSupplyConfig;
-use Components\ProductTermPerformance\ProductTermPerformanceConfig;
-use Components\ProductTermHeatTransfer\ProductTermHeatTransferConfig;
 use Components\Employee\EmployeeConfig;
-use Components\Meeting\MeetingConfig;
 use Components\PageContact\PageContactConfig;
 
 //* --- theme ------------------------
@@ -55,7 +51,7 @@ foreach ($pageContactMetaboxes as $pageContactMetabox) {
 
 //* --- post ------------------------
 
-registerMetabox(PostConfig::class, KT_WP_POST_KEY);
+registerMetabox(PostConfig::class, POST_KEY);
 
 
 //* --- page ------------------------
@@ -78,7 +74,7 @@ KT_Term_MetaBox::createMultiple(ProductTermBrandConfig::getAllGenericFieldsets()
 
 //-------------------------------------------
 //* shortcut for registration basic metaboxes
-function registerMetabox($configName, $slug)
+function registerMetabox($configName, $key)
 {
-    KT_MetaBox::createMultiple($configName::getAllGenericFieldsets(), $slug, KT_MetaBox_Data_Type_Enum::POST_META);
+    KT_MetaBox::createMultiple($configName::getAllGenericFieldsets(), $key, KT_MetaBox_Data_Type_Enum::POST_META);
 }

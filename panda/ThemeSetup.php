@@ -92,6 +92,8 @@ $config->setEnableDynamicFieldsets();
 
 $config->initialize();
 
+KT_Termmeta::activate();
+
 
 // TODO: Move it somewhere else
 // Load cdn Fancybox only on pages where is gallery

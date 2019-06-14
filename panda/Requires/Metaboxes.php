@@ -66,10 +66,6 @@ registerMetabox(PageConfig::class, KT_WP_PAGE_KEY);
 
 registerMetabox(EmployeeConfig::class, EMPLOYEE_KEY);
 
-//* --- employee ------------------------
-
-registerMetabox(MeetingConfig::class, MEETING_KEY);
-
 
 //* --- product ------------------------
 
@@ -79,17 +75,6 @@ registerMetabox(ProductConfig::class, PRODUCT_KEY);
 
 KT_Term_MetaBox::createMultiple(ProductTermBrandConfig::getAllGenericFieldsets(), PRODUCT_BRAND_KEY);
 
-//* --- product term air supply ------------------------
-
-KT_Term_MetaBox::createMultiple(ProductTermAirSupplyConfig::getAllGenericFieldsets(), PRODUCT_AIR_SUPPLY_KEY);
-
-//* --- product term performance ------------------------
-
-KT_Term_MetaBox::createMultiple(ProductTermPerformanceConfig::getAllGenericFieldsets(), PRODUCT_PERFORMANCE_KEY);
-
-//* --- product term heat transfer ------------------------
-
-KT_Term_MetaBox::createMultiple(ProductTermHeatTransferConfig::getAllGenericFieldsets(), PRODUCT_HEAT_TRANSFER_KEY);
 
 //-------------------------------------------
 //* shortcut for registration basic metaboxes

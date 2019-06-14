@@ -15,6 +15,17 @@ define("POST_KEY", "post");
 define("POST_LOOP", "Post");
 define("TIPS_LOOP", "Tip");
 
+//? Product
+define("PRODUCT_KEY", "product");
+define("PRODUCT_SLUG", "produkt");
+define("PRODUCT_LOOP", "Product");
+
+//? Product terms
+define("PRODUCT_BRAND_KEY", "product-brand");
+define("PRODUCT_BRAND_SLUG", "vyrobce");
+define("PRODUCT_BRAND_LOOP", "ProductTermBrand");
+define("BRAND_LOOP", "BrandItem");
+
 
 
 //? Nastavení patičky a hlavičky

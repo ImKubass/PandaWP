@@ -5,21 +5,15 @@
 		"name": "Jakub Jetleb",
 		"email": "jakubjetleb@gmail.com"
 	}],
-	"repositories": [{
-		"type": "package",
-		"package": {
-			"name": "kt-wp-framework",
-			"version": "1.0",
-			"source": {
-				"url": "https://github.com/ktstudio/WP-Framework.git",
-				"type": "git",
-				"reference": "develop"
-			}
-		}
-	}],
+
+	"config": {
+		"vendor-dir": "Vendor",
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"notify-on-install": false
+	},
 	"require": {
-		"php": ">=5.4.0",
-		"kt-wp-framework": ">=1.0"
+		"php": ">=5.4.0"
 
 	},
 	"autoload": {

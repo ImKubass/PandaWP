@@ -69,6 +69,7 @@ Jenda z nejdůležitejších složek. Společný svět kodéra a programátora.
 Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 
  >❗ Zde je potřeba zajistit stejně pojmenování komponent s kodérem aby nedocházelo přehlcení počtu složek.
+ 
 ### Enums
 Soubory s pevnými výčtovými typy
 ### Extensions
@@ -137,6 +138,8 @@ Do komponenty zasahuje i kodér. Nic méně, vzajemně si nezasahujete do "svýc
 
 ## Konvence psaní kódu ✍️
 
+PSR-2
+
 Používáme 4 mezery k odsazení, ne tabulátory.
 
 - [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
@@ -169,11 +172,6 @@ Styl pojmenovávání by měl být z příkladu zřejmý.
 
 
 
-## Konvence psaní kódu
-
-PSR-2
-
-Používáme 4 mezery k odsazení, ne tabulátory.
 
 ## Wordpress pluginy
 Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
@@ -196,7 +194,7 @@ Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
 1. Stáhnout MAMP
 2. Změnit porty
-3. Změnit Document Root podle chuti
+3. Změnit Document Root podle osobních preferencí
 4. Rozchodit posílání Mailu //TODO
 
 ### Windows
@@ -271,7 +269,6 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 #### Potřebné rozšíření
 
 [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
-
 
 
 #### Doporučené rozšíření

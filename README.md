@@ -65,7 +65,7 @@ Zde obecně platí, že jednotlivé soubory šablony začínají prefixem, kter�
 ### Assets
 Svět kodéra. Netřeba řešit. 🚷
 ### Components
-Jenda z nejdůležitejších složek. Tady se to všechno peče. Společný svět kodéra a programátora.
+Jenda z nejdůležitejších složek. Společný svět kodéra a programátora.
 Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 
  >❗ Zde je potřeba zajistit stejně pojmenování komponent s kodérem aby nedocházelo přehlcení počtu složek.
@@ -94,7 +94,7 @@ Konstanty projektu. Názvy slugů,klíču PostTypů nebo rozměry obrázků.
 Soubor s konfigurací šablony. Používá prozatím pomocná třída **KT_WP_Configurator**. Zde se inicialuzují CSS, JS, rozměry obrázků, navigace, nastavení wordpressu
 
 ## Architekrura
-Nestabilní a prudce se měnící. Kdo ví jak to bude zítra 🙄
+Nestabilní a prudce se měnící. Kdo ví, jak to bude zítra 🙄
 
 ### Model
 Objekt slouží pro přípravu dat. Model data stahuje z DB, připravuje do potřebných struktur a pomocí připravených funkcí je vrací. Velmi často využívá definované data z Configu.
@@ -133,12 +133,16 @@ Do komponenty zasahuje i kodér. Nic méně, vzajemně si nezasahujete do "svýc
 	|--PostFactory.php
 
 
-## Konvence psaní k=odu
+## Konvence psaní kódu
+
+PSR-2
+
+Používáme 4 mezery k odsazení, ne tabulátory.
 
 ## Wordpress pluginy
 Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
-- Yoast - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
+ - Yoast - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
 
  - WP Tracy - Tracy pro Wordpress (Pouze na localhostu) zachytávání chyb.
 
@@ -161,7 +165,7 @@ Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
 ### Windows
 1. Stáhnout WAMP
-2. Kuknout na tenhle [Tutoriál](http://blog.netcorex.cz/php5/jak-na-php-pod-windows-xampp/)
+2. Kuknout na tento [Tutoriál](http://blog.netcorex.cz/php5/jak-na-php-pod-windows-xampp/)
 
 ## Instalace
 1. Stáhnout repozitář
@@ -183,7 +187,7 @@ Docela otrava ne? Co to zkrátit na tři kroky? Pomocí WP-CLI
 
 ## WP CLI
 
-Zakládání nového projektu je celkem otrava plná dokola opakujících se paternů. Pomocí scriptu, stačí napsat nazev projektu a o všechno je postaráno. 
+Zakládání nového projektu je celkem otrava plná dokola opakujících se paternů. Pomocí scriptu, stačí napsat název projektu a o všechno je postaráno. 
 
 ### Úlohy scriptu
 1. výběr složky s projektem (z adresáře pro weby)

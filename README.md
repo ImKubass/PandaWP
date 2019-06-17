@@ -93,11 +93,7 @@ Konstanty projektu. Názvy slugů,klíču PostTypů nebo rozměry obrázků.
 ### ThemeSetup.php
 Soubor s konfigurací šablony. Používá prozatím pomocná třída **KT_WP_Configurator**. Zde se inicialuzují CSS, JS, rozměry obrázků, navigace, nastavení wordpressu
 
-<<<<<<< HEAD
 ## Architektura
-=======
-## Architekrura
->>>>>>> 359fe6fdf12bc62254b4edfbf82536956ab5297c
 Nestabilní a prudce se měnící. Kdo ví, jak to bude zítra 🙄
 
 ### Model
@@ -173,14 +169,11 @@ Styl pojmenovávání by měl být z příkladu zřejmý.
 
 
 
-<<<<<<< HEAD
-=======
 ## Konvence psaní kódu
 
 PSR-2
 
 Používáme 4 mezery k odsazení, ne tabulátory.
->>>>>>> 359fe6fdf12bc62254b4edfbf82536956ab5297c
 
 ## Wordpress pluginy
 Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.

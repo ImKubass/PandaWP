@@ -65,7 +65,7 @@ Zde obecně platí, že jednotlivé soubory šablony začínají prefixem, kter�
 ### Assets
 Svět kodéra. Netřeba řešit. 🚷
 ### Components
-Jenda z nejdůležitejších složek. Tady se to všechno peče. Společný svět kodéra a programátora.
+Jenda z nejdůležitejších složek. Společný svět kodéra a programátora.
 Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 
  >❗ Zde je potřeba zajistit stejně pojmenování komponent s kodérem aby nedocházelo přehlcení počtu složek.
@@ -93,8 +93,8 @@ Konstanty projektu. Názvy slugů,klíču PostTypů nebo rozměry obrázků.
 ### ThemeSetup.php
 Soubor s konfigurací šablony. Používá prozatím pomocná třída **KT_WP_Configurator**. Zde se inicialuzují CSS, JS, rozměry obrázků, navigace, nastavení wordpressu
 
-## Architekrura
-Nestabilní a prudce se měnící. Kdo ví jak to bude zítra 🙄
+## Architektura
+Nestabilní a prudce se měnící. Kdo ví, jak to bude zítra 🙄
 
 ### Model
 Objekt slouží pro přípravu dat. Model data stahuje z DB, připravuje do potřebných struktur a pomocí připravených funkcí je vrací. Velmi často využívá definované data z Configu.
@@ -123,22 +123,57 @@ Logická část, která obsahuje veškeré potřebné části architektury(Model
 
 Do komponenty zasahuje i kodér. Nic méně, vzajemně si nezasahujete do "svých" souborů. Je potřeba dbát na stejné pojmenování komponent, aby nevznikaly dvě složky se stejným významem. Proto je potřeba spolupracovat s kodérem.
 
-	Post/
-	|--Post.scss
-	|--Post.js
-	|--Post.html
-	|--Post.php
-	|--PostConfig.php
-	|--PostModel.php
-	|--PostFactory.php
+	Product/
+	|--Product.scss
+	|--Product.js
+	|--Product.html
+	|--Product.php
+	|--ProductConfig.php
+	|--ProductModel.php
+	|--ProductFactory.php
+	|--ProductHook.php
+	|--ProductDefinition.php
 
 
-## Konvence psaní k=odu
+## Konvence psaní kódu ✍️
+
+Používáme 4 mezery k odsazení, ne tabulátory.
+
+- [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
+- [PSR-2](https://www.php-fig.org/psr/psr-2/)
+- [PSR-4](https://www.php-fig.org/psr/psr-4/)
+
+### Pojmenovávání komponent
+Styl pojmenovávání by měl být z příkladu zřejmý. 
+
+	Components/
+	|--Page
+	|--PageContact
+
+	|--Post
+
+	|--PostsQuery
+	|--PostsSection
+	|--PostsRelatedQuery
+	|--PostsRelatedSection
+
+
+	|--Product
+	|--ProductTerm
+	|--ProductTermBrand
+
+	|--ProductsSection
+	|--ProductsQuery
+	|--ProductsRelatedQuery
+	|--ProductsRelatedSection
+
+
+
 
 ## Wordpress pluginy
 Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
-- Yoast - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
+ - Yoast - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
 
  - WP Tracy - Tracy pro Wordpress (Pouze na localhostu) zachytávání chyb.
 
@@ -161,7 +196,7 @@ Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
 ### Windows
 1. Stáhnout WAMP
-2. Kuknout na tenhle [Tutoriál](http://blog.netcorex.cz/php5/jak-na-php-pod-windows-xampp/)
+2. Kuknout na tento [Tutoriál](http://blog.netcorex.cz/php5/jak-na-php-pod-windows-xampp/)
 
 ## Instalace
 1. Stáhnout repozitář
@@ -183,7 +218,7 @@ Docela otrava ne? Co to zkrátit na tři kroky? Pomocí WP-CLI
 
 ## WP CLI
 
-Zakládání nového projektu je celkem otrava plná dokola opakujících se paternů. Pomocí scriptu, stačí napsat nazev projektu a o všechno je postaráno. 
+Zakládání nového projektu je celkem otrava plná dokola opakujících se paternů. Pomocí scriptu, stačí napsat název projektu a o všechno je postaráno. 
 
 ### Úlohy scriptu
 1. výběr složky s projektem (z adresáře pro weby)
@@ -216,7 +251,7 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 ### Nasazení
 Část vývoje již závislá kodérovi. Používáme připravené komponenty od kodéra, které měníme ze statických šablon na dynamicky chovajíci se komponenty a začínáme oživovat web k životu. Od projektového manažera máme k dispozici jakou si "mapu" (marvelapp), kde je popsané, kde se co má vypisovat.
 
-![Vertical grid example](https://i.imgur.com/KHyzHdA.png)
+![Marvelapp example](https://i.imgur.com/KHyzHdA.png)
 
 
 

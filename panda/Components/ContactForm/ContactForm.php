@@ -13,9 +13,7 @@ $PhoneField = $fieldset[KT_Contact_Form_Base_Config::PHONE];
 
 $EmailField = $fieldset[KT_Contact_Form_Base_Config::EMAIL];
 
-$MessageField = $fieldset[KT_Contact_Form_Base_Config::MESSAGE];
-
-?>
+$MessageField = $fieldset[KT_Contact_Form_Base_Config::MESSAGE]; ?>
 
 <?= $Form->getFormHeader(); ?>
 <div class="contact-form-top">

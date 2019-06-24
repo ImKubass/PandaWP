@@ -1,12 +1,13 @@
 # PandaWP
-Wordpress framework, který se snaží otrhnout od strukutry a workflow nativního wordpressu. Snaha o přiblížení více symfony workflow a komponentnární strukturu.
-PandaWP je prozatím zavislá na [WPframeworku](http://www.wpframework.cz/), poskytující sadu komponent na vytváření formulářů, metaboxů. Nebo sadu základních presentérů a modulů.
+PandaWP je Wordpress framework, jehož cílem je otrhnout se od struktury a workflow nativního wordpressu. Základním pilířem je **komponentární** struktura.
+Framework PandaWP má zavislost (dočastně) na [WPframework](http://www.wpframework.cz/), který poskytuje sadu komponent na vytváření formulářů, metaboxů a sadu základních presentérů a modulů.
 
+&nbsp;
+## Obecná struktura šablony (nativní)
 
-
-## Obecná struktura šablony
-
-	wp-content/themes/theme-root/
+ Není třeba definovat všechny tyto adresáře, ale pouze ty, které budou využívány.
+ 
+	wp-content/themes/{theme-name}/
 	|--images/
 	|--pages/
 	|--singles/
@@ -14,29 +15,33 @@ PandaWP je prozatím zavislá na [WPframeworku](http://www.wpframework.cz/), pos
 	|--categories/
 	|--archives/
 	|--panda/
+	|--kt/
 
-- images (obrázky pro layout šablony)
+- images (statické obrázky šablony)
 - pages (soubory pro stránky – Templates)
-- singles (soubory pro detaily post_type)
+- singles (soubory pro detaily **post_type**)
 - taxonomies (soubory pro výpis taxonomy)
 - categories (soubory pro výpis kategorií)
 - archives (soubory pro zobrazení archivů)
-- panda (= projekt, viz [Rozložení projektu](#rozložení-projektu))
+- panda (Hlavní projektová složka v rámci Frameworku PandaWP, viz [Rozložení projektu](#rozložení-projektu))
+- kt (Legacy součást WPframeworku)
 - index.php
-- functions.php
-- style.css
+- functions.php (Inicializace PandaWP)
+- style.css 
+- functions.js 
 
-Přičemž není třeba definovat všechny tyto adresáře, ale pouze ty, které jsou zrovna skutečně potřeba. Framework s tímto rozložením adresářů a souborů počítá a umí ho dále zpracovávat.
+
 
 ### Nazývání souborů
 
-Zde obecně platí, že jednotlivé soubory šablony začínají prefixem, který určuje o jaký typ souboru jde, takže např. pro jednotlivé různé stránky (rozuměj page templaty) budou začínat jejich soubory vždy „page-“ atd., viz:
+Obecně platí, že názvy jednotlivých souborů šablony začínají prefixem, který určuje o jaký typ souboru se jedná.
 
-
+Např:
 - **page**-{*template_name*}.php
 - **sidebar**-{*type/location*}.php
-- **single**-{*post_type*}_php
+- **single**-{*post_type*}.php
 
+&nbsp;
 ## Rozložení projektu
 
 	panda/
@@ -59,19 +64,19 @@ Zde obecně platí, že jednotlivé soubory šablony začínají prefixem, kter�
 - [Models](#Models)
 - [Presenters](#Presenters)
 - [Init.php](#Init.php)
-- [ProjectContstants.php](#ProjectContstants.php)
+- [ProjectConstants.php](#ProjectConstants.php)
 - [ThemeSetup.php](#ThemeSetup.php)
 
 ### Assets
 Svět kodéra. Netřeba řešit. 🚷
 ### Components
-Jenda z nejdůležitejších složek. Společný svět kodéra a programátora.
+Jedna z nejdůležitejších složek. Společný svět kodéra a programátora.
 Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 
  >❗ Zde je potřeba zajistit stejně pojmenování komponent s kodérem aby nedocházelo přehlcení počtu složek.
  
 ### Enums
-Soubory s pevnými výčtovými typy
+Soubory s pevnými výčtovými typy.
 ### Extensions
 Rozšíření tříd třetích stran např. GoogleApi nebo Twig.
 ### Js
@@ -89,13 +94,13 @@ Soubory s obecnými modely
 Soubory s obecnými presentery
 ### Init.php
 Inicializační soubor. Řeší includování souborů. Časem je se potřeba tohoto zbavit.
-### ProjectContstants.php
+### ProjectConstants.php
 Konstanty projektu. Názvy slugů,klíču PostTypů nebo rozměry obrázků.
 ### ThemeSetup.php
 Soubor s konfigurací šablony. Používá prozatím pomocná třída **KT_WP_Configurator**. Zde se inicialuzují CSS, JS, rozměry obrázků, navigace, nastavení wordpressu
 
+&nbsp;
 ## Architektura
-Nestabilní a prudce se měnící. Kdo ví, jak to bude zítra 🙄
 
 ### Model
 Objekt slouží pro přípravu dat. Model data stahuje z DB, připravuje do potřebných struktur a pomocí připravených funkcí je vrací. Velmi často využívá definované data z Configu.
@@ -110,7 +115,7 @@ Objekt sloužící k přípravě vytvoření objektu.
 
 Když už se Model a Config postarají o přípravu dat, presenter je bude všechny vracet a zobrazovat na frontendu vašeho webového projektu.
 
-
+&nbsp;
 ## Komponenta
 Mystická bytost nebývalích rozměrů a tvarů.
 
@@ -135,7 +140,7 @@ Do komponenty zasahuje i kodér. Nic méně, vzajemně si nezasahujete do "svýc
 	|--ProductHook.php
 	|--ProductDefinition.php
 
-
+&nbsp;
 ## Konvence psaní kódu ✍️
 
 PSR-2
@@ -172,7 +177,7 @@ Styl pojmenovávání by měl být z příkladu zřejmý.
 
 
 
-
+&nbsp;
 ## Wordpress pluginy
 Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
@@ -186,8 +191,9 @@ Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
  - Regenerate Thumbnails - Přeregeneruje rozměry obrázků.
 
- - Klasický editor - Prozatím nepoužíváme Gutenberg, proto tohle.
+ - Klasický editor - Prozatím nepoužíváme Gutenberg.
 
+&nbsp;
 ## Příprava prostředí
 
 ### Mac OS
@@ -198,9 +204,10 @@ Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 4. Rozchodit posílání Mailu //TODO
 
 ### Windows
-1. Stáhnout WAMP
-2. Kuknout na tento [Tutoriál](http://blog.netcorex.cz/php5/jak-na-php-pod-windows-xampp/)
+ [Tutoriál](http://blog.netcorex.cz/php5/jak-na-php-pod-windows-xampp/)
 
+
+&nbsp;
 ## Instalace
 1. Stáhnout repozitář
 2. Nahrát do šablony
@@ -219,12 +226,13 @@ Docela otrava ne? Co to zkrátit na tři kroky? Pomocí WP-CLI
 2. [Spustit script](#wp-cli)
 3. Napsat název složky projektu
 
+&nbsp;
 ## WP CLI
 
 Zakládání nového projektu je celkem otrava plná dokola opakujících se paternů. Pomocí scriptu, stačí napsat název projektu a o všechno je postaráno. 
 
 ### Úlohy scriptu
-1. výběr složky s projektem (z adresáře pro weby)
+1. Výběr složky s projektem (z adresáře pro weby)
 2. **Stáhne** nejnovejší Wordpress
 3. **Vytvoří** wordpress konfiguraci
 4. **Vytvoří** databázi
@@ -244,6 +252,7 @@ MAC OS:
 Windows:
 not yet... sorry
 
+&nbsp;
 ## WorkFlow
 Vývoj by se dal rozdělit na dvě části. Definice a Nasazení
 
@@ -256,9 +265,7 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 
 ![Marvelapp example](https://i.imgur.com/KHyzHdA.png)
 
-
-
-
+&nbsp;
 ## Nasazení na work
 [Návod zde](https://docs.google.com/document/d/1Mr0yezJXPcblc6HL1OCLKL7THuPD9lYXjZInNQOn0ww/edit)
 

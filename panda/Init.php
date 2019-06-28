@@ -17,7 +17,7 @@ define("PANDA_MAIN_JS_URL", get_template_directory_uri() . "/panda/Js");
 
 
 //* List of files that needs to bee required
-$allRequriedFiles = array_merge(
+$requiredFilesArray = array_merge(
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ProjectConstants.php"],
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
     // get All files from panda/Components ending with Definition.php
@@ -25,15 +25,24 @@ $allRequriedFiles = array_merge(
     // get All files from panda/Requires ending with .php
     glob_recursive(REQUIRES_PATH . "*.php"),
     // get All files from panda/Components ending with Hook.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php")
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php"),
+    // get All files from panda/Components ending with Metabox.php
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metabox.php")
 );
-requireFilesFromArray($allRequriedFiles);
+
+
+define("PANDA_REQUIRED_FILES", $requiredFilesArray);
+requireFilesFromArray(PANDA_REQUIRED_FILES);
 
 
 //* --- Core functions --------
 
-//* Recursive glob
-function glob_recursive($pattern, $flags = 0)
+/**
+ * Recursive glob
+ * @param string $pattern
+ * @param int $flags
+ */
+function glob_recursive(string $pattern, int $flags = 0)
 {
     $files = glob($pattern, $flags);
     foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
@@ -43,8 +52,13 @@ function glob_recursive($pattern, $flags = 0)
 }
 
 
-//* go trought list of files path, if exist required
-function requireFilesFromArray($files)
+//* 
+
+/**
+ * Go trought list of files path, and if exist, then require it
+ * @param array $files
+ */
+function requireFilesFromArray(array $files)
 {
     if (!empty($files)) {
         foreach ($files as $file) {

@@ -22,12 +22,15 @@ $requiredFilesArray = array_merge(
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
     // get All files from panda/Components ending with Definition.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Definition.php"),
+    // get All files from panda/Components ending with Constants.php
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Constants.php"),
     // get All files from panda/Requires ending with .php
     glob_recursive(REQUIRES_PATH . "*.php"),
     // get All files from panda/Components ending with Hook.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php"),
     // get All files from panda/Components ending with Metabox.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metabox.php")
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metabox.php"),
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metaboxes.php")
 );
 
 
@@ -51,8 +54,6 @@ function glob_recursive(string $pattern, int $flags = 0)
     return $files;
 }
 
-
-//* 
 
 /**
  * Go trought list of files path, and if exist, then require it

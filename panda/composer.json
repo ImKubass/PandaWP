@@ -31,5 +31,8 @@
 			"Interfaces\\": "Interfaces",
 			"Helpers\\": "Helpers"
 		}
+	},
+	"require-dev": {
+		"symfony/var-dumper": "^4.3"
 	}
 }

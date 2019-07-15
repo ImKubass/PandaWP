@@ -20,10 +20,10 @@ define("PANDA_MAIN_JS_URL", get_template_directory_uri() . "/panda/Js");
 $requiredFilesArray = array_merge(
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ProjectConstants.php"],
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
-    // get All files from panda/Components ending with Definition.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Definition.php"),
     // get All files from panda/Components ending with Constants.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Constants.php"),
+    // get All files from panda/Components ending with Definition.php
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Definition.php"),
     // get All files from panda/Requires ending with .php
     glob_recursive(REQUIRES_PATH . "*.php"),
     // get All files from panda/Components ending with Hook.php

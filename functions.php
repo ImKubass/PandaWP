@@ -7,7 +7,7 @@ if (file_exists($ktInitfile)) {
     wp_die(sprintf(__("POZOR: WP Framework není k dispozici, zkontrolujte prosím adresář a inicializační soubor: %s"), $ktInitfile));
 }
 
-$autoload = TEMPLATEPATH . "/panda/vendor/autoload.php";
+$autoload = TEMPLATEPATH . "/panda/Vendor/autoload.php";
 if (file_exists($autoload)) {
     require($autoload);
 } else {

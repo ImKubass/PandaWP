@@ -13,7 +13,6 @@ define("EMPLOYEE_LOOP", "Employee");
 //? Post
 define("POST_KEY", "post");
 define("POST_LOOP", "Post");
-define("TIPS_LOOP", "Tip");
 
 //? Product
 define("PRODUCT_KEY", "product");

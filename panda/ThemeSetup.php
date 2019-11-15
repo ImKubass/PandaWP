@@ -35,7 +35,8 @@ $config->setImagesLazyLoading(true)
 
 // --- styly ---------------------------
 
-$config->assetsConfigurator()->addStyle("theme-style", get_template_directory_uri() . "/style.css")
+$config->assetsConfigurator()
+    ->addStyle("theme-style", get_template_directory_uri() . "/style.css")
     ->setVersion(20190110)
     ->setEnqueue();
 
@@ -95,16 +96,15 @@ $config->initialize();
 KT_Termmeta::activate();
 
 
-// TODO: Move it somewhere else
-// Load cdn Fancybox only on pages where is gallery
-add_action("wp_enqueue_scripts", "fancybox_method_enque_script_callback");
-function fancybox_method_enque_script_callback()
-{
-    if (get_post_gallery()) {
-        wp_register_script("fancybox-js", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js", "", "", true);
-        wp_enqueue_style("fancybox-style", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css");
-        wp_enqueue_script("fancybox-js");
-    }
+if (get_post_gallery()) {
+    $config->assetsConfigurator()
+        ->addScript("fancybox-js", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js")
+        ->setInFooter(true)
+        ->setEnqueue();
+
+    $config->assetsConfigurator()
+        ->addStyle("fancybox-style", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css")
+        ->setEnqueue();
 }
 
 // --- Podstránka Nastavení hlavičky a patičky

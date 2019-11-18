@@ -1,17 +1,17 @@
 <?php
 
-namespace Components\PageTheme;
+namespace Components\ThemeSettings;
 
-class PageThemeFactory
+class ThemeSettingsFactory
 {
     private static $theme = null;
 
-    /** @return PageThemeModel */
+    /** @return ThemeSettingsModel */
     public static function create()
     {
         if (isset(self::$theme)) {
             return self::$theme;
         }
-        return self::$theme = new PageThemeModel();
+        return self::$theme = new ThemeSettingsModel();
     }
 }

@@ -1,11 +1,8 @@
 <?php
 
-namespace Components\PageTheme;
+namespace Components\ThemeSettings;
 
-use Enums\MeetingLengthsEnum;
-use Utils\Util;
-
-class PageThemeConfig implements \KT_Configable
+class ThemeSettingsConfig implements \KT_Configable
 {
     const FORM_PREFIX = "theme-settings";
 

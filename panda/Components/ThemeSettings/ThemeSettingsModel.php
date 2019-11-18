@@ -1,10 +1,10 @@
 <?php
 
-namespace Components\PageTheme;
+namespace Components\ThemeSettings;
 
 use Utils\Util;
 
-class PageThemeModel extends \KT_WP_Options_Base_Model
+class ThemeSettingsModel extends \KT_WP_Options_Base_Model
 {
 
     private $SocialsSameAsData;
@@ -13,7 +13,7 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function __construct()
     {
-        parent::__construct(PageThemeConfig::FORM_PREFIX);
+        parent::__construct(ThemeSettingsConfig::FORM_PREFIX);
     }
 
     //? --- getry & setry ------------------------
@@ -24,27 +24,27 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function getContactCompanyName()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_COMPANY_NAME);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_COMPANY_NAME);
     }
 
     public function getContactStreet()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_STREET);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_STREET);
     }
 
     public function getContactCity()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_CITY);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_CITY);
     }
 
     public function getContactZip()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_ZIP);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_ZIP);
     }
 
     public function getContactPhone()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_PHONE);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_PHONE);
     }
 
     public function getContactPhoneClean()
@@ -59,7 +59,7 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function getContactEmail()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_EMAIL);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_EMAIL);
     }
 
     public function getContactEmailFancy()
@@ -75,27 +75,27 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function getContactDescription()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_DESCRIPTION);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_DESCRIPTION);
     }
 
     public function getContactEstablishment()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_ESTABLISHMENT);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_ESTABLISHMENT);
     }
 
     public function getContactDic()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_DIC);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_DIC);
     }
 
     public function getContactIco()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_ICO);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_ICO);
     }
 
     public function getContactLogoId()
     {
-        return $this->getOption(PageThemeConfig::CONTACT_LOGO_ID);
+        return $this->getOption(ThemeSettingsConfig::CONTACT_LOGO_ID);
     }
 
     /** @return string */
@@ -123,17 +123,17 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function getSocialFacebook()
     {
-        return $this->getOption(PageThemeConfig::SOCIAL_FACEBOOK);
+        return $this->getOption(ThemeSettingsConfig::SOCIAL_FACEBOOK);
     }
 
     public function getSocialInstagram()
     {
-        return $this->getOption(PageThemeConfig::SOCIAL_INSTAGRAM);
+        return $this->getOption(ThemeSettingsConfig::SOCIAL_INSTAGRAM);
     }
 
     public function getSocialYouTube()
     {
-        return $this->getOption(PageThemeConfig::SOCIAL_YOUTUBE);
+        return $this->getOption(ThemeSettingsConfig::SOCIAL_YOUTUBE);
     }
 
     /** @return array */
@@ -160,42 +160,42 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function getOpeningHoursMonFri()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_MON_FRI);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_MON_FRI);
     }
 
     public function getOpeningHoursMonday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_MONDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_MONDAY);
     }
 
     public function getOpeningHoursTuesday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_TUESDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_TUESDAY);
     }
 
     public function getOpeningHoursWednesday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_WEDNESDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_WEDNESDAY);
     }
 
     public function getOpeningHoursThursday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_THURSDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_THURSDAY);
     }
 
     public function getOpeningHoursFriday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_FRIDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_FRIDAY);
     }
 
     public function getOpeningHoursSaturday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_SATURDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_SATURDAY);
     }
 
     public function getOpeningHoursSunday()
     {
-        return $this->getOption(PageThemeConfig::OPENING_HOURS_SUNDAY);
+        return $this->getOption(ThemeSettingsConfig::OPENING_HOURS_SUNDAY);
     }
 
     //* --- Analytika
@@ -203,12 +203,12 @@ class PageThemeModel extends \KT_WP_Options_Base_Model
 
     public function getAnalyticsHeaderCode()
     {
-        return $this->getOption(PageThemeConfig::ANALYTICS_HEADER_CODE);
+        return $this->getOption(ThemeSettingsConfig::ANALYTICS_HEADER_CODE);
     }
 
     public function getAnalyticsBodyCode()
     {
-        return $this->getOption(PageThemeConfig::ANALYTICS_BODY_CODE);
+        return $this->getOption(ThemeSettingsConfig::ANALYTICS_BODY_CODE);
     }
 
 

@@ -1,11 +1,12 @@
 {
 	"name": "panda-wp/panda",
 	"description": "",
-	"authors": [{
-		"name": "Jakub Jetleb",
-		"email": "jakubjetleb@gmail.com"
-	}],
-
+	"authors": [
+		{
+			"name": "Jakub Jetleb",
+			"email": "jakubjetleb@gmail.com"
+		}
+	],
 	"config": {
 		"vendor-dir": "Vendor",
 		"optimize-autoloader": true,
@@ -29,6 +30,7 @@
 			"Models\\": "Models",
 			"Configs\\": "Configs",
 			"Interfaces\\": "Interfaces",
+			"Layouts\\": "Layouts",
 			"Helpers\\": "Helpers"
 		}
 	},

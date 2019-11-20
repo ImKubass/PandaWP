@@ -69,3 +69,12 @@ function requireFilesFromArray(array $files)
         }
     }
 }
+
+
+/** 
+ * Shortcut for registration basic metaboxes
+ */
+function registerMetabox($configName, $key)
+{
+    \KT_MetaBox::createMultiple($configName::getAllGenericFieldsets(), $key, \KT_MetaBox_Data_Type_Enum::POST_META);
+}

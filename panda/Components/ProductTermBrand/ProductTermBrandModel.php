@@ -2,6 +2,7 @@
 
 namespace Components\ProductTermBrand;
 
+use Utils\Image;
 use Utils\Util;
 
 class ProductTermBrandModel extends \KT_WP_Term_Base_Model
@@ -25,12 +26,12 @@ class ProductTermBrandModel extends \KT_WP_Term_Base_Model
 
     public function getParamsLogoSrc()
     {
-        return Util::getImageSrc($this->getParamsLogoId(), IMAGE_SIZE_180x42_no_crop);
+        return Image::getImageSrc($this->getParamsLogoId(), IMAGE_SIZE_180x42_no_crop);
     }
 
     public function getParamsLogoSrc2x()
     {
-        return Util::getImageSrc($this->getParamsLogoId(), IMAGE_SIZE_360x84_no_crop) . " 2x";
+        return Image::getImageSrc($this->getParamsLogoId(), IMAGE_SIZE_360x84_no_crop) . " 2x";
     }
 
     public function getParamsPhotoId()
@@ -40,12 +41,12 @@ class ProductTermBrandModel extends \KT_WP_Term_Base_Model
 
     public function getParamsPhotoSrc()
     {
-        return Util::getImageSrc($this->getParamsPhotoId(), IMAGE_SIZE_420x300);
+        return Image::getImageSrc($this->getParamsPhotoId(), IMAGE_SIZE_420x300);
     }
 
     public function getParamsPhotoSrc2x()
     {
-        return Util::getImageSrc($this->getParamsPhotoId(), IMAGE_SIZE_840x600);
+        return Image::getImageSrc($this->getParamsPhotoId(), IMAGE_SIZE_840x600);
     }
 
     public function getParamsThumbnailId()
@@ -55,12 +56,12 @@ class ProductTermBrandModel extends \KT_WP_Term_Base_Model
 
     public function getParamsThumbnailSrc()
     {
-        return Util::getImageSrc($this->getParamsThumbnailId(), IMAGE_SIZE_140x160_no_crop);
+        return Image::getImageSrc($this->getParamsThumbnailId(), IMAGE_SIZE_140x160_no_crop);
     }
 
     public function getParamsThumbnailSrc2x()
     {
-        return Util::getImageSrc($this->getParamsThumbnailId(), IMAGE_SIZE_280x320_no_crop);
+        return Image::getImageSrc($this->getParamsThumbnailId(), IMAGE_SIZE_280x320_no_crop);
     }
 
     public function getParamsOrder()

@@ -4,6 +4,7 @@ namespace Components\Product;
 
 use Utils\Util;
 use Components\ProductTermBrand\ProductTermBrandModel;
+use Utils\uString;
 
 class ProductModel extends \KT_WP_Post_Base_Model
 {
@@ -130,7 +131,7 @@ class ProductModel extends \KT_WP_Post_Base_Model
 
     public function getPriceBasicPriceFancy()
     {
-        return Util::fancyPrice($this->getPriceBasicPrice());
+        return uString::fancyPrice($this->getPriceBasicPrice());
     }
 
     public function getPriceDiscountPrice()
@@ -140,7 +141,7 @@ class ProductModel extends \KT_WP_Post_Base_Model
 
     public function getPriceDiscountPriceFancy()
     {
-        return Util::fancyPrice($this->getPriceDiscountPrice());
+        return uString::fancyPrice($this->getPriceDiscountPrice());
     }
 
     //* --- Technické parametry

@@ -3,6 +3,7 @@
 namespace Components\Page;
 
 use Components\Page\PageConfig;
+use Utils\Image;
 use Utils\Util;
 
 class PageModel extends \KT_WP_Post_Base_Model
@@ -16,12 +17,12 @@ class PageModel extends \KT_WP_Post_Base_Model
 
     public function getThumbnailSrc()
     {
-        return Util::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_420x300);
+        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_420x300);
     }
 
     public function getThumbnailSrc2x()
     {
-        return Util::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_840x600);
+        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_840x600);
     }
 
     //? --- Nastavení stránky

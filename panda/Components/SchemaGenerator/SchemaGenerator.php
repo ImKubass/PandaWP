@@ -1,8 +1,10 @@
 <?php
+
 namespace Components\SchemaGenerator;
 
-use Components\PageTheme\PageThemeFactory;
+use Components\ThemeSettings\ThemeSettingsFactory;
 use Components\Product\ProductPresenter;
+use Utils\Image;
 use Utils\Util;
 
 
@@ -29,13 +31,13 @@ class SchemaGenerator
 
     public static function addOrganization()
     {
-        $Theme = PageThemeFactory::create();
+        $Theme = ThemeSettingsFactory::create();
         if ($Theme->isContactCompanyName()) {
 
             if ($Theme->isContactLogoId()) {
                 $logoImage = $Theme->getContactLogoSrc();
             } else {
-                $logoImage = Util::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
+                $logoImage = Image::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
             }
             $url = get_home_url();
 
@@ -108,12 +110,12 @@ class SchemaGenerator
     {
         $ProductModel = $Product->getModel();
         $url = $ProductModel->getPermalink();
-        $Theme = PageThemeFactory::create();
+        $Theme = ThemeSettingsFactory::create();
 
         if ($Theme->isContactLogoId()) {
             $logoImage = $Theme->getContactLogoSrc();
         } else {
-            $logoImage = Util::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
+            $logoImage = Image::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
         }
         $Pageurl = get_home_url();
 
@@ -202,7 +204,7 @@ class SchemaGenerator
     public static function insertThumbnail(array &$data, \KT_WP_Post_Base_Model $model)
     {
         if ($model->hasThumbnail()) {
-            $thumbnailSrc = Util::getImageSrc($model->getThumbnailId, KT_WP_IMAGE_SIZE_THUBNAIL);
+            $thumbnailSrc = Image::getImageSrc($model->getThumbnailId, KT_WP_IMAGE_SIZE_THUBNAIL);
             if (Util::arrayIssetAndNotEmpty($thumbnailSrc)) {
                 $data["image"] = [
                     "@type" => "ImageObject",
@@ -239,12 +241,12 @@ class SchemaGenerator
 
     public static function insertPublisher(array &$data, \KT_WP_Post_Base_Model $model)
     {
-        $Theme = PageThemeFactory::create();
+        $Theme = ThemeSettingsFactory::create();
         if ($Theme->isContactCompanyName()) {
             if ($Theme->isContactLogoId()) {
                 $logoImage = $Theme->getContactLogoSrc();
             } else {
-                $logoImage = Util::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
+                $logoImage = Image::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
             }
 
             $data["publisher"] = [

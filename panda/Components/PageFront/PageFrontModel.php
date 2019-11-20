@@ -3,6 +3,8 @@
 namespace Components\PageFront;
 
 use Components\Page\PageModel;
+use Utils\Image;
+use Utils\uString;
 use Utils\Util;
 
 class PageFrontModel extends PageModel
@@ -18,12 +20,12 @@ class PageFrontModel extends PageModel
 
     public function getThumbnailSrc()
     {
-        return Util::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_580x385);
+        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_580x385);
     }
 
     public function getThumbnailSrc2x()
     {
-        return Util::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_1160x770);
+        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_1160x770);
     }
 
     //* --- Intro
@@ -37,14 +39,14 @@ class PageFrontModel extends PageModel
     public function getIntroTitleFancy()
     {
         $fancyTitle = $this->getIntroTitle();
-        $fancyTitle = Util::renderBreakTagInString($fancyTitle);
-        $fancyTitle = Util::wrapWithSpan($fancyTitle);
+        $fancyTitle = uString::renderBreakTagInString($fancyTitle);
+        $fancyTitle = uString::wrapWithSpan($fancyTitle);
         return $fancyTitle;
     }
 
     public function getIntroTitleClean()
     {
-        return Util::cleanStringFromSpecialCharacters($this->getIntroTitle());
+        return uString::cleanStringFromSpecialCharacters($this->getIntroTitle());
     }
 
     public function getIntroDescription()

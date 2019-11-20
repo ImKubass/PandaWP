@@ -5,6 +5,8 @@ namespace Components\Employee;
 use Utils\Util;
 use Components\Employee\EmployeeConfig;
 use Components\SchemaGenerator\SchemaGenerator;
+use Utils\Image;
+use Utils\uString;
 
 class EmployeeModel extends \KT_WP_Post_Base_Model
 {
@@ -15,12 +17,12 @@ class EmployeeModel extends \KT_WP_Post_Base_Model
 
     public function getThumbnailSrc()
     {
-        return Util::getImageSrc($this->getThumbnailId(), KT_WP_IMAGE_SIZE_THUBNAIL);
+        return Image::getImageSrc($this->getThumbnailId(), KT_WP_IMAGE_SIZE_THUBNAIL);
     }
 
     public function getThumbnailSrc2x()
     {
-        return Util::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_300x300);
+        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_300x300);
     }
 
 
@@ -39,12 +41,12 @@ class EmployeeModel extends \KT_WP_Post_Base_Model
 
     public function getParamPhoneClean()
     {
-        return Util::clearPhoneNumber($this->getParamPhone());
+        return uString::clearPhoneNumber($this->getParamPhone());
     }
 
     public function getParamPhoneFancy()
     {
-        return Util::phoneNumberFormat($this->getParamPhone());
+        return uString::phoneNumberFormat($this->getParamPhone());
     }
 
     public function getParamEmail()

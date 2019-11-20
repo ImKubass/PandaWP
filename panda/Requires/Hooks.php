@@ -1,5 +1,6 @@
 <?php
-use Utils\Util;
+
+use Utils\uString;
 
 // --- media: link & gallery ------------------------
 
@@ -75,7 +76,7 @@ function panda_page_slug()
 add_filter("wpseo_breadcrumb_single_link", "panda_rename_page_text", 10, 2);
 function panda_rename_page_text($link_output, $link)
 {
-    if (Util::stringStartsWith($link["text"], "Page")) {
+    if (uString::stringStartsWith($link["text"], "Page")) {
         $link_output = str_replace("Page", __("Strana", "RLG_DOMAIN"), $link_output);
     }
     return $link_output;

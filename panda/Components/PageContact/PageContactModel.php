@@ -3,6 +3,7 @@
 namespace Components\PageContact;
 
 use Components\Page\PageModel;
+use Utils\uString;
 use Utils\Util;
 
 class PageContactModel extends PageModel
@@ -26,12 +27,12 @@ class PageContactModel extends PageModel
 
     public function getEmployeesSectionTitleFancy()
     {
-        return Util::wrapWithSpan($this->getEmployeesSectionTitle());
+        return uString::wrapWithSpan($this->getEmployeesSectionTitle());
     }
 
     public function getEmployeesSectionTitleClean()
     {
-        return Util::cleanStringFromSpecialCharacters($this->getEmployeesSectionTitle());
+        return uString::cleanStringFromSpecialCharacters($this->getEmployeesSectionTitle());
     }
 
     public function getEmployeesSectionDescription()

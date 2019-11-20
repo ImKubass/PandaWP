@@ -2,6 +2,8 @@
 
 namespace Components\ThemeSettings;
 
+use Utils\Image;
+use Utils\uString;
 use Utils\Util;
 
 class ThemeSettingsModel extends \KT_WP_Options_Base_Model
@@ -49,12 +51,12 @@ class ThemeSettingsModel extends \KT_WP_Options_Base_Model
 
     public function getContactPhoneClean()
     {
-        return Util::clearPhoneNumber($this->getContactPhone());
+        return uString::clearPhoneNumber($this->getContactPhone());
     }
 
     public function getContactPhoneFancy()
     {
-        return Util::phoneNumberFormat($this->getContactPhone());
+        return uString::phoneNumberFormat($this->getContactPhone());
     }
 
     public function getContactEmail()
@@ -106,7 +108,7 @@ class ThemeSettingsModel extends \KT_WP_Options_Base_Model
         }
 
         if ($this->isContactLogoId()) {
-            return $this->ContactLogoSrc = Util::getImageSrc($this->getContactLogoId(), KT_WP_IMAGE_SIZE_ORIGINAL);
+            return $this->ContactLogoSrc = Image::getImageSrc($this->getContactLogoId(), KT_WP_IMAGE_SIZE_ORIGINAL);
         }
 
         return $this->ContactLogoSrc = "";

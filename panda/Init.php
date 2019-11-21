@@ -11,6 +11,9 @@ define("COMPONENTS_FOLDER", "Components");
 define("COMPONENTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
 define("COMPONENTS_PATH", "panda/" . COMPONENTS_FOLDER . "/");
 
+
+define("LAYOUTS_PATH", "panda/Layouts/");
+
 //? JavascriptPath
 // Deprecated
 define("PANDA_MAIN_JS_URL", get_template_directory_uri() . "/panda/Js");

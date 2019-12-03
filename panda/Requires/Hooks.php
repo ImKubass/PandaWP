@@ -101,3 +101,15 @@ function panda_table_wrap($content)
         return '<div class="table-responsive">' . $match[0] . '</div>';
     }, $content);
 }
+
+
+// Load CDN Fancybox on pages where is gallery
+add_action("wp_enqueue_scripts", "fancybox_method_enque_script_callback");
+function fancybox_method_enque_script_callback()
+{
+    if (get_post_gallery()) {
+        wp_register_script("fancybox-js", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js", "", "", true);
+        wp_enqueue_style("fancybox-style", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css");
+        wp_enqueue_script("fancybox-js");
+    }
+}

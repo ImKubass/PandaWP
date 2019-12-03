@@ -15,6 +15,8 @@ $config->setExcerptText("...");
 
 $config->pageRemover()
     ->removeComments()
+    ->removeSubPage("edit.php", "edit-tags.php")
+    ->removeSubPage("edit.php", "edit-tags.php?taxonomy=post_tag")
     ->removeSubPage("themes.php", "theme-editor.php");
 
 $config->metaboxRemover()
@@ -95,19 +97,7 @@ $config->initialize();
 
 KT_Termmeta::activate();
 
-
-if (get_post_gallery()) {
-    $config->assetsConfigurator()
-        ->addScript("fancybox-js", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js")
-        ->setInFooter(true)
-        ->setEnqueue();
-
-    $config->assetsConfigurator()
-        ->addStyle("fancybox-style", "https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css")
-        ->setEnqueue();
-}
-
 // --- Podstránka Nastavení hlavičky a patičky
 
-$headerFooterSubpage = new KT_Custom_Metaboxes_Subpage("themes.php", __("Hlavička a patička", "KT_CORE_DOMAIN"), __("Hlavička a patička", "KT_CORE_DOMAIN"), "update_core", FOOTER_HEADER_SETTINGS_PAGE);
+$headerFooterSubpage = new \KT_Custom_Metaboxes_Subpage("themes.php", __("Hlavička a patička", "KT_CORE_DOMAIN"), __("Hlavička a patička", "KT_CORE_DOMAIN"), "update_core", FOOTER_HEADER_SETTINGS_PAGE);
 $headerFooterSubpage->setRenderSaveButton()->register();

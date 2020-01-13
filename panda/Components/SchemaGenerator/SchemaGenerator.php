@@ -148,6 +148,11 @@ class SchemaGenerator
         ]);
     }
 
+    public static function addModel($model)
+    {
+        self::addCustom($model->tryGetJsonLdData());
+    }
+
     public static function addComment(\WP_Comment $comment)
     {
 
@@ -204,13 +209,13 @@ class SchemaGenerator
     public static function insertThumbnail(array &$data, \KT_WP_Post_Base_Model $model)
     {
         if ($model->hasThumbnail()) {
-            $thumbnailSrc = Image::getImageSrc($model->getThumbnailId, KT_WP_IMAGE_SIZE_THUBNAIL);
-            if (Util::arrayIssetAndNotEmpty($thumbnailSrc)) {
+            $thumbnailSrc = Image::getImageSrc($model->getThumbnailId(), KT_WP_IMAGE_SIZE_THUBNAIL);
+            if (Util::issetAndNotEmpty($thumbnailSrc)) {
                 $data["image"] = [
                     "@type" => "ImageObject",
-                    "url" => $thumbnailSrc[0],
-                    "width" => 300,
-                    "height" => 225,
+                    "url" => $thumbnailSrc,
+                    "width" => 150,
+                    "height" => 150,
                 ];
             }
         }

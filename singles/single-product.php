@@ -1,1 +1,1 @@
-<?php get_template_part(COMPONENTS_PATH . "PageProductDetail/PageProductDetail");
+<?php get_template_part(LAYOUTS_PATH . "PageProductDetail/PageProductDetail");

@@ -30,9 +30,7 @@ $Theme = ThemeSettingsFactory::create(); ?>
     <?php endif; ?>
 
     <div class="container">
-        <a class="header-brand" href="<?= home_url(); ?>">
-            <img src="" data-src="<?= get_template_directory_uri(); ?>/images/ico/rolig-logo.svg" alt="rolig logo" draggable="false" />
-        </a>
+
 
         <nav class="nav-main">
             <ul>

@@ -27,6 +27,7 @@ function register_product_post_type()
         "publicly_queryable" => true,
         "show_ui" => true,
         "show_in_menu" => true,
+        'show_in_rest' => true,
         "capability_type" => KT_WP_POST_KEY,
         "query_var" => true,
         "rewrite" => ["slug" => PRODUCT_SLUG, "with_front" => false],

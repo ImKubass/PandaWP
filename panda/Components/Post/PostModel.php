@@ -2,43 +2,33 @@
 
 namespace Components\Post;
 
-use Utils\Util;
+use Components\SchemaGenerator\SchemaGenerator;
+use Interfaces\Jsonable;
 
-class PostModel extends \KT_WP_Post_Base_Model
+class PostModel extends \KT_WP_Post_Base_Model implements Jsonable
 {
-
-    private $userModel;
 
     function __construct(\WP_Post $post)
     {
         parent::__construct($post, PostConfig::FORM_PREFIX);
     }
 
-    //* --- getry & setry ------------------------
-
-    //? --- Nastavení stránky
-    //? --- Prefix: Settings
-
-    public function getSettingsContentCenter()
+    public function tryGetJsonLdData()
     {
-        return $this->getMetaValue(PostConfig::SETTINGS_CONTENT_CENTER);
-    }
-
-    public function getSettingsGalleryNoGutter()
-    {
-        return $this->getMetaValue(PostConfig::SETTINGS_GALLERY_NO_GUTTER);
-    }
-
-
-    //* --- issety ------------------------
-
-    public function isSettingsContentCenter()
-    {
-        return Util::issetAndNotEmpty($this->getSettingsContentCenter());
-    }
-
-    public function isSettingsGalleryNoGutter()
-    {
-        return Util::issetAndNotEmpty($this->getSettingsGalleryNoGutter());
+        $data = [
+            "@context" => "http://schema.org",
+            "@type" => "NewsArticle",
+            "mainEntityOfPage" => [
+                "@type" => "WebPage",
+            ],
+            "headline" => $this->getTitle(),
+            "articleBody" => $this->getExcerpt(),
+            "author" => $this->getAuthor()->getDisplayName(),
+            "url" => $this->getPermalink(),
+        ];
+        SchemaGenerator::insertThumbnail($data, $this);
+        SchemaGenerator::insertDates($data, $this);
+        SchemaGenerator::insertPublisher($data, $this);
+        return $data;
     }
 }

@@ -5,11 +5,11 @@ namespace Components\Post;
 class PostFactory
 {
     /**
-     * @return PostPresenter
+     * @return PostModel
      */
     public static function create()
     {
         global $post;
-        return new PostPresenter(new PostModel($post));
+        return new PostModel($post);
     }
 }

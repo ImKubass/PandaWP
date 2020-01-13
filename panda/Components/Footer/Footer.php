@@ -1,10 +1,10 @@
-<?php use Components\SchemaGenerator\SchemaGenerator; ?>
+<?php
+
+use Components\SchemaGenerator\SchemaGenerator; ?>
 
 </main>
 
 <footer class="footer-main">
-
-    <?php get_template_part(COMPONENTS_PATH . "Footer/FooterBottom"); ?>
 
 </footer>
 

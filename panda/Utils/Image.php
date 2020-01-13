@@ -27,7 +27,7 @@ class Image
     public static function getImageSrc($id, $sizeConstant)
     {
         $src = wp_get_attachment_image_src($id, $sizeConstant);
-        if (self::arrayIssetAndNotEmpty($src)) {
+        if (Util::arrayIssetAndNotEmpty($src)) {
             return reset($src);
         }
     }

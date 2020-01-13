@@ -1,3 +1,4 @@
 [submodule "kt"]
 	path = kt
 	url = https://github.com/ktstudio/WP-Framework.git
+	branch = develop

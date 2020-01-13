@@ -34,10 +34,10 @@ class PageConfig implements \KT_Configable
 
     public static function getSettingsFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::SETTINGS_FIELDSET, __("Nastavení stránky", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::SETTINGS_FIELDSET, __("Nastavení stránky", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::SETTINGS_FIELDSET);
 
-        $fieldset->addText(self::SETTINGS_BUTTON_TEXT, __("Text tlačítka:", "RLG_DOMAIN"));
+        $fieldset->addText(self::SETTINGS_BUTTON_TEXT, __("Text tlačítka:", ADMIN_DOMAIN));
 
         return $fieldset;
     }

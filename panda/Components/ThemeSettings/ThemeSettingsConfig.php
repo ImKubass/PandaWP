@@ -38,14 +38,14 @@ class ThemeSettingsConfig implements \KT_Configable
 
     public static function getSocialFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::SOCIAL_FIELDSET, __("Sociální sítě", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::SOCIAL_FIELDSET, __("Sociální sítě", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::SOCIAL_FIELDSET);
 
-        $fieldset->addText(self::SOCIAL_FACEBOOK, __("Facebook:", "RLG_DOMAIN"))
+        $fieldset->addText(self::SOCIAL_FACEBOOK, __("Facebook:", ADMIN_DOMAIN))
             ->setInputType(\KT_Text_Field::INPUT_URL);
-        $fieldset->addText(self::SOCIAL_INSTAGRAM, __("Instagram:", "RLG_DOMAIN"))
+        $fieldset->addText(self::SOCIAL_INSTAGRAM, __("Instagram:", ADMIN_DOMAIN))
             ->setInputType(\KT_Text_Field::INPUT_URL);
-        $fieldset->addText(self::SOCIAL_YOUTUBE, __("YouTube:", "RLG_DOMAIN"))
+        $fieldset->addText(self::SOCIAL_YOUTUBE, __("YouTube:", ADMIN_DOMAIN))
             ->setInputType(\KT_Text_Field::INPUT_URL);
 
         return $fieldset;
@@ -69,22 +69,22 @@ class ThemeSettingsConfig implements \KT_Configable
 
     public static function getContactFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::CONTACT_FIELDSET, __("Kontaktní údaje pro vyhledávače", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::CONTACT_FIELDSET, __("Kontaktní údaje pro vyhledávače", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::CONTACT_FIELDSET);
 
-        $fieldset->addText(self::CONTACT_COMPANY_NAME, __("Název Firmy:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_STREET, __("Ulice a ČP:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_CITY, __("Město:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_ZIP, __("PSČ:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_PHONE, __("Telefon:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_EMAIL, __("E-mail:", "RLG_DOMAIN"))
+        $fieldset->addText(self::CONTACT_COMPANY_NAME, __("Název Firmy:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_STREET, __("Ulice a ČP:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_CITY, __("Město:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_ZIP, __("PSČ:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_PHONE, __("Telefon:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_EMAIL, __("E-mail:", ADMIN_DOMAIN))
             ->setInputType(\KT_Text_Field::INPUT_EMAIL)
-            ->addRule(\KT_Field_Validator::EMAIL, __("E-mail musí být ve správném tvaru", "RLG_DOMAIN"));
-        $fieldset->addDate(self::CONTACT_ESTABLISHMENT, __("Datum založení:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_DESCRIPTION, __("Popisek:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_DIC, __("DIČ:", "RLG_DOMAIN"));
-        $fieldset->addText(self::CONTACT_ICO, __("IČO:", "RLG_DOMAIN"));
-        $fieldset->addMedia(self::CONTACT_LOGO_ID, __("Logo:", "RLG_DOMAIN"));
+            ->addRule(\KT_Field_Validator::EMAIL, __("E-mail musí být ve správném tvaru", ADMIN_DOMAIN));
+        $fieldset->addDate(self::CONTACT_ESTABLISHMENT, __("Datum založení:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_DESCRIPTION, __("Popisek:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_DIC, __("DIČ:", ADMIN_DOMAIN));
+        $fieldset->addText(self::CONTACT_ICO, __("IČO:", ADMIN_DOMAIN));
+        $fieldset->addMedia(self::CONTACT_LOGO_ID, __("Logo:", ADMIN_DOMAIN));
 
 
         return $fieldset;
@@ -104,17 +104,17 @@ class ThemeSettingsConfig implements \KT_Configable
 
     public static function getOpeningHoursFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::OPENING_HOURS_FIELDSET, __("Otevírací doba", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::OPENING_HOURS_FIELDSET, __("Otevírací doba", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::OPENING_HOURS_FIELDSET);
 
-        $fieldset->addText(self::OPENING_HOURS_MON_FRI, __("Po-Pá:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_MONDAY, __("Pondělí:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_TUESDAY, __("Úterý:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_WEDNESDAY, __("Středa:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_THURSDAY, __("Čtvrtek:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_FRIDAY, __("Pátek:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_SATURDAY, __("Sobota:", "RLG_DOMAIN"));
-        $fieldset->addText(self::OPENING_HOURS_SUNDAY, __("Neděle:", "RLG_DOMAIN"));
+        $fieldset->addText(self::OPENING_HOURS_MON_FRI, __("Po-Pá:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_MONDAY, __("Pondělí:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_TUESDAY, __("Úterý:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_WEDNESDAY, __("Středa:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_THURSDAY, __("Čtvrtek:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_FRIDAY, __("Pátek:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_SATURDAY, __("Sobota:", ADMIN_DOMAIN));
+        $fieldset->addText(self::OPENING_HOURS_SUNDAY, __("Neděle:", ADMIN_DOMAIN));
 
         return $fieldset;
     }
@@ -127,13 +127,13 @@ class ThemeSettingsConfig implements \KT_Configable
 
     public static function getAnalyticsFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::ANALYTICS_FIELDSET, __("Analytika", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::ANALYTICS_FIELDSET, __("Analytika", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::ANALYTICS_FIELDSET);
 
-        $fieldset->addTextarea(self::ANALYTICS_HEADER_CODE, __("Kód v header:", "RLG_DOMAIN"))
+        $fieldset->addTextarea(self::ANALYTICS_HEADER_CODE, __("Kód v header:", ADMIN_DOMAIN))
             ->setFilterSanitize(FILTER_DEFAULT);
 
-        $fieldset->addTextarea(self::ANALYTICS_BODY_CODE, __("Kód v body:", "RLG_DOMAIN"))
+        $fieldset->addTextarea(self::ANALYTICS_BODY_CODE, __("Kód v body:", ADMIN_DOMAIN))
             ->setFilterSanitize(FILTER_DEFAULT);
 
         return $fieldset;

@@ -37,12 +37,12 @@ class PageFrontConfig implements \KT_Configable
 
     public static function getIntroFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::INTRO_FIELDSET, __("Intro", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::INTRO_FIELDSET, __("Intro", DOMAIN));
         $fieldset->setPostPrefix(self::INTRO_FIELDSET);
 
-        $fieldset->addText(self::INTRO_TITLE, __("Titulek:", "RLG_DOMAIN"));
-        $fieldset->addText(self::INTRO_DESCRIPTION, __("Popisek", "RLG_DOMAIN"));
-        $fieldset->addWpPage(self::INTRO_PAGE_ID, __("Naše služby:", "RLG_DOMAIN"))
+        $fieldset->addText(self::INTRO_TITLE, __("Titulek:", DOMAIN));
+        $fieldset->addText(self::INTRO_DESCRIPTION, __("Popisek", DOMAIN));
+        $fieldset->addWpPage(self::INTRO_PAGE_ID, __("Naše služby:", DOMAIN))
             ->setFirstEmpty();
 
 

@@ -35,13 +35,13 @@ class EmployeeConfig implements \KT_Configable
 
     public static function getParamsFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::PARAMS_FIELDSET, __("Parametry", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::PARAMS_FIELDSET, __("Parametry", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::PARAMS_FIELDSET);
 
-        $fieldset->addText(self::PARAMS_JOB, __("Pracovní pozice:", "RLG_DOMAIN"));
-        $fieldset->addText(self::PARAMS_PHONE, __("Telefon:", "RLG_DOMAIN"));
-        $fieldset->addText(self::PARAMS_EMAIL, __("Email:", "RLG_DOMAIN"));
-        $fieldset->addText(self::PARAMS_GMAIL, __("Gmail:", "RLG_DOMAIN"));
+        $fieldset->addText(self::PARAMS_JOB, __("Pracovní pozice:", ADMIN_DOMAIN));
+        $fieldset->addText(self::PARAMS_PHONE, __("Telefon:", ADMIN_DOMAIN));
+        $fieldset->addText(self::PARAMS_EMAIL, __("Email:", ADMIN_DOMAIN));
+        $fieldset->addText(self::PARAMS_GMAIL, __("Gmail:", ADMIN_DOMAIN));
 
         return $fieldset;
     }

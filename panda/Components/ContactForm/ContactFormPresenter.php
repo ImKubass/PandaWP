@@ -29,9 +29,9 @@ class ContactFormPresenter extends \KT_Contact_Form_Base_Presenter
                 $requestUrl = Util::getRequestUrl();
                 $requestLink = "<a href=\"$requestUrl\">$requestUrl</a>";
 
-                $content = sprintf(__("Jméno a Příjmení: %s", "RLG_DOMAIN"), $name) . "<br>";
-                $content .= sprintf(__("E-mail: %s", "RLG_DOMAIN"), $email) . "<br>";
-                $content .= sprintf(__("Telefon: %s", "RLG_DOMAIN"), $phone) . "<br>";
+                $content = sprintf(__("Jméno a Příjmení: %s", DOMAIN), $name) . "<br>";
+                $content .= sprintf(__("E-mail: %s", DOMAIN), $email) . "<br>";
+                $content .= sprintf(__("Telefon: %s", DOMAIN), $phone) . "<br>";
                 $content .= __("Zpráva:", "BT_DOMAIN") . "<br><br>$message<br><br>";
                 $content .= sprintf(__("Done by URL: %s", "KT_CORE_DOMAIN"), $requestLink) . "<br><br>---<br>";
 

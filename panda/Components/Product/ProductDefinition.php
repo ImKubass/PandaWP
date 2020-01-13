@@ -7,18 +7,18 @@ function register_product_post_type()
     // --- post type ------------------------
 
     $labels = [
-        "name" => __("Produkty", "RLG_DOMAIN"),
-        "singular_name" => __("Produkt", "RLG_DOMAIN"),
-        "add_new" => __("Přidat produkt", "RLG_DOMAIN"),
-        "add_new_item" => __("Přidat nový produkt", "RLG_DOMAIN"),
-        "edit_item" => __("Změnit produkt", "RLG_DOMAIN"),
-        "new_item" => __("Nový produkt", "RLG_DOMAIN"),
-        "view_item" => __("Zobrazit produkt", "RLG_DOMAIN"),
-        "all_items" => __("Všechny produkty", "RLG_DOMAIN"),
-        "search_items" => __("Hledat produkty", "RLG_DOMAIN"),
-        "not_found" => __("Žádné produkty nenalezeny", "RLG_DOMAIN"),
-        "not_found_in_trash" => __("Žádné produkty v koši", "RLG_DOMAIN"),
-        "menu_name" => __("Produkty", "RLG_DOMAIN"),
+        "name" => __("Produkty", ADMIN_DOMAIN),
+        "singular_name" => __("Produkt", ADMIN_DOMAIN),
+        "add_new" => __("Přidat produkt", ADMIN_DOMAIN),
+        "add_new_item" => __("Přidat nový produkt", ADMIN_DOMAIN),
+        "edit_item" => __("Změnit produkt", ADMIN_DOMAIN),
+        "new_item" => __("Nový produkt", ADMIN_DOMAIN),
+        "view_item" => __("Zobrazit produkt", ADMIN_DOMAIN),
+        "all_items" => __("Všechny produkty", ADMIN_DOMAIN),
+        "search_items" => __("Hledat produkty", ADMIN_DOMAIN),
+        "not_found" => __("Žádné produkty nenalezeny", ADMIN_DOMAIN),
+        "not_found_in_trash" => __("Žádné produkty v koši", ADMIN_DOMAIN),
+        "menu_name" => __("Produkty", ADMIN_DOMAIN),
     ];
 
     $args = [
@@ -52,12 +52,12 @@ function register_product_post_type()
 if (is_admin()) { // vlastní sloupce v administraci
     $ProductColumns = new KT_Admin_Columns(PRODUCT_KEY);
     $ProductColumns->addColumn("post_thumbnail", [
-        KT_Admin_Columns::LABEL_PARAM_KEY => __("Foto", "RLG_DOMAIN"),
+        KT_Admin_Columns::LABEL_PARAM_KEY => __("Foto", ADMIN_DOMAIN),
         KT_Admin_Columns::TYPE_PARAM_KEY => KT_Admin_Columns::THUMBNAIL_TYPE_KEY,
         KT_Admin_Columns::INDEX_PARAM_KEY => 0,
     ]);
     $ProductColumns->addColumn("menu_order", [
-        KT_Admin_Columns::LABEL_PARAM_KEY => __("Pořadí", "RLG_DOMAIN"),
+        KT_Admin_Columns::LABEL_PARAM_KEY => __("Pořadí", ADMIN_DOMAIN),
         KT_Admin_Columns::TYPE_PARAM_KEY => KT_Admin_Columns::POST_PROPERTY_TYPE_KEY,
         KT_Admin_Columns::PROPERTY_PARAM_KEY => "menu_order",
         KT_Admin_Columns::SORTABLE_PARAM_KEY => true,

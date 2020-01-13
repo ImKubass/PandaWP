@@ -66,7 +66,7 @@ add_action('init', 'panda_page_slug', 1);
 function panda_page_slug()
 {
     global $wp_rewrite;
-    $wp_rewrite->pagination_base = __("strana", "RLG_DOMAIN"); //where new-slug is the slug you want to use 
+    $wp_rewrite->pagination_base = __("strana", DOMAIN); //where new-slug is the slug you want to use 
     $wp_rewrite->flush_rules();
 }
 
@@ -77,7 +77,7 @@ add_filter("wpseo_breadcrumb_single_link", "panda_rename_page_text", 10, 2);
 function panda_rename_page_text($link_output, $link)
 {
     if (uString::stringStartsWith($link["text"], "Page")) {
-        $link_output = str_replace("Page", __("Strana", "RLG_DOMAIN"), $link_output);
+        $link_output = str_replace("Page", __("Strana", DOMAIN), $link_output);
     }
     return $link_output;
 }

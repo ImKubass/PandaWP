@@ -1,4 +1,5 @@
 <?php
+
 use Components\ContactForm\ContactFormFactory;
 
 $FormPresenter = ContactFormFactory::create();
@@ -20,32 +21,32 @@ $MessageField = $fieldset[KT_Contact_Form_Base_Config::MESSAGE]; ?>
     <div>
         <?= $NameField->getField(); ?>
 
-        <span class="fake-placeholder"><?php _e("Jméno a příjmení*", "RLG_DOMAIN"); ?></span>
-        <span class="required-notice"><?php _e("Povinné", "RLG_DOMAIN"); ?></span>
+        <span class="fake-placeholder"><?php _e("Jméno a příjmení*", DOMAIN); ?></span>
+        <span class="required-notice"><?php _e("Povinné", DOMAIN); ?></span>
     </div>
 
     <div>
         <?= $PhoneField->getField(); ?>
 
-        <span class="fake-placeholder"><?php _e("Telefon*", "RLG_DOMAIN"); ?></span>
-        <span class="required-notice"><?php _e("Povinné", "RLG_DOMAIN"); ?></span>
+        <span class="fake-placeholder"><?php _e("Telefon*", DOMAIN); ?></span>
+        <span class="required-notice"><?php _e("Povinné", DOMAIN); ?></span>
     </div>
 
     <div>
         <?= $EmailField->getField(); ?>
 
-        <span class="fake-placeholder"><?php _e("Email*", "RLG_DOMAIN"); ?></span>
-        <span class="required-notice"><?php _e("Povinné", "RLG_DOMAIN"); ?></span>
+        <span class="fake-placeholder"><?php _e("Email*", DOMAIN); ?></span>
+        <span class="required-notice"><?php _e("Povinné", DOMAIN); ?></span>
     </div>
 </div>
 
 <?= $MessageField->getField(); ?>
 
 <div class="contact-form-bottom">
-    <span class="consent-notice"><?php _e("Souhlasím se zpracováním", "RLG_DOMAIN"); ?> <a href="#"><?php _e("osobních údajů", "RLG_DOMAIN"); ?></a></span>
+    <span class="consent-notice"><?php _e("Souhlasím se zpracováním", DOMAIN); ?> <a href="#"><?php _e("osobních údajů", DOMAIN); ?></a></span>
 
     <span class="btn btn-paperplane submitButton">
-        <span><?php _e("Odeslat dotaz", "RLG_DOMAIN"); ?></span>
+        <span><?php _e("Odeslat dotaz", DOMAIN); ?></span>
     </span>
 </div>
 

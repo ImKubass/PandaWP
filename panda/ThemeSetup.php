@@ -65,8 +65,8 @@ $config->assetsConfigurator()
 
 // --- menu ---------------------------
 
-$config->addWpMenu(NAVIGATION_MAIN_MENU, __("Menu v hlavičce", "RLG_DOMAIN"));
-$config->addWpMenu(NAVIGATION_FOOTER_MENU, __("Menu v patičce", "RLG_DOMAIN"));
+$config->addWpMenu(NAVIGATION_MAIN_MENU, __("Menu v hlavičce", DOMAIN));
+$config->addWpMenu(NAVIGATION_FOOTER_MENU, __("Menu v patičce", DOMAIN));
 
 
 // --- sidebars ------------------------------

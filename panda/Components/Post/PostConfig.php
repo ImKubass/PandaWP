@@ -33,11 +33,11 @@ class PostConfig implements \KT_Configable
 
     public static function getSettingsFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::SETTINGS_FIELDSET, __("Nastavení stránky", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::SETTINGS_FIELDSET, __("Nastavení stránky", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::SETTINGS_FIELDSET);
 
-        $fieldset->addSwitch(self::SETTINGS_CONTENT_CENTER, __("Text na střed:", "RLG_DOMAIN"));
-        $fieldset->addSwitch(self::SETTINGS_GALLERY_NO_GUTTER, __("Galerie bez mezer:", "RLG_DOMAIN"));
+        $fieldset->addSwitch(self::SETTINGS_CONTENT_CENTER, __("Text na střed:", ADMIN_DOMAIN));
+        $fieldset->addSwitch(self::SETTINGS_GALLERY_NO_GUTTER, __("Galerie bez mezer:", ADMIN_DOMAIN));
 
         return $fieldset;
     }

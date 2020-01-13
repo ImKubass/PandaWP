@@ -1,5 +1,9 @@
 <?php
 
+//? Project domain
+define("DOMAIN", "ZZZ_DOMAIN");
+define("ADMIN_DOMAIN", "ADMIN_ZZZ_DOMAIN");
+
 //? Menu
 define("NAVIGATION_MAIN_MENU", "navigation-main-menu");
 define("NAVIGATION_FOOTER_MENU", "navigation-footer-menu");

@@ -10,7 +10,7 @@ $Theme = ThemeSettingsFactory::create(); ?>
     <?php if ($Theme->isContactPhone() || $Theme->isContactEmail()) : ?>
         <div class="container header-top-bar">
 
-            <span><?php _e("Potřebujete poradit?", "RLG_DOMAIN"); ?></span>
+            <span><?php _e("Potřebujete poradit?", DOMAIN); ?></span>
 
             <?php if ($Theme->isContactPhone()) : ?>
                 <span class="header-contact header-contact-phone">
@@ -37,7 +37,7 @@ $Theme = ThemeSettingsFactory::create(); ?>
                 <li class="nav-home">
                     <a href="<?= home_url(); ?>">
                         <?= Svg::renderSvg("home"); ?>
-                        <span><?php _e("Úvod", "RLG_DOMAIN"); ?></span>
+                        <span><?php _e("Úvod", DOMAIN); ?></span>
                     </a>
                 </li>
 

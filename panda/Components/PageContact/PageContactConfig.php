@@ -37,11 +37,11 @@ class PageContactConfig implements \KT_Configable
 
     public static function getEmployeesSectionFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::EMPLOYEES_SECTION_FIELDSET, __("Sekce Zaměstnanci", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::EMPLOYEES_SECTION_FIELDSET, __("Sekce Zaměstnanci", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::EMPLOYEES_SECTION_FIELDSET);
 
-        $fieldset->addText(self::EMPLOYEES_SECTION_TITLE, __("Titulek:", "RLG_DOMAIN"));
-        $fieldset->addText(self::EMPLOYEES_SECTION_DESCRIPTION, __("Popisek", "RLG_DOMAIN"));
+        $fieldset->addText(self::EMPLOYEES_SECTION_TITLE, __("Titulek:", ADMIN_DOMAIN));
+        $fieldset->addText(self::EMPLOYEES_SECTION_DESCRIPTION, __("Popisek", ADMIN_DOMAIN));
 
         return $fieldset;
     }

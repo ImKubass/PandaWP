@@ -45,13 +45,13 @@ class ProductConfig implements \KT_Configable
 
     public static function getParamsFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::PARAMS_FIELDSET, __("Hlavní parametry", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::PARAMS_FIELDSET, __("Hlavní parametry", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::PARAMS_FIELDSET);
 
-        $fieldset->addText(self::PARAMS_CONTROLLED_POWER_FROM, __("Regulovaný výkon od:", "RLG_DOMAIN"));
-        $fieldset->addText(self::PARAMS_CONTROLLED_POWER_TO, __("Regulovaný výkon do:", "RLG_DOMAIN"));
-        $fieldset->addText(self::PARAMS_WOOD_CONSUMPTION, __("Spotřeba dřeva :", "RLG_DOMAIN"));
-        $fieldset->addText(self::PARAMS_CONSUMPTION_EFFICIENCY, __("Účinnost spalování:", "RLG_DOMAIN"));
+        $fieldset->addText(self::PARAMS_CONTROLLED_POWER_FROM, __("Regulovaný výkon od:", ADMIN_DOMAIN));
+        $fieldset->addText(self::PARAMS_CONTROLLED_POWER_TO, __("Regulovaný výkon do:", ADMIN_DOMAIN));
+        $fieldset->addText(self::PARAMS_WOOD_CONSUMPTION, __("Spotřeba dřeva :", ADMIN_DOMAIN));
+        $fieldset->addText(self::PARAMS_CONSUMPTION_EFFICIENCY, __("Účinnost spalování:", ADMIN_DOMAIN));
 
         return $fieldset;
     }
@@ -65,11 +65,11 @@ class ProductConfig implements \KT_Configable
 
     public static function getPriceFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::PRICE_FIELDSET, __("Cena", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::PRICE_FIELDSET, __("Cena", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::PRICE_FIELDSET);
 
-        $fieldset->addNumeric(self::PRICE_BASIC_PRICE, __("Základní cena:", "RLG_DOMAIN"));
-        $fieldset->addNumeric(self::PRICE_DISCOUNT_PRICE, __("Cena po slevě:", "RLG_DOMAIN"));
+        $fieldset->addNumeric(self::PRICE_BASIC_PRICE, __("Základní cena:", ADMIN_DOMAIN));
+        $fieldset->addNumeric(self::PRICE_DISCOUNT_PRICE, __("Cena po slevě:", ADMIN_DOMAIN));
 
         return $fieldset;
     }
@@ -84,12 +84,12 @@ class ProductConfig implements \KT_Configable
 
     public static function getTechnicalParametersFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::TECHNICAL_PARAMETERS_FIELDSET, __("Ostatní informace", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::TECHNICAL_PARAMETERS_FIELDSET, __("Ostatní informace", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::TECHNICAL_PARAMETERS_FIELDSET);
 
-        $fieldset->addText(self::TECHNICAL_PARAMETERS_PARAM, __("Parametr:", "RLG_DOMAIN"));
-        $fieldset->addText(self::TECHNICAL_PARAMETERS_VALUE, __("Hodnota:", "RLG_DOMAIN"));
-        $fieldset->addText(self::TECHNICAL_PARAMETERS_UNIT, __("Jednotka:", "RLG_DOMAIN"));
+        $fieldset->addText(self::TECHNICAL_PARAMETERS_PARAM, __("Parametr:", ADMIN_DOMAIN));
+        $fieldset->addText(self::TECHNICAL_PARAMETERS_VALUE, __("Hodnota:", ADMIN_DOMAIN));
+        $fieldset->addText(self::TECHNICAL_PARAMETERS_UNIT, __("Jednotka:", ADMIN_DOMAIN));
 
         return $fieldset;
     }
@@ -99,10 +99,10 @@ class ProductConfig implements \KT_Configable
 
     public static function getDynamicTechnicalParametersFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::DYNAMIC_TECHNICAL_PARAMETERS_FIELDSET, __("Ostatní informace", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::DYNAMIC_TECHNICAL_PARAMETERS_FIELDSET, __("Ostatní informace", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::DYNAMIC_TECHNICAL_PARAMETERS_FIELDSET);
 
-        $fieldset->addFieldset(self::DYNAMIC_TECHNICAL_PARAMETERS_FIELD, __("Ostatní informace", "ELV_DOMAIN"), [self::class, self::TECHNICAL_PARAMETERS_FIELDSET]);
+        $fieldset->addFieldset(self::DYNAMIC_TECHNICAL_PARAMETERS_FIELD, __("Ostatní informace", "ELV_ADMIN_DOMAIN"), [self::class, self::TECHNICAL_PARAMETERS_FIELDSET]);
 
         return $fieldset;
     }
@@ -116,11 +116,11 @@ class ProductConfig implements \KT_Configable
 
     public static function getOtherInfoFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::OTHER_INFO_FIELDSET, __("Ostatní informace", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::OTHER_INFO_FIELDSET, __("Ostatní informace", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::OTHER_INFO_FIELDSET);
 
-        $fieldset->addText(self::OTHER_INFO_URL, __("Základní cena:", "RLG_DOMAIN"));
-        $fieldset->addSwitch(self::OTHER_INFO_VISIBLE, __("Cena po slevě:", "RLG_DOMAIN"));
+        $fieldset->addText(self::OTHER_INFO_URL, __("Základní cena:", ADMIN_DOMAIN));
+        $fieldset->addSwitch(self::OTHER_INFO_VISIBLE, __("Cena po slevě:", ADMIN_DOMAIN));
 
         return $fieldset;
     }

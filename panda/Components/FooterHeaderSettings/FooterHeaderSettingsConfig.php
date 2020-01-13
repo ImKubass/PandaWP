@@ -35,11 +35,11 @@ class FooterHeaderSettingsConfig implements \KT_Configable
 
     public static function getFooterFirstColFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::FOOTER_FIRST_COL_FIELDSET, __("Patička 1.Sloupec", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::FOOTER_FIRST_COL_FIELDSET, __("Patička 1.Sloupec", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::FOOTER_FIRST_COL_FIELDSET);
 
-        $fieldset->addText(self::FOOTER_FIRST_COL_TITLE, __("Titulek:", "RLG_DOMAIN"))
-            ->setDefaultValue(__("Kontaktní údaje", "RLG_DOMAIN"));
+        $fieldset->addText(self::FOOTER_FIRST_COL_TITLE, __("Titulek:", ADMIN_DOMAIN))
+            ->setDefaultValue(__("Kontaktní údaje", ADMIN_DOMAIN));
 
 
         return $fieldset;
@@ -53,11 +53,11 @@ class FooterHeaderSettingsConfig implements \KT_Configable
 
     public static function getFooterSecondColFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::FOOTER_SECOND_COL_FIELDSET, __("Patička 2.Sloupec", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::FOOTER_SECOND_COL_FIELDSET, __("Patička 2.Sloupec", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::FOOTER_SECOND_COL_FIELDSET);
 
-        $fieldset->addText(self::FOOTER_SECOND_COL_TITLE, __("Titulek:", "RLG_DOMAIN"))
-            ->setDefaultValue(__("Fakturační údaje", "RLG_DOMAIN"));
+        $fieldset->addText(self::FOOTER_SECOND_COL_TITLE, __("Titulek:", ADMIN_DOMAIN))
+            ->setDefaultValue(__("Fakturační údaje", ADMIN_DOMAIN));
 
         return $fieldset;
     }
@@ -69,11 +69,11 @@ class FooterHeaderSettingsConfig implements \KT_Configable
 
     public static function getFooterThirdColFieldset()
     {
-        $fieldset = new \KT_Form_Fieldset(self::FOOTER_THIRD_COL_FIELDSET, __("Patička 3.Sloupec", "RLG_DOMAIN"));
+        $fieldset = new \KT_Form_Fieldset(self::FOOTER_THIRD_COL_FIELDSET, __("Patička 3.Sloupec", ADMIN_DOMAIN));
         $fieldset->setPostPrefix(self::FOOTER_THIRD_COL_FIELDSET);
 
-        $fieldset->addText(self::FOOTER_THIRD_COL_TITLE, __("Titulek:", "RLG_DOMAIN"))
-            ->setDefaultValue(__("Důležité informace", "RLG_DOMAIN"));
+        $fieldset->addText(self::FOOTER_THIRD_COL_TITLE, __("Titulek:", ADMIN_DOMAIN))
+            ->setDefaultValue(__("Důležité informace", ADMIN_DOMAIN));
 
         return $fieldset;
     }

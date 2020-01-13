@@ -50,6 +50,12 @@ $config->assetsConfigurator()
 // --- scripty ------------------------------
 
 $config->assetsConfigurator()
+    ->addScript("cdn-jquery", "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    ->setInFooter(true)
+    ->setEnqueue();
+
+
+$config->assetsConfigurator()
     ->addScript("theme-functions-script", get_template_directory_uri() . "/functions.min.js")
     ->addLocalizationData("myAjax", ["ajaxurl" => admin_url("admin-ajax.php")])
     ->setInFooter(true)

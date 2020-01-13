@@ -7,6 +7,7 @@ use Utils\Util;
 class QueryBase
 {
     const DEFAULT_COUNT = 10;
+
     private $posts;
     private $postsCount;
     private $maxCount;
@@ -17,17 +18,18 @@ class QueryBase
     private static $Counter;
     private $PostType;
     private $ComponentLoopName;
+    private $Args;
 
     public function __construct($maxCount = self::DEFAULT_COUNT)
     {
         $this->maxCount = Util::tryGetInt($maxCount) ?: self::DEFAULT_COUNT;
         $this->setPostType(POST_KEY);
         $this->setComponentLoopName(POST_LOOP);
+        $this->initArgs();
     }
 
 
     //* --- Getters ------------------------------
-
 
     /** @return array */
     public function getPosts()
@@ -99,6 +101,11 @@ class QueryBase
         return $this->ComponentLoopName;
     }
 
+    public function getArgs()
+    {
+        return $this->Args;
+    }
+
 
     //* --- Setters ------------------------------
 
@@ -133,6 +140,11 @@ class QueryBase
     public function setComponentLoopName($ComponentLoopName)
     {
         return $this->ComponentLoopName = $ComponentLoopName;
+    }
+
+    public function setArgs($Args)
+    {
+        return $this->Args = $Args;
     }
 
 
@@ -207,18 +219,26 @@ class QueryBase
         }
     }
 
-    private function initPosts()
+    public function initArgs()
     {
 
-        $args = [
+        $Args = [
             "post_type" => $this->getPostType(),
             "post_status" => "publish",
             "posts_per_page" => $this->getMaxCount(),
             "orderby" => "date",
             "order" => \KT_Repository::ORDER_DESC,
         ];
+        return $this->setArgs($Args);
+    }
+
+    private function initPosts()
+    {
+
+        $args = $this->getArgs();
 
         $query = new \WP_Query();
+        $this->setQuery($query);
         $posts = $query->query($args);
 
         if (Util::arrayIssetAndNotEmpty($posts)) {

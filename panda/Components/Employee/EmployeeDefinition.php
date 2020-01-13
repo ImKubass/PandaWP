@@ -43,6 +43,7 @@ function kt_bt_register_employee_post_type()
         "publicly_queryable" => false,
         "show_ui" => true,
         "show_in_menu" => true,
+        'show_in_rest' => true,
         "capability_type" => KT_WP_POST_KEY,
         "query_var" => true,
         "rewrite" => ["slug" => EMPLOYEE_SLUG, "with_front" => false],

@@ -5,6 +5,7 @@ namespace Components\Employee;
 use Utils\Util;
 use Components\Employee\EmployeeConfig;
 use Components\SchemaGenerator\SchemaGenerator;
+use Helpers\Image as HelpersImage;
 use Utils\Image;
 use Utils\uString;
 
@@ -23,6 +24,16 @@ class EmployeeModel extends \KT_WP_Post_Base_Model
     public function getThumbnailSrc2x()
     {
         return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_300x300);
+    }
+
+    public function renderThumbnail()
+    {
+        $Image = new HelpersImage(
+            $this->getThumbnailSrc(),
+            $this->getTitleAttribute(),
+            $this->getThumbnailSrc2x() . " 2x"
+        );
+        $Image->render();
     }
 
 

@@ -7,10 +7,7 @@ $Employee->tryAddPersonJsonLdData(); ?>
 
 <div class="employee col-sm-6 col-md-4 col-lg-3">
     <div class="employee-img">
-        <img src="" data-src="<?= $Employee->getThumbnailSrc(); ?>" alt="<?= $Employee->getTitle(); ?>">
-        <noscript>
-            <img src="<?= $Employee->getThumbnailSrc(); ?>" alt="<?= $Employee->getTitle(); ?>">
-        </noscript>
+        <?php $Employee->renderThumbnail(); ?>
     </div>
 
     <h3 class="employee-name article-heading"><?= $Employee->getTitle(); ?></h3>

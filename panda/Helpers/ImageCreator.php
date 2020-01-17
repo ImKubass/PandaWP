@@ -20,7 +20,10 @@ class ImageCreator
     private $Srcset;
     private $Sources; // source[Srcset,Media]
 
-
+    private $Class;
+    private $Title;
+    private $Draggable = true;
+    private $AriaHidden = false;
     private $NoScript = true;
 
     public function __construct(int $Id = null)
@@ -59,7 +62,6 @@ class ImageCreator
     }
 
     /**
-     * 
      * @param string $Size 
      * @param string $Media 
      * @return array 
@@ -137,16 +139,35 @@ class ImageCreator
         $Srcset = $this->toStringSrcset();
         $Alt = $this->getAlt();
 
+        $Class = $this->getClass();
+        $Title = $this->getTitle();
+        $Draggable = $this->getDraggable();
+        $AriaHidden = $this->getAriaHidden();
+
+
         $html = "";
 
         $html .= "<img ";
 
         $html .= "src=\"\" ";
         $html .= $this->tryGetImageParam("data-src", $Src);
+
         if ($Srcset) {
             $html .= "srcset=\"\" ";
             $html .= $this->tryGetImageParam("data-srcset", $Srcset);
         }
+
+        $html .= $this->tryGetImageParam("class", $Class);
+
+        if (!$Draggable) {
+            $html .= $this->tryGetImageParam("draggable", "false");
+        }
+
+        if ($AriaHidden) {
+            $html .= $this->tryGetImageParam("aria-hidden", "true");
+        }
+
+        $html .= $this->tryGetImageParam("title", $Title);
         $html .= $this->tryGetImageParam("alt", $Alt);
 
 
@@ -253,6 +274,26 @@ class ImageCreator
         return $this->NoScript;
     }
 
+    private function getClass()
+    {
+        return $this->Class;
+    }
+
+    private function getTitle()
+    {
+        return $this->Title;
+    }
+
+    private function getDraggable()
+    {
+        return $this->Draggable;
+    }
+
+    private function getAriaHidden()
+    {
+        return $this->AriaHidden;
+    }
+
 
     //* ---- Setters --------------
 
@@ -305,6 +346,33 @@ class ImageCreator
         return $this->NoScript = $NoScript;
     }
 
+    public function setClass($Class)
+    {
+        return $this->Class = $Class;
+    }
+
+    public function setTitle($Title)
+    {
+        return $this->Title = $Title;
+    }
+
+    /**
+     * @param bool $Draggable 
+     * @return bool 
+     */
+    public function setDraggable($Draggable)
+    {
+        return $this->Draggable = $Draggable;
+    }
+
+    /**
+     * @param bool $AriaHidden 
+     * @return bool 
+     */
+    public function setAriaHidden($AriaHidden)
+    {
+        return $this->AriaHidden = $AriaHidden;
+    }
 
 
     //* ---- Issets --------------
@@ -337,5 +405,15 @@ class ImageCreator
     private function isSources()
     {
         return Util::arrayIssetAndNotEmpty($this->getSources());
+    }
+
+    private function isClass()
+    {
+        return Util::issetAndNotEmpty($this->getClass());
+    }
+
+    private function isTitle()
+    {
+        return Util::issetAndNotEmpty($this->getTitle());
     }
 }

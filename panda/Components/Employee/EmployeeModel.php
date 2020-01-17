@@ -5,8 +5,7 @@ namespace Components\Employee;
 use Utils\Util;
 use Components\Employee\EmployeeConfig;
 use Components\SchemaGenerator\SchemaGenerator;
-use Helpers\Image as HelpersImage;
-use Utils\Image;
+use Helpers\ImageCreator;
 use Utils\uString;
 
 class EmployeeModel extends \KT_WP_Post_Base_Model
@@ -19,14 +18,15 @@ class EmployeeModel extends \KT_WP_Post_Base_Model
 
     public function renderThumbnail()
     {
-        $Image = new HelpersImage($this->getThumbnailId());
+        $Image = new ImageCreator($this->getThumbnailId());
 
-        $Image->setSrcSize(KT_WP_IMAGE_SIZE_THUBNAIL);
+        $Image->setSize(KT_WP_IMAGE_SIZE_THUBNAIL);
+        $Image->addToSrcsetBySize(IMAGE_SIZE_300x300, "2x");
+        $Image->addToSrcsetBySize(IMAGE_SIZE_1920xauto);
+        $Image->setDraggable(false);
+        $Image->setAriaHidden(true);
 
-        $Image->addSourceItem(IMAGE_SIZE_1920xauto, "(max-width: 48em)");
-        $Image->addSrcsetItem(IMAGE_SIZE_300x300, "2x");
-
-        echo $Image->render();
+        return $Image->render();
     }
 
 

@@ -5,34 +5,46 @@ namespace Helpers;
 use Utils\Util;
 use Utils\Image as UtilsImage;
 
-class Image
+
+/**
+ * Class ImageCreator
+ * @package Helpers
+ */
+class ImageCreator
 {
     private $Id;
 
     private $Src;
-    private $SrcSize = KT_WP_IMAGE_SIZE_MEDIUM;
+    private $Size = KT_WP_IMAGE_SIZE_MEDIUM;
     private $Alt;
-    private $SrcsetItems;
+    private $Srcset;
     private $Sources; // source[Srcset,Media]
 
 
-    private $IsNoScript = true;
+    private $NoScript = true;
 
-    public function __construct(int $Id)
+    public function __construct(int $Id = null)
     {
-        $this->setId($Id);
+        if (Util::issetAndNotEmpty($Id)) {
+            $this->setId($Id);
+        }
     }
-
 
 
     //* ---- Public functions --------------
 
-    public function addSrcsetItem($Size, $Postfix = null)
+    /**
+     * 
+     * @param string $Size 
+     * @param string|null $Postfix 
+     * @return array 
+     */
+    public function addToSrcsetBySize($Size, $Postfix = null)
     {
         if ($this->isId()) {
-            if (!$this->isSrcsetItems()) {
+            if (!$this->isSrcset()) {
                 $Item = $this->getSrc() . " 1x";
-                $this->setSrcsetItems([$Item]);
+                $this->setSrcset([$Item]);
             }
             $SrcSet = UtilsImage::getImageSrc($this->getId(), $Size);
             if (!Util::issetAndNotEmpty($Postfix)) {
@@ -40,13 +52,19 @@ class Image
             }
             $Item = $SrcSet . " " . $Postfix;
 
-            $SrcsetItems = $this->getSrcsetItems();
-            array_push($SrcsetItems, $Item);
-            return $this->setSrcsetItems($SrcsetItems);
+            $Srcset = $this->getSrcset();
+            array_push($Srcset, $Item);
+            return $this->setSrcset($Srcset);
         }
     }
 
-    public function addSourceItem($Size, $Media)
+    /**
+     * 
+     * @param string $Size 
+     * @param string $Media 
+     * @return array 
+     */
+    public function addSourceBySize($Size, $Media)
     {
 
         if (!$this->isSources()) {
@@ -65,9 +83,12 @@ class Image
 
     //* ---- Private functions --------------
 
-    private function toStringSrcsetItems()
+    /** @return string  */
+    private function toStringSrcset()
     {
-        return $Srcset = implode(", ", $this->getSrcsetItems());
+        if ($this->isSrcset()) {
+            return $Srcset = implode(", ", $this->getSrcset());
+        }
     }
 
     private function initSrc()
@@ -76,7 +97,7 @@ class Image
             return $this->setSrc(
                 UtilsImage::getImageSrc(
                     $this->getId(),
-                    $this->getSrcSize()
+                    $this->getSize()
                 )
             );
         }
@@ -113,7 +134,7 @@ class Image
     private function renderImgTag()
     {
         $Src = $this->getSrc();
-        $Srcset = $this->toStringSrcsetItems();
+        $Srcset = $this->toStringSrcset();
         $Alt = $this->getAlt();
 
         $html = "";
@@ -152,14 +173,14 @@ class Image
 
     private function renderNoScript()
     {
-        if ($this->getIsNoScript()) {
+        if ($this->getNoScript()) {
             $html = "";
 
             $Src = $this->getSrc();
             $Alt = $this->getAlt();
 
             $html .= "<noscript>";
-            $html .= "<img src=\"{$Src}\" alt=\"\">";
+            $html .= "<img src=\"{$Src}\" alt=\"{$Alt}\">";
             $html .= "</noscript>";
 
             return $html;
@@ -189,12 +210,12 @@ class Image
 
     //* ---- Getters --------------
 
-    public function getId()
+    private function getId()
     {
         return $this->Id;
     }
 
-    public function getSrc()
+    private function getSrc()
     {
         if (!Util::issetAndNotEmpty($this->Src)) {
             $this->initSrc();
@@ -202,12 +223,12 @@ class Image
         return $this->Src;
     }
 
-    public function getSrcSize()
+    private function getSize()
     {
-        return $this->SrcSize;
+        return $this->Size;
     }
 
-    public function getAlt()
+    private function getAlt()
     {
 
         if (!Util::issetAndNotEmpty($this->Alt)) {
@@ -216,19 +237,20 @@ class Image
         return $this->Alt;
     }
 
-    public function getSrcsetItems()
+    private function getSrcset()
     {
-        return $this->SrcsetItems;
+        return $this->Srcset;
     }
 
-    public function getSources()
+    private function getSources()
     {
         return $this->Sources;
     }
 
-    public function getIsNoScript()
+    /** @return bool */
+    private function getNoScript()
     {
-        return $this->IsNoScript;
+        return $this->NoScript;
     }
 
 
@@ -244,9 +266,9 @@ class Image
         return $this->Src = $Src;
     }
 
-    public function setSrcSize($SrcSize)
+    public function setSize($Size)
     {
-        $this->SrcSize = $SrcSize;
+        $this->Size = $Size;
 
         return $this;
     }
@@ -256,51 +278,63 @@ class Image
         return $this->Alt = $Alt;
     }
 
-    public function setSrcsetItems($SrcsetItems)
+    /**
+     * @param array $Sources 
+     * @return array 
+     */
+    private function setSrcset($Srcset)
     {
-        return $this->SrcsetItems = $SrcsetItems;
+        return $this->Srcset = $Srcset;
     }
 
-    public function setSources($Sources)
+    /**
+     * @param array $Sources 
+     * @return array 
+     */
+    private function setSources($Sources)
     {
         return $this->Sources = $Sources;
     }
 
-    public function setIsNoScript($IsNoScript)
+    /**
+     * @param bool $NoScript 
+     * @return bool 
+     */
+    public function setNoScript($NoScript)
     {
-        return $this->IsNoScript = $IsNoScript;
+        return $this->NoScript = $NoScript;
     }
 
 
 
     //* ---- Issets --------------
 
-    public function isId()
+    private function isId()
     {
         return Util::issetAndNotEmpty($this->getId());
     }
 
-    public function isSrc()
+    private function isSrc()
     {
         return Util::issetAndNotEmpty($this->getSrc());
     }
 
-    public function isSrcSize()
+    private function isSize()
     {
-        return Util::issetAndNotEmpty($this->getSrcSize());
+        return Util::issetAndNotEmpty($this->getSize());
     }
 
-    public function isAlt()
+    private function isAlt()
     {
         return Util::issetAndNotEmpty($this->getAlt());
     }
 
-    public function isSrcsetItems()
+    private function isSrcset()
     {
-        return Util::arrayIssetAndNotEmpty($this->getSrcsetItems());
+        return Util::arrayIssetAndNotEmpty($this->getSrcset());
     }
 
-    public function isSources()
+    private function isSources()
     {
         return Util::arrayIssetAndNotEmpty($this->getSources());
     }

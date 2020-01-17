@@ -151,7 +151,7 @@ class ComposerStaticInit65e2771d7c7f7b40604050f991d0e75a
         'Components\\ThemeSettings\\ThemeSettingsConfig' => __DIR__ . '/../..' . '/Components/ThemeSettings/ThemeSettingsConfig.php',
         'Components\\ThemeSettings\\ThemeSettingsFactory' => __DIR__ . '/../..' . '/Components/ThemeSettings/ThemeSettingsFactory.php',
         'Components\\ThemeSettings\\ThemeSettingsModel' => __DIR__ . '/../..' . '/Components/ThemeSettings/ThemeSettingsModel.php',
-        'Helpers\\Image' => __DIR__ . '/../..' . '/Helpers/Image.php',
+        'Helpers\\ImageCreator' => __DIR__ . '/../..' . '/Helpers/ImageCreator.php',
         'Interfaces\\Jsonable' => __DIR__ . '/../..' . '/Interfaces/Jsonldable.php',
         'Presenters\\QueryBase' => __DIR__ . '/../..' . '/Presenters/QueryBase.php',
         'Symfony\\Component\\VarDumper\\Caster\\AmqpCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/AmqpCaster.php',

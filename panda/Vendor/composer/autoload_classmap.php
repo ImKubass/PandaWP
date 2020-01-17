@@ -40,7 +40,7 @@ return array(
     'Components\\ThemeSettings\\ThemeSettingsConfig' => $baseDir . '/Components/ThemeSettings/ThemeSettingsConfig.php',
     'Components\\ThemeSettings\\ThemeSettingsFactory' => $baseDir . '/Components/ThemeSettings/ThemeSettingsFactory.php',
     'Components\\ThemeSettings\\ThemeSettingsModel' => $baseDir . '/Components/ThemeSettings/ThemeSettingsModel.php',
-    'Helpers\\Image' => $baseDir . '/Helpers/Image.php',
+    'Helpers\\ImageCreator' => $baseDir . '/Helpers/ImageCreator.php',
     'Interfaces\\Jsonable' => $baseDir . '/Interfaces/Jsonldable.php',
     'Presenters\\QueryBase' => $baseDir . '/Presenters/QueryBase.php',
     'Symfony\\Component\\VarDumper\\Caster\\AmqpCaster' => $vendorDir . '/symfony/var-dumper/Caster/AmqpCaster.php',

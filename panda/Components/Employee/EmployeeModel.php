@@ -16,24 +16,17 @@ class EmployeeModel extends \KT_WP_Post_Base_Model
         parent::__construct($post, EmployeeConfig::FORM_PREFIX);
     }
 
-    public function getThumbnailSrc()
-    {
-        return Image::getImageSrc($this->getThumbnailId(), KT_WP_IMAGE_SIZE_THUBNAIL);
-    }
-
-    public function getThumbnailSrc2x()
-    {
-        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_300x300);
-    }
 
     public function renderThumbnail()
     {
-        $Image = new HelpersImage(
-            $this->getThumbnailSrc(),
-            $this->getTitleAttribute(),
-            $this->getThumbnailSrc2x() . " 2x"
-        );
-        $Image->render();
+        $Image = new HelpersImage($this->getThumbnailId());
+
+        $Image->setSrcSize(KT_WP_IMAGE_SIZE_THUBNAIL);
+
+        $Image->addSourceItem(IMAGE_SIZE_1920xauto, "(max-width: 48em)");
+        $Image->addSrcsetItem(IMAGE_SIZE_300x300, "2x");
+
+        echo $Image->render();
     }
 
 

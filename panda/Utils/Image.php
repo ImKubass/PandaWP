@@ -31,4 +31,11 @@ class Image
             return reset($src);
         }
     }
+    public static function getImageWidth($id, $sizeConstant)
+    {
+        $src = wp_get_attachment_image_src($id, $sizeConstant);
+        if (Util::arrayIssetAndNotEmpty($src)) {
+            return $src[1];
+        }
+    }
 }

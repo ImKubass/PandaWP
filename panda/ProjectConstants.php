@@ -8,10 +8,7 @@ define("ADMIN_DOMAIN", "ADMIN_ZZZ_DOMAIN");
 define("NAVIGATION_MAIN_MENU", "navigation-main-menu");
 define("NAVIGATION_FOOTER_MENU", "navigation-footer-menu");
 
-//? Employee
-define("EMPLOYEE_KEY", "employee");
-define("EMPLOYEE_SLUG", "employee");
-define("EMPLOYEE_LOOP", "Employee");
+
 
 
 //? Post

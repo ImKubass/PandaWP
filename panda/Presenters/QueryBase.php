@@ -2,6 +2,7 @@
 
 namespace Presenters;
 
+use Components\Post\Post;
 use Utils\Util;
 
 class QueryBase
@@ -17,14 +18,16 @@ class QueryBase
     private $Offset;
     private static $Counter;
     private $PostType;
-    private $ComponentLoopName;
+    private $Component;
+    private $Template;
     private $Args;
 
     public function __construct($maxCount = self::DEFAULT_COUNT)
     {
         $this->maxCount = Util::tryGetInt($maxCount) ?: self::DEFAULT_COUNT;
-        $this->setPostType(POST_KEY);
-        $this->setComponentLoopName(POST_LOOP);
+        $this->setPostType(Post::KEY);
+        $this->setComponent(Post::class);
+        $this->setTemplate(Post::TEMPLATE);
         $this->initArgs();
     }
 
@@ -96,14 +99,19 @@ class QueryBase
         return $this->PostType;
     }
 
-    public function getComponentLoopName()
+    public function getComponent()
     {
-        return $this->ComponentLoopName;
+        return $this->Component;
     }
 
     public function getArgs()
     {
         return $this->Args;
+    }
+
+    public function getTemplate()
+    {
+        return $this->Template;
     }
 
 
@@ -137,14 +145,19 @@ class QueryBase
         return $this->PostType = $PostType;
     }
 
-    public function setComponentLoopName($ComponentLoopName)
+    public function setComponent($Component)
     {
-        return $this->ComponentLoopName = $ComponentLoopName;
+        return $this->Component = $Component;
     }
 
     public function setArgs($Args)
     {
         return $this->Args = $Args;
+    }
+
+    public function setTemplate($Template)
+    {
+        return $this->Template = $Template;
     }
 
 
@@ -180,9 +193,14 @@ class QueryBase
         return Util::issetAndNotEmpty($this->getPostType());
     }
 
-    public function isComponentLoopName()
+    public function isComponent()
     {
-        return Util::issetAndNotEmpty($this->getComponentLoopName());
+        return Util::issetAndNotEmpty($this->getComponent());
+    }
+
+    public function isTemplate()
+    {
+        return Util::issetAndNotEmpty($this->getTemplate());
     }
 
 
@@ -192,14 +210,17 @@ class QueryBase
     public function thePosts($Count = null, $Offset = null)
     {
         if ($this->hasPosts()) {
-            self::itemsLoop($this->getPosts(), $this->getComponentLoopName(), $Count, $Offset);
+            $this->itemsLoop($this->getPosts(), $this->getTemplate(), $Count, $Offset);
         }
     }
 
-    public static function itemsLoop(array $items, $componentName, $count = null, $offset = null)
+    private function itemsLoop(array $items, $template, $count = null, $offset = null)
     {
-        $componentPath = locate_template(COMPONENTS_PATH . "$componentName/$componentName.php");
-        if (Util::arrayIssetAndNotEmpty($items) && file_exists($componentPath)) {
+
+        $componentName = dirname(str_replace("\\", "/", $this->getComponent()));
+
+        $Path = locate_template("panda/$componentName/templates/$template.php");
+        if (Util::arrayIssetAndNotEmpty($items) && file_exists($Path)) {
 
             self::$Counter = 1;
 
@@ -212,7 +233,7 @@ class QueryBase
             foreach ($items as $item) {
                 global $post;
                 $post = $item;
-                include($componentPath);
+                include($Path);
                 self::$Counter++;
             }
             wp_reset_postdata();

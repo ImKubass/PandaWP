@@ -18,7 +18,7 @@ class ImageCreator
     private $Size = KT_WP_IMAGE_SIZE_MEDIUM;
     private $Alt;
     private $Srcset;
-    private $Sources; // source[Srcset,Media]
+    private $Sources;
 
     private $Class;
     private $Title;
@@ -49,12 +49,12 @@ class ImageCreator
                 $Item = $this->getSrc() . " 1x";
                 $this->setSrcset([$Item]);
             }
+
             $SrcSet = UtilsImage::getImageSrc($this->getId(), $Size);
             if (!Util::issetAndNotEmpty($Postfix)) {
                 $Postfix = UtilsImage::getImageWidth($this->getId(), $Size) . "w";
             }
             $Item = $SrcSet . " " . $Postfix;
-
             $Srcset = $this->getSrcset();
             array_push($Srcset, $Item);
             return $this->setSrcset($Srcset);
@@ -68,18 +68,19 @@ class ImageCreator
      */
     public function addSourceBySize($Size, $Media)
     {
-
-        if (!$this->isSources()) {
-            $this->setSources([]);
+        if ($this->isId()) {
+            if (!$this->isSources()) {
+                $this->setSources([]);
+            }
+            $Srcset = UtilsImage::getImageSrc($this->getId(), $Size);
+            $Item = [
+                "Srcset" => $Srcset,
+                "Media" => $Media
+            ];
+            $Sources = $this->getSources();
+            array_push($Sources, $Item);
+            return $this->setSources($Sources);
         }
-        $Srcset = UtilsImage::getImageSrc($this->getId(), $Size);
-        $Item = [
-            "Srcset" => $Srcset,
-            "Media" => $Media
-        ];
-        $Sources = $this->getSources();
-        array_push($Sources, $Item);
-        return $this->setSources($Sources);
     }
 
 

@@ -1,4 +1,6 @@
 <?php
+
+
 define("PANDA_BASE_PATH", path_join(TEMPLATEPATH, "panda"));
 
 //? Requires Constants
@@ -11,8 +13,9 @@ define("COMPONENTS_FOLDER", "Components");
 define("COMPONENTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
 define("COMPONENTS_PATH", "panda/" . COMPONENTS_FOLDER . "/");
 
-
-define("LAYOUTS_PATH", "panda/Layouts/");
+define("LAYOUTS_FOLDER", "Layouts");
+define("LAYOUTS_PATH", "panda" . DIRECTORY_SEPARATOR . LAYOUTS_FOLDER . DIRECTORY_SEPARATOR);
+define("LAYOUTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR .  LAYOUTS_FOLDER . DIRECTORY_SEPARATOR);
 
 //? JavascriptPath
 // Deprecated
@@ -25,12 +28,19 @@ $requiredFilesArray = array_merge(
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
     // get All files from panda/Components ending with Constants.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Constants.php"),
+    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Constants.php"),
     // get All files from panda/Components ending with Definition.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Definition.php"),
+    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Definition.php"),
     // get All files from panda/Requires ending with .php
     glob_recursive(REQUIRES_PATH . "*.php"),
     // get All files from panda/Components ending with Hook.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php"),
+    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Hook.php"),
+
+    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Config.php"),
+    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Config.php"),
+
     // get All files from panda/Components ending with Metabox.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metabox.php"),
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metaboxes.php")
@@ -39,6 +49,7 @@ $requiredFilesArray = array_merge(
 
 define("PANDA_REQUIRED_FILES", $requiredFilesArray);
 requireFilesFromArray(PANDA_REQUIRED_FILES);
+
 
 
 //* --- Core functions --------

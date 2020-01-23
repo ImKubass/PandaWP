@@ -14,30 +14,11 @@ class ProductModel extends \KT_WP_Post_Base_Model
     function __construct(\WP_Post $post)
     {
         parent::__construct($post, ProductConfig::FORM_PREFIX);
-        $this->getBrandModel();
     }
 
 
     //? --- Getry ------------------------------------------------------------
 
-    public function getBrandName()
-    {
-        return $this->getBrandModel()->getName();
-    }
-
-    /** @return ProductTermBrandModel */
-    public function getBrandModel()
-    {
-        if (Util::issetAndNotEmpty($this->BrandModel)) {
-            return $this->BrandModel;
-        } else {
-            $BrandObject = $this->getTerms(PRODUCT_BRAND_KEY);
-            if (Util::arrayIssetAndNotEmpty($BrandObject)) {
-                $BrandObject = reset($BrandObject);
-                return $this->BrandModel = new ProductTermBrandModel($BrandObject);
-            }
-        }
-    }
 
     public function getBrandLogoSrc()
     {
@@ -60,36 +41,6 @@ class ProductModel extends \KT_WP_Post_Base_Model
     }
 
 
-    public function getFilesAttached()
-    {
-        return $this->getGallery()->getFiles();
-    }
-
-    public function getFilesAttachedCount()
-    {
-        return count($this->getFilesAttached());
-    }
-
-    public function getGalleryPicturesFirstThree()
-    {
-        return array_slice($this->getFilesAttached(), 0, 3);
-    }
-
-    public function getGalleryPicturesHidden()
-    {
-        return array_slice($this->getFilesAttached(), 3);
-    }
-
-    public function getGalleryItemVisibleTemplateName()
-    {
-        return locate_template(COMPONENTS_PATH . "ProductGalleryItem/ProductGalleryItemVisible.php");
-    }
-
-    public function getGalleryItemHiddenTemplateName()
-    {
-        return locate_template(COMPONENTS_PATH . "ProductGalleryItem/ProductGalleryItemHidden.php");
-    }
-
     //* --- Hlavní parametry
     //* --- Prefix: Params
 
@@ -101,14 +52,6 @@ class ProductModel extends \KT_WP_Post_Base_Model
     public function getParamsControlledPowerTo()
     {
         return $this->getMetaValue(ProductConfig::PARAMS_CONTROLLED_POWER_TO);
-    }
-
-    public function getParamsControlledPower()
-    {
-        $to = $this->getParamsControlledPowerTo();
-        $from = $this->getParamsControlledPowerFrom();
-
-        return $power = $from . " - " . $to;
     }
 
     public function getParamsWoodConsumption()

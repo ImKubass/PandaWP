@@ -1,9 +1,8 @@
 <?php
 
-namespace Components\PageFront;
+namespace Layouts\PageFront;
 
-use Components\Page\PageModel;
-use Utils\Image;
+use Layouts\Page\PageModel;
 use Utils\uString;
 use Utils\Util;
 
@@ -18,15 +17,6 @@ class PageFrontModel extends PageModel
 
     //? --- Getry ------------------------------------------------------------
 
-    public function getThumbnailSrc()
-    {
-        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_580x385);
-    }
-
-    public function getThumbnailSrc2x()
-    {
-        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_1160x770);
-    }
 
     //* --- Intro
     //* --- Prefix: Intro

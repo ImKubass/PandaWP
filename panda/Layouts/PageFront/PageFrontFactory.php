@@ -1,6 +1,6 @@
 <?php
 
-namespace Components\PageFront;
+namespace Layouts\PageFront;
 
 class PageFrontFactory
 {

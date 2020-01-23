@@ -1,6 +1,6 @@
 <?php
 
-namespace Components\Page;
+namespace Layouts\Page;
 
 class PageFactory
 {

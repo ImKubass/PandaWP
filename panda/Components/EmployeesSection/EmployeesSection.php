@@ -1,8 +1,10 @@
 <?php
 
-use Components\EmployeesQuery\EmployeesQueryFactory;
+use Components\EmployeeQuery\EmployeeQueryFactory;
 
-$Employees = EmployeesQueryFactory::create();
+$Employees = EmployeeQueryFactory::create();
+
+dump($Employees);
 ?>
 
 <?php if ($Employees->hasPosts()) { ?>

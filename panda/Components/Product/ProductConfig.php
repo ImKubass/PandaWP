@@ -2,7 +2,9 @@
 
 namespace Components\Product;
 
-class ProductConfig implements \KT_Configable
+use Interfaces\Configable;
+
+class ProductConfig implements Configable
 {
     const FORM_PREFIX = "rlg-product";
 
@@ -35,12 +37,17 @@ class ProductConfig implements \KT_Configable
         ];
     }
 
+    public static function registerMetaboxes()
+    {
+        registerMetabox(self::class, Product::KEY);
+    }
+
     // --- Hlavní parametry ---------------------------
 
-    const PARAMS_FIELDSET = self::FORM_PREFIX . "-params";
-    const PARAMS_CONTROLLED_POWER_FROM = self::PARAMS_FIELDSET . "-controlled-power-from";
-    const PARAMS_CONTROLLED_POWER_TO = self::PARAMS_FIELDSET . "-controlled-power-to";
-    const PARAMS_WOOD_CONSUMPTION = self::PARAMS_FIELDSET . "-wood-consumption";
+    const PARAMS_FIELDSET               = self::FORM_PREFIX . "-params";
+    const PARAMS_CONTROLLED_POWER_FROM  = self::PARAMS_FIELDSET . "-controlled-power-from";
+    const PARAMS_CONTROLLED_POWER_TO    = self::PARAMS_FIELDSET . "-controlled-power-to";
+    const PARAMS_WOOD_CONSUMPTION       = self::PARAMS_FIELDSET . "-wood-consumption";
     const PARAMS_CONSUMPTION_EFFICIENCY = self::PARAMS_FIELDSET . "-wood-efficiency";
 
     public static function getParamsFieldset()
@@ -58,8 +65,8 @@ class ProductConfig implements \KT_Configable
 
     // --- Cena ---------------------------
 
-    const PRICE_FIELDSET = self::FORM_PREFIX . "-price";
-    const PRICE_BASIC_PRICE = self::PRICE_FIELDSET . "-basic-price";
+    const PRICE_FIELDSET       = self::FORM_PREFIX . "-price";
+    const PRICE_BASIC_PRICE    = self::PRICE_FIELDSET . "-basic-price";
     const PRICE_DISCOUNT_PRICE = self::PRICE_FIELDSET . "-discount-price";
 
 
@@ -77,9 +84,9 @@ class ProductConfig implements \KT_Configable
     // --- Ostatní informace ---------------------------
 
     const TECHNICAL_PARAMETERS_FIELDSET = self::FORM_PREFIX . "-technical-parameters";
-    const TECHNICAL_PARAMETERS_PARAM = self::TECHNICAL_PARAMETERS_FIELDSET . "-param";
-    const TECHNICAL_PARAMETERS_VALUE = self::TECHNICAL_PARAMETERS_FIELDSET . "-value";
-    const TECHNICAL_PARAMETERS_UNIT = self::TECHNICAL_PARAMETERS_FIELDSET . "-unit";
+    const TECHNICAL_PARAMETERS_PARAM    = self::TECHNICAL_PARAMETERS_FIELDSET . "-param";
+    const TECHNICAL_PARAMETERS_VALUE    = self::TECHNICAL_PARAMETERS_FIELDSET . "-value";
+    const TECHNICAL_PARAMETERS_UNIT     = self::TECHNICAL_PARAMETERS_FIELDSET . "-unit";
 
 
     public static function getTechnicalParametersFieldset()
@@ -95,7 +102,7 @@ class ProductConfig implements \KT_Configable
     }
 
     const DYNAMIC_TECHNICAL_PARAMETERS_FIELDSET = self::FORM_PREFIX . "-dynamic-technical-parameters";
-    const DYNAMIC_TECHNICAL_PARAMETERS_FIELD = self::DYNAMIC_TECHNICAL_PARAMETERS_FIELDSET . "-field";
+    const DYNAMIC_TECHNICAL_PARAMETERS_FIELD    = self::DYNAMIC_TECHNICAL_PARAMETERS_FIELDSET . "-field";
 
     public static function getDynamicTechnicalParametersFieldset()
     {
@@ -110,8 +117,8 @@ class ProductConfig implements \KT_Configable
     // --- Ostatní informace ---------------------------
 
     const OTHER_INFO_FIELDSET = self::FORM_PREFIX . "-other-info";
-    const OTHER_INFO_URL = self::OTHER_INFO_FIELDSET . "-url";
-    const OTHER_INFO_VISIBLE = self::OTHER_INFO_FIELDSET . "-visible";
+    const OTHER_INFO_URL      = self::OTHER_INFO_FIELDSET . "-url";
+    const OTHER_INFO_VISIBLE  = self::OTHER_INFO_FIELDSET . "-visible";
 
 
     public static function getOtherInfoFieldset()
@@ -125,3 +132,5 @@ class ProductConfig implements \KT_Configable
         return $fieldset;
     }
 }
+
+ProductConfig::registerMetaboxes();

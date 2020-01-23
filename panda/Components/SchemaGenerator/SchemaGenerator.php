@@ -2,8 +2,8 @@
 
 namespace Components\SchemaGenerator;
 
+use Components\Product\ProductModel;
 use Components\ThemeSettings\ThemeSettingsFactory;
-use Components\Product\ProductPresenter;
 use Utils\Image;
 use Utils\Util;
 
@@ -106,10 +106,9 @@ class SchemaGenerator
         ]);
     }
 
-    public static function addProduct(ProductPresenter $Product)
+    public static function addProduct(ProductModel $Product)
     {
-        $ProductModel = $Product->getModel();
-        $url = $ProductModel->getPermalink();
+        $url = $Product->getPermalink();
         $Theme = ThemeSettingsFactory::create();
 
         if ($Theme->isContactLogoId()) {
@@ -139,7 +138,7 @@ class SchemaGenerator
             "offers" => [
                 "@type" => "Offer",
                 "priceCurrency" => "CZK",
-                "price" => $ProductModel->getPriceBasicPrice(),
+                "price" => $Product->getPriceBasicPrice(),
                 "seller" => [
                     "@type" => "Organization",
                     "name" => $Theme->getContactCompanyName(),

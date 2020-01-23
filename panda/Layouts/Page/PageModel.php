@@ -1,8 +1,7 @@
 <?php
 
-namespace Components\Page;
+namespace Layouts\Page;
 
-use Components\Page\PageConfig;
 use Utils\Image;
 use Utils\Util;
 
@@ -15,15 +14,6 @@ class PageModel extends \KT_WP_Post_Base_Model
 
     //* --- getry ------------------------
 
-    public function getThumbnailSrc()
-    {
-        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_420x300);
-    }
-
-    public function getThumbnailSrc2x()
-    {
-        return Image::getImageSrc($this->getThumbnailId(), IMAGE_SIZE_840x600);
-    }
 
     //? --- Nastavení stránky
     //? --- Prefix: Settings

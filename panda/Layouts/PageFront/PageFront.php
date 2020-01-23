@@ -1,18 +1,18 @@
 <?php
 
-use Components\PostsQuery\PostsQueryFactory;
-use Components\ProductsQuery\ProductsQueryFactory;
+use Components\PostQuery\PostQueryFactory;
+use Components\ProductQuery\ProductQueryFactory;
 use Components\SchemaGenerator\SchemaGenerator;
 
 
 get_template_part(COMPONENTS_PATH . "Header/Header");
 
-$Posts = PostsQueryFactory::create();
-$Products = ProductsQueryFactory::create();
+$Posts = PostQueryFactory::create();
+$Products = ProductQueryFactory::create();
 
 
-dump($Posts->getPosts());
-dump($Products->getPosts());
+// dump($Posts->getPosts());
+// dump($Products->getPosts());
 
 get_template_part(COMPONENTS_PATH . "EmployeesSection/EmployeesSection");
 

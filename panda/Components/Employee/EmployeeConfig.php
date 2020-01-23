@@ -2,9 +2,11 @@
 
 namespace Components\Employee;
 
-class EmployeeConfig implements \KT_Configable
+use Interfaces\Configable;
+
+class EmployeeConfig implements Configable
 {
-    const FORM_PREFIX = "employee";
+    const FORM_PREFIX = Employee::KEY;
 
     // --- fieldsety ---------------------------
 
@@ -25,13 +27,18 @@ class EmployeeConfig implements \KT_Configable
         return [];
     }
 
+    public static function registerMetaboxes()
+    {
+        registerMetabox(self::class, Employee::KEY);
+    }
+
     // --- parametry ---------------------------
 
     const PARAMS_FIELDSET = self::FORM_PREFIX . "-params";
-    const PARAMS_JOB = self::PARAMS_FIELDSET . "-job";
-    const PARAMS_PHONE = self::PARAMS_FIELDSET . "-phone";
-    const PARAMS_EMAIL = self::PARAMS_FIELDSET . "-email";
-    const PARAMS_GMAIL = self::PARAMS_FIELDSET . "-gmail";
+    const PARAMS_JOB      = self::PARAMS_FIELDSET . "-job";
+    const PARAMS_PHONE    = self::PARAMS_FIELDSET . "-phone";
+    const PARAMS_EMAIL    = self::PARAMS_FIELDSET . "-email";
+    const PARAMS_GMAIL    = self::PARAMS_FIELDSET . "-gmail";
 
     public static function getParamsFieldset()
     {
@@ -46,3 +53,5 @@ class EmployeeConfig implements \KT_Configable
         return $fieldset;
     }
 }
+
+EmployeeConfig::registerMetaboxes();

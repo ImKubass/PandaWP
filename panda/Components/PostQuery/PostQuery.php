@@ -1,11 +1,10 @@
 <?php
 
-namespace Components\PostsQuery;
+namespace Components\PostQuery;
 
 use Presenters\QueryBase;
-use Utils\Util;
 
-class PostsQuery extends QueryBase
+class PostQuery extends QueryBase
 {
 
     public function __construct()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Components\PageContact;
+namespace Layouts\PageContact;
 
 
 class PageContactConfig implements \KT_Configable

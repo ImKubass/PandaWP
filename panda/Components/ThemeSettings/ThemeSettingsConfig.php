@@ -2,7 +2,9 @@
 
 namespace Components\ThemeSettings;
 
-class ThemeSettingsConfig implements \KT_Configable
+use Interfaces\Configable;
+
+class ThemeSettingsConfig implements Configable
 {
     const FORM_PREFIX = "theme-settings";
 
@@ -26,6 +28,17 @@ class ThemeSettingsConfig implements \KT_Configable
     public static function getAllSideFieldsets()
     {
         return [];
+    }
+
+    public static function registerMetaboxes()
+    {
+        \KT_MetaBox::createMultiple(self::getAllNormalFieldsets(), \KT_WP_Configurator::getThemeSettingSlug(), \KT_MetaBox_Data_Type_Enum::OPTIONS);
+
+        $themeSideMetaboxes = \KT_MetaBox::createMultiple(self::getAllSideFieldsets(), \KT_WP_Configurator::getThemeSettingSlug(), \KT_MetaBox_Data_Type_Enum::OPTIONS, false);
+        foreach ($themeSideMetaboxes as $themeSideMetabox) {
+            $themeSideMetabox->setContext(\KT_MetaBox::CONTEXT_SIDE);
+            $themeSideMetabox->register();
+        }
     }
 
     // --- SOCIÁLNÍ SÍTĚ ------------------------
@@ -139,3 +152,5 @@ class ThemeSettingsConfig implements \KT_Configable
         return $fieldset;
     }
 }
+
+ThemeSettingsConfig::registerMetaboxes();

@@ -1,19 +1,22 @@
 <?php
 
-namespace Components\EmployeesQuery;
+namespace Components\ProductQuery;
 
+use Components\Product\Product;
 use Presenters\QueryBase;
 
-class EmployeesQuery extends QueryBase
+class ProductQuery extends QueryBase
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->setPostType(EMPLOYEE_KEY);
-        $this->setComponentLoopName(EMPLOYEE_LOOP);
+        $this->setComponent(Product::class);
+        $this->setPostType(Product::KEY);
+        $this->setTemplate(Product::TEMPLATE);
         $this->initArgs();
     }
+
 
     // Custom Args for Query
     public function initArgs()

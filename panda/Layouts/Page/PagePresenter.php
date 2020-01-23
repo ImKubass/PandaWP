@@ -1,6 +1,6 @@
 <?php
 
-namespace Components\Page;
+namespace Layouts\Page;
 
 use KT_WP_Post_Base_Presenter;
 

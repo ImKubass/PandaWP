@@ -1,8 +1,8 @@
 <?php
 
-namespace Components\PageContact;
+namespace Layouts\PageContact;
 
-use Components\Page\PageModel;
+use Layouts\Page\PageModel;
 use Utils\uString;
 use Utils\Util;
 

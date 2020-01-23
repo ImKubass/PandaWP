@@ -1,9 +1,10 @@
 <?php
 
-namespace Components\PageFront;
+namespace Layouts\PageFront;
 
+use Interfaces\Configable;
 
-class PageFrontConfig implements \KT_Configable
+class PageFrontConfig implements Configable
 {
 
     const FORM_PREFIX = "page-front";
@@ -25,6 +26,15 @@ class PageFrontConfig implements \KT_Configable
     public static function getAllSideFieldsets()
     {
         return [];
+    }
+
+    public static function registerMetaboxes()
+    {
+        $pageFrontMetaboxes = \KT_MetaBox::createMultiple(self::getAllNormalFieldsets(), KT_WP_PAGE_KEY, \KT_MetaBox_Data_Type_Enum::POST_META, false);
+        foreach ($pageFrontMetaboxes as $pageFrontMetabox) {
+            $pageFrontMetabox->setIsOnlyForFrontPage(true);
+            $pageFrontMetabox->register();
+        }
     }
 
     // --- Intro ------------------------
@@ -49,3 +59,5 @@ class PageFrontConfig implements \KT_Configable
         return $fieldset;
     }
 }
+
+PageFrontConfig::registerMetaboxes();

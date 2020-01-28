@@ -2,9 +2,11 @@
 
 namespace Components\Post;
 
-class PostConfig implements \KT_Configable
+use Interfaces\Configable;
+
+class PostConfig implements Configable
 {
-    const FORM_PREFIX = "panda-post";
+    const FORM_PREFIX = Post::KEY;
 
     // --- fieldsety ---------------------------
 
@@ -24,6 +26,12 @@ class PostConfig implements \KT_Configable
     {
         return [];
     }
+
+    public static function registerMetaboxes()
+    {
+        registerMetabox(self::class, Post::KEY);
+    }
+
 
     // --- Nastavení stránky ---------------------------
 

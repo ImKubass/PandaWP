@@ -152,5 +152,3 @@ class ThemeSettingsConfig implements Configable
         return $fieldset;
     }
 }
-
-ThemeSettingsConfig::registerMetaboxes();

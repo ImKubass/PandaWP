@@ -143,6 +143,7 @@ class ComposerStaticInit65e2771d7c7f7b40604050f991d0e75a
         'Components\\Product\\ProductConfig' => __DIR__ . '/../..' . '/Components/Product/ProductConfig.php',
         'Components\\Product\\ProductFactory' => __DIR__ . '/../..' . '/Components/Product/ProductFactory.php',
         'Components\\Product\\ProductModel' => __DIR__ . '/../..' . '/Components/Product/ProductModel.php',
+        'Components\\Product\\Term\\Brand' => __DIR__ . '/../..' . '/Components/Product/Term/Brand.php',
         'Components\\SchemaGenerator\\SchemaGenerator' => __DIR__ . '/../..' . '/Components/SchemaGenerator/SchemaGenerator.php',
         'Components\\ThemeSettings\\ThemeSettingsConfig' => __DIR__ . '/../..' . '/Components/ThemeSettings/ThemeSettingsConfig.php',
         'Components\\ThemeSettings\\ThemeSettingsFactory' => __DIR__ . '/../..' . '/Components/ThemeSettings/ThemeSettingsFactory.php',

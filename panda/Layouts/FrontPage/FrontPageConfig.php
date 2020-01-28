@@ -59,5 +59,3 @@ class FrontPageConfig implements Configable
         return $fieldset;
     }
 }
-
-FrontPageConfig::registerMetaboxes();

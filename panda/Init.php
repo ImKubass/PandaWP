@@ -1,5 +1,6 @@
 <?php
 
+use Interfaces\Configable;
 
 define("PANDA_BASE_PATH", path_join(TEMPLATEPATH, "panda"));
 
@@ -50,6 +51,10 @@ $requiredFilesArray = array_merge(
 define("PANDA_REQUIRED_FILES", $requiredFilesArray);
 requireFilesFromArray(PANDA_REQUIRED_FILES);
 
+$ClassesConfigable = getImplementingClasses(Configable::class);
+define("PANDA_CLASSES_CONFIGABLE", $ClassesConfigable);
+callRegisterMetaboxes(PANDA_CLASSES_CONFIGABLE);
+
 
 
 //* --- Core functions --------
@@ -91,4 +96,27 @@ function requireFilesFromArray(array $files)
 function registerMetabox($configName, $key)
 {
     \KT_MetaBox::createMultiple($configName::getAllGenericFieldsets(), $key, \KT_MetaBox_Data_Type_Enum::POST_META);
+}
+
+/**
+ * 
+ * @param string $interfaceName 
+ * @return array 
+ */
+function getImplementingClasses($interfaceName)
+{
+    return array_filter(
+        get_declared_classes(),
+        function ($className) use ($interfaceName) {
+            return in_array($interfaceName, class_implements($className));
+        }
+    );
+}
+
+function callRegisterMetaboxes(array $Classes)
+{
+    foreach ($Classes as $Class) {
+        /** @var Configable $Class */
+        $Class::registerMetaboxes();
+    }
 }

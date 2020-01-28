@@ -32,6 +32,7 @@ return array(
     'Components\\Product\\ProductConfig' => $baseDir . '/Components/Product/ProductConfig.php',
     'Components\\Product\\ProductFactory' => $baseDir . '/Components/Product/ProductFactory.php',
     'Components\\Product\\ProductModel' => $baseDir . '/Components/Product/ProductModel.php',
+    'Components\\Product\\Term\\Brand' => $baseDir . '/Components/Product/Term/Brand.php',
     'Components\\SchemaGenerator\\SchemaGenerator' => $baseDir . '/Components/SchemaGenerator/SchemaGenerator.php',
     'Components\\ThemeSettings\\ThemeSettingsConfig' => $baseDir . '/Components/ThemeSettings/ThemeSettingsConfig.php',
     'Components\\ThemeSettings\\ThemeSettingsFactory' => $baseDir . '/Components/ThemeSettings/ThemeSettingsFactory.php',

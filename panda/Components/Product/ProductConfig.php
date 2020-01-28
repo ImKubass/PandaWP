@@ -6,7 +6,7 @@ use Interfaces\Configable;
 
 class ProductConfig implements Configable
 {
-    const FORM_PREFIX = "rlg-product";
+    const FORM_PREFIX = Product::KEY;
 
     // --- fieldsety ---------------------------
 
@@ -132,5 +132,3 @@ class ProductConfig implements Configable
         return $fieldset;
     }
 }
-
-ProductConfig::registerMetaboxes();

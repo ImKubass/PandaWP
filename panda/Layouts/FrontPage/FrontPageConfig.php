@@ -1,10 +1,10 @@
 <?php
 
-namespace Layouts\PageFront;
+namespace Layouts\FrontPage;
 
 use Interfaces\Configable;
 
-class PageFrontConfig implements Configable
+class FrontPageConfig implements Configable
 {
 
     const FORM_PREFIX = "page-front";
@@ -60,4 +60,4 @@ class PageFrontConfig implements Configable
     }
 }
 
-PageFrontConfig::registerMetaboxes();
+FrontPageConfig::registerMetaboxes();

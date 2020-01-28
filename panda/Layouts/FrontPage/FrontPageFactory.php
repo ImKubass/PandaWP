@@ -1,12 +1,12 @@
 <?php
 
-namespace Layouts\PageFront;
+namespace Layouts\FrontPage;
 
-class PageFrontFactory
+class FrontPageFactory
 {
     private static $pageFront = null;
 
-    /** @return PageFrontModel */
+    /** @return FrontPageModel */
     public static function create()
     {
 
@@ -16,9 +16,9 @@ class PageFrontFactory
         global $post;
         $frontPageId = get_option(KT_WP_OPTION_KEY_FRONT_PAGE);
         if (isset($post) && $post->ID == $frontPageId) {
-            $pageFront = new PageFrontModel($post);
+            $pageFront = new FrontPageModel($post);
         } else {
-            $pageFront = new PageFrontModel(get_post($frontPageId));
+            $pageFront = new FrontPageModel(get_post($frontPageId));
         }
         return self::$pageFront = $pageFront;
     }

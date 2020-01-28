@@ -1,18 +1,18 @@
 <?php
 
-namespace Layouts\PageFront;
+namespace Layouts\FrontPage;
 
 use Layouts\Page\PageModel;
 use Utils\uString;
 use Utils\Util;
 
-class PageFrontModel extends PageModel
+class FrontPageModel extends PageModel
 {
 
     public function __construct(\WP_Post $post)
     {
-        parent::__construct($post, PageFrontConfig::FORM_PREFIX);
-        $this->setMetaPrefix(PageFrontConfig::FORM_PREFIX);
+        parent::__construct($post, FrontPageConfig::FORM_PREFIX);
+        $this->setMetaPrefix(FrontPageConfig::FORM_PREFIX);
     }
 
     //? --- Getry ------------------------------------------------------------
@@ -23,7 +23,7 @@ class PageFrontModel extends PageModel
 
     public function getIntroTitle()
     {
-        return $this->getMetaValue(PageFrontConfig::INTRO_TITLE);
+        return $this->getMetaValue(FrontPageConfig::INTRO_TITLE);
     }
 
     public function getIntroTitleFancy()
@@ -41,12 +41,12 @@ class PageFrontModel extends PageModel
 
     public function getIntroDescription()
     {
-        return $this->getMetaValue(PageFrontConfig::INTRO_DESCRIPTION);
+        return $this->getMetaValue(FrontPageConfig::INTRO_DESCRIPTION);
     }
 
     public function getIntroPageId()
     {
-        return $this->getMetaValue(PageFrontConfig::INTRO_PAGE_ID);
+        return $this->getMetaValue(FrontPageConfig::INTRO_PAGE_ID);
     }
 
     public function getIntroPageLink()

@@ -1,2 +1,2 @@
 <?php
-get_template_part(LAYOUTS_PATH . "PageFront/PageFront");
+get_template_part(LAYOUTS_PATH . "FrontPage/FrontPage");

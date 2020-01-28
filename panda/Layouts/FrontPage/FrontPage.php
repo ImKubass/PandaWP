@@ -15,6 +15,7 @@ $Products = ProductQueryFactory::create();
 // dump($Products->getPosts());
 
 get_template_part(COMPONENTS_PATH . "EmployeesSection/EmployeesSection");
+get_template_part(COMPONENTS_PATH . "PostSection/PostSection");
 
 SchemaGenerator::addOrganization();
 

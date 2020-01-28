@@ -1,9 +1,9 @@
 <?php
 
-namespace Layouts\PageContact;
+namespace Layouts\Contact;
 
 
-class PageContactConfig implements \KT_Configable
+class ContactConfig implements \KT_Configable
 {
 
     const FORM_PREFIX = "page-contact";

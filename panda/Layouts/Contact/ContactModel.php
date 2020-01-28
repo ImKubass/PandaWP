@@ -1,18 +1,18 @@
 <?php
 
-namespace Layouts\PageContact;
+namespace Layouts\Contact;
 
 use Layouts\Page\PageModel;
 use Utils\uString;
 use Utils\Util;
 
-class PageContactModel extends PageModel
+class ContactModel extends PageModel
 {
 
     public function __construct(\WP_Post $post)
     {
-        parent::__construct($post, PageContactConfig::FORM_PREFIX);
-        $this->setMetaPrefix(PageContactConfig::FORM_PREFIX);
+        parent::__construct($post, ContactConfig::FORM_PREFIX);
+        $this->setMetaPrefix(ContactConfig::FORM_PREFIX);
     }
 
     //? --- Getry ------------------------------------------------------------
@@ -22,7 +22,7 @@ class PageContactModel extends PageModel
 
     public function getEmployeesSectionTitle()
     {
-        return $this->getMetaValue(PageContactConfig::EMPLOYEES_SECTION_TITLE);
+        return $this->getMetaValue(ContactConfig::EMPLOYEES_SECTION_TITLE);
     }
 
     public function getEmployeesSectionTitleFancy()
@@ -37,7 +37,7 @@ class PageContactModel extends PageModel
 
     public function getEmployeesSectionDescription()
     {
-        return $this->getMetaValue(PageContactConfig::EMPLOYEES_SECTION_DESCRIPTION);
+        return $this->getMetaValue(ContactConfig::EMPLOYEES_SECTION_DESCRIPTION);
     }
 
 

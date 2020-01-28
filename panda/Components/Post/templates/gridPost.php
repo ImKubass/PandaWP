@@ -4,7 +4,7 @@ use Components\Post\PostFactory;
 
 $Post = PostFactory::create(); ?>
 
-<article class="col-12">
+<article class="col-md-6">
 
 
     <div>

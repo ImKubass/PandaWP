@@ -4,7 +4,6 @@ use Components\PostQuery\PostQueryFactory;
 use Components\ProductQuery\ProductQueryFactory;
 use Components\SchemaGenerator\SchemaGenerator;
 
-
 get_template_part(COMPONENTS_PATH . "Header/Header");
 
 $Posts = PostQueryFactory::create();

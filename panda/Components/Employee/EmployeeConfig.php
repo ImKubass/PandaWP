@@ -53,5 +53,3 @@ class EmployeeConfig implements Configable
         return $fieldset;
     }
 }
-
-EmployeeConfig::registerMetaboxes();

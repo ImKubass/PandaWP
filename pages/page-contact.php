@@ -1,3 +1,3 @@
 <?php
 /* Template Name: Kontakt */
-get_template_part(COMPONENTS_PATH . "PageContact/PageContact");
+get_template_part(LAYOUTS_PATH . "Contact/Contact");

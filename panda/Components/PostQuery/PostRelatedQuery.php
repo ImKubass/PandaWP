@@ -4,7 +4,7 @@ namespace Components\PostQuery;
 
 use Presenters\QueryBase;
 
-class PostQuery extends QueryBase
+class PostRelatedQuery extends QueryBase
 {
 
     public function __construct()
@@ -16,29 +16,30 @@ class PostQuery extends QueryBase
     // Custom Args for Query
     public function initArgs()
     {
+        // Related by category
+        $taxomyType = KT_WP_CATEGORY_KEY;
+        $category = get_the_category();
+        $taxomyRelated = $category[0]->cat_ID;
+
+
         $Args = [
             "post_type" => $this->getPostType(),
             "post_status" => "publish",
             "posts_per_page" => $this->getMaxCount(),
-            "orderby" => "date",
+            "orderby" => "rand",
             "order" => \KT_Repository::ORDER_DESC,
+            "tax_query" => [
+                [
+                    "taxonomy" => $taxomyType,
+                    "fields" => "slug",
+                    "terms" => $taxomyRelated
+                ]
+            ]
         ];
-
         // except himself
         if (is_single()) {
-            $Args["post__not_in"] = [get_the_ID()];
+            $args["post__not_in"] = [get_the_ID()];
         }
-
-        // category
-        $taxQuery = ["relation" => "AND"];
-        if ($this->isTermId()) {
-            array_push($taxQuery, [
-                "taxonomy" => $this->getTaxonomy(),
-                "field" => "term_id",
-                "terms" => [$this->getTermId()],
-            ]);
-        }
-        $args["tax_query"] = $taxQuery;
 
         return $this->setArgs($Args);
     }

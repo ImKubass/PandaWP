@@ -44,6 +44,7 @@ return array(
     'Interfaces\\Configable' => $baseDir . '/Interfaces/Configable.php',
     'Interfaces\\Jsonable' => $baseDir . '/Interfaces/Jsonldable.php',
     'Interfaces\\Postable' => $baseDir . '/Interfaces/Postable.php',
+    'Layouts\\Blog\\BlogFactory' => $baseDir . '/Layouts/Blog/BlogFactory.php',
     'Layouts\\Contact\\ContactConfig' => $baseDir . '/Layouts/Contact/ContactConfig.php',
     'Layouts\\Contact\\ContactFactory' => $baseDir . '/Layouts/Contact/ContactFactory.php',
     'Layouts\\Contact\\ContactModel' => $baseDir . '/Layouts/Contact/ContactModel.php',

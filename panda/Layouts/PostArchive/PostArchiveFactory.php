@@ -11,11 +11,11 @@ class PostArchiveFactory
 
     public static function create()
     {
+        $PostArchiveModel = new PostArchiveModel();
 
         if (is_tag() || is_category()) {
             $CategoryModel = CategoryFactory::create();
 
-            $PostArchiveModel = new PostArchiveModel();
             $PostArchiveModel->setTitle($CategoryModel->getTitle());
             $PostArchiveModel->setContent($CategoryModel->getContent());
 
@@ -24,7 +24,6 @@ class PostArchiveFactory
 
         $BlogModel = BlogFactory::create();
 
-        $PostArchiveModel = new PostArchiveModel();
         $PostArchiveModel->setTitle($BlogModel->getTitle());
         $PostArchiveModel->setContent($BlogModel->getContent());
 

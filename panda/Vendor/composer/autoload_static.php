@@ -155,6 +155,7 @@ class ComposerStaticInit65e2771d7c7f7b40604050f991d0e75a
         'Interfaces\\Configable' => __DIR__ . '/../..' . '/Interfaces/Configable.php',
         'Interfaces\\Jsonable' => __DIR__ . '/../..' . '/Interfaces/Jsonldable.php',
         'Interfaces\\Postable' => __DIR__ . '/../..' . '/Interfaces/Postable.php',
+        'Layouts\\Blog\\BlogFactory' => __DIR__ . '/../..' . '/Layouts/Blog/BlogFactory.php',
         'Layouts\\Contact\\ContactConfig' => __DIR__ . '/../..' . '/Layouts/Contact/ContactConfig.php',
         'Layouts\\Contact\\ContactFactory' => __DIR__ . '/../..' . '/Layouts/Contact/ContactFactory.php',
         'Layouts\\Contact\\ContactModel' => __DIR__ . '/../..' . '/Layouts/Contact/ContactModel.php',

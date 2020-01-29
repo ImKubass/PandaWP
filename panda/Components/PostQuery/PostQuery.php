@@ -2,6 +2,7 @@
 
 namespace Components\PostQuery;
 
+use Utils\Util;
 use Presenters\QueryBase;
 
 class PostQuery extends QueryBase
@@ -10,7 +11,19 @@ class PostQuery extends QueryBase
     public function __construct()
     {
         parent::__construct();
+        $this->initParams();
         $this->initArgs();
+    }
+
+    private function initParams()
+    {
+        $queriedObject = get_queried_object();
+        if (Util::issetAndNotEmpty($queriedObject)) {
+            if (property_exists($queriedObject, "term_id")) {
+                $this->setTermId($queriedObject->term_id);
+                $this->setTaxonomy($queriedObject->taxonomy);
+            }
+        }
     }
 
     // Custom Args for Query
@@ -38,7 +51,7 @@ class PostQuery extends QueryBase
                 "terms" => [$this->getTermId()],
             ]);
         }
-        $args["tax_query"] = $taxQuery;
+        $Args["tax_query"] = $taxQuery;
 
         return $this->setArgs($Args);
     }

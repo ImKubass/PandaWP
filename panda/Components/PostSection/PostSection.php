@@ -5,6 +5,7 @@ use Components\PostQuery\PostQueryFactory;
 
 $Posts = PostQueryFactory::create();
 $Posts->setTemplate(Post::TEMPLATE_GRID);
+
 ?>
 
 <?php if ($Posts->hasPosts()) { ?>

@@ -10,24 +10,6 @@ define("NAVIGATION_FOOTER_MENU", "navigation-footer-menu");
 
 
 
-
-//? Post
-define("POST_KEY", "post");
-define("POST_LOOP", "Post");
-
-//? Product
-define("PRODUCT_KEY", "product");
-define("PRODUCT_SLUG", "produkt");
-define("PRODUCT_LOOP", "Product");
-
-//? Product terms
-define("PRODUCT_BRAND_KEY", "product-brand");
-define("PRODUCT_BRAND_SLUG", "vyrobce");
-define("PRODUCT_BRAND_LOOP", "ProductTermBrand");
-define("BRAND_LOOP", "BrandItem");
-
-
-
 //? Nastavení patičky a hlavičky
 define("FOOTER_HEADER_SETTINGS_PAGE", "footer-header-setting");
 define("FOOTER_HEADER_SETTINGS_PAGE_SLUG", "appearance_page_footer-header-setting");

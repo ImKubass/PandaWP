@@ -3,8 +3,8 @@
 
 namespace Layouts\PostArchive;
 
-use Layouts\Page\PageModel;
 use Components\Post\Term\CategoryFactory;
+use Layouts\Blog\BlogFactory;
 
 class PostArchiveFactory
 {
@@ -22,18 +22,11 @@ class PostArchiveFactory
             return $PostArchiveModel;
         }
 
-        global $post;
-        $PostsPageId = get_option(KT_WP_OPTION_KEY_POSTS_PAGE);
-
-        if (isset($post) && $post->ID == $PostsPageId) {
-            $PageModel = new PageModel($post);
-        } else {
-            $PageModel = new PageModel(get_post($PostsPageId));
-        }
+        $BlogModel = BlogFactory::create();
 
         $PostArchiveModel = new PostArchiveModel();
-        $PostArchiveModel->setTitle($PageModel->getTitle());
-        $PostArchiveModel->setContent($PageModel->getContent());
+        $PostArchiveModel->setTitle($BlogModel->getTitle());
+        $PostArchiveModel->setContent($BlogModel->getContent());
 
         return $PostArchiveModel;
     }

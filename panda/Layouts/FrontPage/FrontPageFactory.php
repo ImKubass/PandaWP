@@ -2,12 +2,15 @@
 
 namespace Layouts\FrontPage;
 
+/**
+ * Class FrontPageFactory
+ * @package Layouts\FrontPage
+ */
 class FrontPageFactory
 {
     private static $pageFront = null;
 
-    /** @return FrontPageModel */
-    public static function create()
+    public static function create(): FrontPageModel
     {
 
         if (isset(self::$pageFront)) {

@@ -2,12 +2,14 @@
 
 namespace Components\ProductQuery;
 
+/**
+ * Class ProductQueryFactory
+ * @package Components\ProductQuery
+ */
 class ProductQueryFactory
 {
-    /**
-     * @return ProductQuery
-     */
-    public static function create()
+
+    public static function create(): ProductQuery
     {
         return new ProductQuery();
     }

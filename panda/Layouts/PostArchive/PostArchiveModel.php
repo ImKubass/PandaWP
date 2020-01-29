@@ -4,9 +4,12 @@ namespace Layouts\PostArchive;
 
 use Utils\Util;
 
+/**
+ * Class PostArchiveModel
+ * @package Layouts\PostArchive
+ */
 class PostArchiveModel
 {
-
     private $Title;
     private $Content;
 
@@ -27,12 +30,12 @@ class PostArchiveModel
     //* --- Setters ----------------------------
 
 
-    public function setContent($Content)
+    public function setContent(string $Content)
     {
         return $this->Content = $Content;
     }
 
-    public function setTitle($Title)
+    public function setTitle(string $Title)
     {
         return $this->Title = $Title;
     }

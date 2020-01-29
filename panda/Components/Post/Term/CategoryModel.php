@@ -3,6 +3,10 @@
 
 namespace Components\Post\Term;
 
+/**
+ * Class CategoryModel
+ * @package Components\Post\Term
+ */
 class CategoryModel extends \KT_WP_Term_Base_Model
 {
 

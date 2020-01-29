@@ -4,6 +4,10 @@ namespace Components\Post\Term;
 
 use Interfaces\Configable;
 
+/**
+ * Class CategoryConfig
+ * @package Components\Post\Term
+ */
 class CategoryConfig implements Configable
 {
 

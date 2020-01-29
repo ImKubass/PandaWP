@@ -4,6 +4,10 @@ namespace Components\Product;
 
 use Interfaces\Configable;
 
+/**
+ * Class ProductConfig
+ * @package Components\Product
+ */
 class ProductConfig implements Configable
 {
     const FORM_PREFIX = Product::KEY;

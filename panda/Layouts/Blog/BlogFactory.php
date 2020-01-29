@@ -4,6 +4,10 @@ namespace Layouts\Blog;
 
 use Layouts\Page\PageModel;
 
+/**
+ * Class BlogFactory
+ * @package Layouts\Blog
+ */
 class BlogFactory
 {
 

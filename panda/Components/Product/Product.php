@@ -2,6 +2,10 @@
 
 namespace Components\Product;
 
+/**
+ * Class Product
+ * @package Components\Product
+ */
 class Product
 {
     const KEY = "product";

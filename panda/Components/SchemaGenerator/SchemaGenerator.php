@@ -7,7 +7,10 @@ use Components\ThemeSettings\ThemeSettingsFactory;
 use Utils\Image;
 use Utils\Util;
 
-
+/**
+ * Class SchemaGenerator
+ * @package Components\SchemaGenerator
+ */
 class SchemaGenerator
 {
     private static $values = [];

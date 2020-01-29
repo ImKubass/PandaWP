@@ -4,6 +4,11 @@ namespace Layouts\FrontPage;
 
 use Interfaces\Configable;
 
+
+/**
+ * Class FrontPageConfig
+ * @package Layouts\FrontPage
+ */
 class FrontPageConfig implements Configable
 {
 

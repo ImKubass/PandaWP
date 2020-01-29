@@ -2,12 +2,15 @@
 
 namespace Components\ThemeSettings;
 
+/**
+ * Class ThemeSettingsFactory
+ * @package Components\ThemeSettings
+ */
 class ThemeSettingsFactory
 {
     private static $theme = null;
 
-    /** @return ThemeSettingsModel */
-    public static function create()
+    public static function create(): ThemeSettingsModel
     {
         if (isset(self::$theme)) {
             return self::$theme;

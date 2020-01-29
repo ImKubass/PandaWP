@@ -2,12 +2,13 @@
 
 namespace Components\Product;
 
+/**
+ * Class ProductFactory
+ * @package Components\Product
+ */
 class ProductFactory
 {
-    /**
-     * @return ProductModel
-     */
-    public static function create()
+    public static function create(): ProductModel
     {
         global $post;
         return new ProductModel($post);

@@ -5,6 +5,10 @@ namespace Components\Post;
 use Components\SchemaGenerator\SchemaGenerator;
 use Interfaces\Jsonable;
 
+/**
+ * Class PostModel
+ * @package Components\Post
+ */
 class PostModel extends \KT_WP_Post_Base_Model implements Jsonable
 {
 

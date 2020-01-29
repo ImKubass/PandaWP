@@ -3,9 +3,12 @@
 namespace Components\Product;
 
 use Utils\Util;
-use Components\ProductTermBrand\ProductTermBrandModel;
 use Utils\uString;
 
+/**
+ * Class ProductModel
+ * @package Components\Product
+ */
 class ProductModel extends \KT_WP_Post_Base_Model
 {
 

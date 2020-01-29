@@ -2,7 +2,10 @@
 
 namespace Layouts\Contact;
 
-
+/**
+ * Class ContactConfig
+ * @package Layouts\Contact
+ */
 class ContactConfig implements \KT_Configable
 {
 

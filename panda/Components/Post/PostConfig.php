@@ -4,6 +4,10 @@ namespace Components\Post;
 
 use Interfaces\Configable;
 
+/**
+ * Class PostConfig
+ * @package Components\Post
+ */
 class PostConfig implements Configable
 {
     const FORM_PREFIX = Post::KEY;

@@ -4,6 +4,10 @@ namespace Components\PostQuery;
 
 use Presenters\QueryBase;
 
+/**
+ * Class PostRelatedQuery
+ * @package Components\PostQuery
+ */
 class PostRelatedQuery extends QueryBase
 {
 

@@ -2,7 +2,10 @@
 
 namespace Components\Post;
 
-
+/**
+ * Class Post
+ * @package Components\Post
+ */
 class Post
 {
     const KEY            = "post";

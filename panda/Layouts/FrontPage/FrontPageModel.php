@@ -6,6 +6,10 @@ use Layouts\Page\PageModel;
 use Utils\uString;
 use Utils\Util;
 
+/**
+ * Class FrontPageModel
+ * @package Layouts\FrontPage
+ */
 class FrontPageModel extends PageModel
 {
 

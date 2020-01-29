@@ -2,7 +2,10 @@
 
 namespace Layouts\Page;
 
-
+/**
+ * Class PageConfig
+ * @package Layouts\Page
+ */
 class PageConfig implements \KT_Configable
 {
     const FORM_PREFIX = "panda-page";

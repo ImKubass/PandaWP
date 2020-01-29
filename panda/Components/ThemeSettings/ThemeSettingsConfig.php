@@ -4,6 +4,11 @@ namespace Components\ThemeSettings;
 
 use Interfaces\Configable;
 
+
+/**
+ * Class ThemeSettingsConfig
+ * @package Components\ThemeSettings
+ */
 class ThemeSettingsConfig implements Configable
 {
     const FORM_PREFIX = "theme-settings";

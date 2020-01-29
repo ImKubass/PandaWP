@@ -6,10 +6,14 @@ namespace Layouts\PostArchive;
 use Components\Post\Term\CategoryFactory;
 use Layouts\Blog\BlogFactory;
 
+/**
+ * Class PostArchiveFactory
+ * @package Layouts\PostArchive
+ */
 class PostArchiveFactory
 {
 
-    public static function create()
+    public static function create(): PostArchiveModel
     {
         $PostArchiveModel = new PostArchiveModel();
 

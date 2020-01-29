@@ -6,6 +6,10 @@ use Utils\Image;
 use Utils\uString;
 use Utils\Util;
 
+/**
+ * Class ThemeSettingsModel
+ * @package Components\ThemeSettings
+ */
 class ThemeSettingsModel extends \KT_WP_Options_Base_Model
 {
 

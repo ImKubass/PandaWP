@@ -5,6 +5,10 @@ namespace Components\ProductQuery;
 use Components\Product\Product;
 use Presenters\QueryBase;
 
+/**
+ * Class ProductQuery
+ * @package Components\ProductQuery
+ */
 class ProductQuery extends QueryBase
 {
 

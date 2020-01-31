@@ -3,6 +3,7 @@
 use Components\Post\PostFactory;
 use Components\SchemaGenerator\SchemaGenerator;
 
+
 $Post = PostFactory::create();
 SchemaGenerator::addModel($Post);
 

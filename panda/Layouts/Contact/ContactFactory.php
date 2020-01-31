@@ -2,11 +2,14 @@
 
 namespace Layouts\Contact;
 
+/**
+ * Class ContactFactory
+ * @package Layouts\Contact
+ */
 class ContactFactory
 {
 
-    /** @return ContactModel */
-    public static function create()
+    public static function create(): ContactModel
     {
         global $post;
         return new ContactModel($post);

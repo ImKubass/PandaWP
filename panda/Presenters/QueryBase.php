@@ -117,6 +117,11 @@ class QueryBase
 
     //* --- Setters ------------------------------
 
+    public function setMaxCount($maxCount)
+    {
+        return $this->maxCount = $maxCount;
+    }
+
     private function setOffset($value)
     {
         $this->Offset = Util::tryGetInt($value);

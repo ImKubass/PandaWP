@@ -45,36 +45,21 @@ Např:
 ## Rozložení projektu
 
 	panda/
-	|--Assets/
+	|--Admin/
 	|--Components/
-	|--Extensions/
-	|--Js/
+	|--Helpers/
+	|--Interfaces/
+	|--Layouts/
+	|--Presenters/
 	|--Requires/
 	|--Utils/
-	|--Presenters/
+	|--Vendor/
 
 
-- [Assets](#Assets)
-- [Components](#Components)
-- [Enums](#Enums)
-- [Extensions](#Extensions)
-- [Js](#Js)
-- [Requires](#Requires)
-- [Utils](#Utils)
-- [Models](#Models)
-- [Presenters](#Presenters)
-- [Init.php](#Init.php)
-- [ProjectConstants.php](#ProjectConstants.php)
-- [ThemeSetup.php](#ThemeSetup.php)
-
-### Assets
-Svět kodéra. Netřeba řešit. 🚷
 ### Components
 Jedna z nejdůležitejších složek. Společný svět kodéra a programátora.
 Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 
- >❗ Zde je potřeba zajistit stejně pojmenování komponent s kodérem aby nedocházelo přehlcení počtu složek.
- 
 ### Enums
 Soubory s pevnými výčtovými typy.
 ### Extensions
@@ -121,24 +106,21 @@ Mystická bytost nebývalích rozměrů a tvarů.
 
 Logická část, která obsahuje veškeré potřebné části architektury(Model, Config), které s komponentou přímo souvísí. Název souborů odpovídá názvu složky(komponenty).
 
-	PageContact/
-	|--PageContact.php
-	|--PageContactConfig.php
-	|--PageContactModel.php
-	|--PageContactFactory.php
-
-Do komponenty zasahuje i kodér. Nic méně, vzajemně si nezasahujete do "svých" souborů. Je potřeba dbát na stejné pojmenování komponent, aby nevznikaly dvě složky se stejným významem. Proto je potřeba spolupracovat s kodérem.
-
-	Product/
-	|--Product.scss
-	|--Product.js
-	|--Product.html
-	|--Product.php
-	|--ProductConfig.php
-	|--ProductModel.php
-	|--ProductFactory.php
-	|--ProductHook.php
-	|--ProductDefinition.php
+	Post/
+	|-- Term/
+		|-- Category.php
+		|-- CategoryConfig.php
+		|-- CategoryFactory.php
+		|-- CategoryModel.php
+	|-- templates/
+		|-- Post.php
+		|-- asidePost.php
+		|-- gridPost.php
+	|-- Post.php
+	|-- PostConfig.php
+	|-- PostModel.php
+	|-- PostFactory.php
+	|-- PostHook.php
 
 &nbsp;
 ## Konvence psaní kódu ✍️
@@ -151,47 +133,19 @@ Používáme 4 mezery k odsazení, ne tabulátory.
 - [PSR-2](https://www.php-fig.org/psr/psr-2/)
 - [PSR-4](https://www.php-fig.org/psr/psr-4/)
 
-### Pojmenovávání komponent
-Styl pojmenovávání by měl být z příkladu zřejmý. 
 
-	Components/
-	|--Page
-	|--PageContact
-
-	|--Post
-
-	|--PostsQuery
-	|--PostsSection
-	|--PostsRelatedQuery
-	|--PostsRelatedSection
-
-
-	|--Product
-	|--ProductTerm
-	|--ProductTermBrand
-
-	|--ProductsSection
-	|--ProductsQuery
-	|--ProductsRelatedQuery
-	|--ProductsRelatedSection
-
-
-
-&nbsp;
 ## Wordpress pluginy
 Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
- - Yoast - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
+ - [Yoast](https://cs.wordpress.org/plugins/wordpress-seo/) - SEO, pro programátora slouží více méně akorát pro generovaní drobečkové navigace.
 
- - WP Tracy - Tracy pro Wordpress (Pouze na localhostu) zachytávání chyb.
+ - [WP Tracy](https://cs.wordpress.org/plugins/wp-tracy/) - Tracy pro Wordpress (Pouze na localhostu) zachytávání chyb.
 
- - TinyMce Advanced - Rozšiřuje zádladní WYSIWIG Editor.
+ - [Safe SVG](https://cs.wordpress.org/plugins/safe-svg/) - Podpora uploadu SVG formátu.
 
- - Safe SVG - Podpora uploadu SVG formátu.
+ - [Regenerate Thumbnails](https://cs.wordpress.org/plugins/regenerate-thumbnails/) - Přeregeneruje rozměry obrázků.
 
- - Regenerate Thumbnails - Přeregeneruje rozměry obrázků.
-
- - Klasický editor - Prozatím nepoužíváme Gutenberg.
+ - [Klasický editor](https://cs.wordpress.org/plugins/classic-editor/) - Prozatím nepoužíváme Gutenberg.
 
 &nbsp;
 ## Příprava prostředí
@@ -208,25 +162,6 @@ Wordpress pluginům se snažíme vyhýbat. Nicméně pár jich používáme.
 
 
 &nbsp;
-## Instalace
-1. Stáhnout repozitář
-2. Nahrát do šablony
-3. pustit composer install (panda/)
-
-## Příprava celého projektu
-1. Založit složku s název projektu (nazevprojektu)
-2. Inicializovat/naklonovat repo
-3. Nakopírovat Wordpress
-4. Vytvořit databázi (Název ddatabáze by měl odpovídat názvu projektové složky {*nazevprojektu*})
-5. Nainstalovat wordpress (konfigurace wordpressu)
-6. [Instalace PandaWP](#Instalace)
-
-Docela otrava ne? Co to zkrátit na tři kroky? Pomocí WP-CLI
-1. Inicializovat/naklonovat repozitář projektu
-2. [Spustit script](#wp-cli)
-3. Napsat název složky projektu
-
-&nbsp;
 ## WP CLI
 
 Zakládání nového projektu je celkem otrava plná dokola opakujících se paternů. Pomocí scriptu, stačí napsat název projektu a o všechno je postaráno. 
@@ -238,12 +173,9 @@ Zakládání nového projektu je celkem otrava plná dokola opakujících se pat
 4. **Vytvoří** databázi
 5. **Nainstaluje** wordpress a vytvoří admina
 6. **Smaže** nepotřebné pluginy
-7. Stáhne repozitář PandaWP do složky s šablonama.
-8. Spustí **composer install** a aktivuje šablonu.
-7. Připadně doinstaluje češtinu a nastaví ji.
-8. Zruší **revize** a zapne WP_DEBUG v wp-config.php
-9. Nainstaluje používané pluginy a aktivuje je.
-10. Nastaví strukturu linků na *'/%postname%'*
+7. Zruší **revize** a zapne WP_DEBUG v wp-config.php
+8. Nainstaluje používané pluginy a aktivuje je.
+9. Nastaví strukturu linků na *'/%postname%'*
 
 MAC OS:
 
@@ -280,11 +212,13 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 
 #### Doporučené rozšíření
 
+[VSCode Great Icons](https://marketplace.visualstudio.com/items?itemName=emmanuelbeziat.vscode-great-icons)
+
+[Better Align](https://marketplace.visualstudio.com/items?itemName=wwm.better-align)
+
 [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
 
 [PHP Namespace Resolver](https://marketplace.visualstudio.com/items?itemName=MehediDracula.php-namespace-resolver)
-
-[VSCode Great Icons](https://marketplace.visualstudio.com/items?itemName=emmanuelbeziat.vscode-great-icons)
 
 [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
 
@@ -306,12 +240,7 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 
 [SCSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss)
 
-
-[SFTP](https://marketplace.visualstudio.com/items?itemName=liximomo.sftp)
-
 [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser)
-
-[SmoothType](https://marketplace.visualstudio.com/items?itemName=spikespaz.vscode-smoothtype)
 
 [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
@@ -323,12 +252,12 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 	},
 
 #### Doporučené nastavení
-
 	/*Editor*/
 	"window.zoomLevel": 0,
 	"editor.minimap.enabled": false,
 	"editor.renderWhitespace": "none",
 	"editor.renderControlCharacters": false,
+	"editor.detectIndentation": false,
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
 	"[php]": {
@@ -337,7 +266,6 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 	},
 	"editor.formatOnSave": true,
 	"editor.suggestOnTriggerCharacters": true,
-	"editor.detectIndentation": false,
 	"editor.fontSize": 14,
 	"editor.quickSuggestions": {
 		"other": true,
@@ -346,7 +274,6 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 	},
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	"editor.showFoldingControls": "always",
-	"editor.autoIndent": false,
 	"editor.wordBasedSuggestions": false,
 	"editor.formatOnType": false,
 	"editor.smoothScrolling": true,
@@ -363,11 +290,10 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 	"workbench.statusBar.visible": true,
 	"workbench.activityBar.visible": false,
 	"workbench.startupEditor": "newUntitledFile",
-	"workbench.statusBar.feedback.visible": false,
 	"workbench.editor.enablePreview": false,
 
 	//Your path to php
-	"php.validate.executablePath": "/Applications/MAMP/bin/php/php7.3.1/bin/php",
+	"php.validate.executablePath": "/Applications/MAMP/bin/php/php7.4.2/bin/php",
 	"php.suggest.basic": false,
 
 	/*SCSS*/
@@ -404,11 +330,6 @@ Definice je první část vývoje, při němž se definují CustomPostTypy, Conf
 	"formattingToggle.activateFor": [
 		"formatOnSave"
 	],
-
-
-	"smoothtype.autoReload": true,
-	"smoothtype.duration": 100,
-	"breadcrumbs.enabled": false,
 
 
 	"files.associations": {

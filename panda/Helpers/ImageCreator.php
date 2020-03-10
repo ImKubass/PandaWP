@@ -61,6 +61,20 @@ class ImageCreator
         }
     }
 
+    public function addToSrcset($Url, $Postfix)
+    {
+        if ($this->isId()) {
+            if (!$this->isSrcset()) {
+                $Item = $this->getSrc() . " 1x";
+                $this->setSrcset([$Item]);
+            }
+            $Item = $Url . " " . $Postfix;
+            $Srcset = $this->getSrcset();
+            array_push($Srcset, $Item);
+            return $this->setSrcset($Srcset);
+        }
+    }
+
     /**
      * @param string $Size 
      * @param string $Media 

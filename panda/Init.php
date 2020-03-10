@@ -14,9 +14,14 @@ define("COMPONENTS_FOLDER", "Components");
 define("COMPONENTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
 define("COMPONENTS_PATH", "panda/" . COMPONENTS_FOLDER . "/");
 
+//? Layouts Constants
 define("LAYOUTS_FOLDER", "Layouts");
 define("LAYOUTS_PATH", "panda" . DIRECTORY_SEPARATOR . LAYOUTS_FOLDER . DIRECTORY_SEPARATOR);
 define("LAYOUTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR .  LAYOUTS_FOLDER . DIRECTORY_SEPARATOR);
+
+//? Admin Constants
+define("ADMIN_FOLDER", "Admin");
+define("ADMIN_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR .  ADMIN_FOLDER . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
 
 //? JavascriptPath
 // Deprecated
@@ -25,6 +30,7 @@ define("PANDA_MAIN_JS_URL", get_template_directory_uri() . "/panda/Js");
 
 //* List of files that needs to bee required
 $requiredFilesArray = array_merge(
+    [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "Admin/Hooks.php"],
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ProjectConstants.php"],
     [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
     // get All files from panda/Components ending with Constants.php
@@ -38,6 +44,7 @@ $requiredFilesArray = array_merge(
     // get All files from panda/Components ending with Hook.php
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php"),
     glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Hook.php"),
+    glob_recursive(ADMIN_PATH_ABSOLUTE . "*Hook.php"),
 
     glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Config.php"),
     glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Config.php"),
@@ -95,7 +102,9 @@ function requireFilesFromArray(array $files)
  */
 function registerMetabox($configName, $key)
 {
-    \KT_MetaBox::createMultiple($configName::getAllGenericFieldsets(), $key, \KT_MetaBox_Data_Type_Enum::POST_META);
+    if (is_admin()) {
+        \KT_MetaBox::createMultiple($configName::getAllGenericFieldsets(), $key, \KT_MetaBox_Data_Type_Enum::POST_META);
+    }
 }
 
 /**

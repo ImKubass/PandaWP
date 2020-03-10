@@ -64,10 +64,6 @@ Co je to komponenta? Odpověd v sekci [Komponenta](#Komponenta).
 Soubory s pevnými výčtovými typy.
 ### Extensions
 Rozšíření tříd třetích stran např. GoogleApi nebo Twig.
-### Js
-Speciální JavaScriptové soubory, například pro AjaxHandle. Nebo JavaScript na straně administrace.
-
-> pozn.: JavaScript na straně frontendu si řeší kodér. Neměli by si vyskytovat soubory ovlivnující DOM. Případně směřovat na kodéra.
 
 ### Requires
 Shame složka pro soubory, které je potřeba includovat. Např. obecné wordpress Hooky nebo Metaboxy. Postupem času by mělo dojít k odstranění této složky.

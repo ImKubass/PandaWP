@@ -20,4 +20,5 @@ return array(
     'Enums\\' => array($baseDir . '/Enums'),
     'Configs\\' => array($baseDir . '/Configs'),
     'Components\\' => array($baseDir . '/Components'),
+    'Admin\\' => array($baseDir . '/Admin'),
 );

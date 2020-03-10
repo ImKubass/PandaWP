@@ -1,7 +1,7 @@
 {
 	"name": "brilo-wordpress-admin-workflow",
 	"version": "1.0.0",
-	"description": "Gulp for front-end development",
+	"description": "Gulp for wordpress admin css and js",
 	"main": "gulpfile.js",
 	"author": "Brilo.cz",
 	"devDependencies": {

@@ -26,6 +26,8 @@ class ImageCreator
     private $AriaHidden = false;
     private $NoScript = true;
 
+    private $Sizes;
+
     public function __construct(int $Id = null)
     {
         if (Util::issetAndNotEmpty($Id)) {
@@ -159,6 +161,8 @@ class ImageCreator
         $Draggable = $this->getDraggable();
         $AriaHidden = $this->getAriaHidden();
 
+        $Sizes = $this->getSizes();
+
 
         $html = "";
 
@@ -170,6 +174,10 @@ class ImageCreator
         if ($Srcset) {
             $html .= "srcset=\"\" ";
             $html .= $this->tryGetImageParam("data-srcset", $Srcset);
+        }
+
+        if ($this->isSizes()) {
+            $html .= $this->tryGetImageParam("sizes", $Sizes);
         }
 
         $html .= $this->tryGetImageParam("class", $Class);
@@ -309,6 +317,11 @@ class ImageCreator
         return $this->AriaHidden;
     }
 
+    public function getSizes()
+    {
+        return $this->Sizes;
+    }
+
 
     //* ---- Setters --------------
 
@@ -335,10 +348,10 @@ class ImageCreator
     }
 
     /**
-     * @param array $Sources 
+     * @param array $Srcset 
      * @return array 
      */
-    private function setSrcset($Srcset)
+    public function setSrcset($Srcset)
     {
         return $this->Srcset = $Srcset;
     }
@@ -389,6 +402,11 @@ class ImageCreator
         return $this->AriaHidden = $AriaHidden;
     }
 
+    public function setSizes($Sizes)
+    {
+        return $this->Sizes = $Sizes;
+    }
+
 
     //* ---- Issets --------------
 
@@ -430,5 +448,10 @@ class ImageCreator
     private function isTitle()
     {
         return Util::issetAndNotEmpty($this->getTitle());
+    }
+
+    private function isSizes()
+    {
+        return Util::issetAndNotEmpty($this->getSizes());
     }
 }

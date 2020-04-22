@@ -1,11 +1,9 @@
 <?php
 
 use Components\Post\PostFactory;
-use Components\SchemaGenerator\SchemaGenerator;
-
 
 $Post = PostFactory::create();
-SchemaGenerator::addModel($Post);
+$Post->addPostDetailToSchema();
 
 
 get_template_part(COMPONENTS_PATH . "Header/Header"); ?>
@@ -17,6 +15,7 @@ get_template_part(COMPONENTS_PATH . "Header/Header"); ?>
         </header>
 
         <?= $Post->getContent(); ?>
+
     </div>
 </div>
 

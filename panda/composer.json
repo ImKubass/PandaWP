@@ -14,8 +14,7 @@
 		"notify-on-install": false
 	},
 	"require": {
-		"php": ">=5.4.0",
-		"nette/php-generator": "^3.3"
+		"php": ">=5.4.0"
 	},
 	"autoload": {
 		"files": [

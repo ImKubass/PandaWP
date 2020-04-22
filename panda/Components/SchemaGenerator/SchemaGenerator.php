@@ -2,7 +2,6 @@
 
 namespace Components\SchemaGenerator;
 
-use Components\Product\ProductModel;
 use Components\ThemeSettings\ThemeSettingsFactory;
 use Utils\Image;
 use Utils\Util;
@@ -109,47 +108,6 @@ class SchemaGenerator
         ]);
     }
 
-    public static function addProduct(ProductModel $Product)
-    {
-        $url = $Product->getPermalink();
-        $Theme = ThemeSettingsFactory::create();
-
-        if ($Theme->isContactLogoId()) {
-            $logoImage = $Theme->getContactLogoSrc();
-        } else {
-            $logoImage = Image::imageGetUrlFromTheme("favicon/android-chrome-192x192.png");
-        }
-        $Pageurl = get_home_url();
-
-        self::addCustom([
-            "@context" => "http://schema.org",
-            "@type" => "Product",
-            "image" => $Product->getThumbnailSrc(),
-            "url" => $url,
-            "name" => $Product->title(),
-            "brand" => [
-                "@type" => "Organization",
-                "logo" => $logoImage,
-                "name" => $Theme->getContactCompanyName(),
-                "description" => $Theme->getContactDescription(),
-                "email" => $Theme->getContactEmail(),
-                "url" => $Pageurl,
-                "telephone" => $Theme->getContactPhoneClean(),
-                "taxID" => $Theme->getContactDic(),
-                "sameAs" =>  $Theme->getSocialsSameAsData(),
-            ],
-            "offers" => [
-                "@type" => "Offer",
-                "priceCurrency" => "CZK",
-                "price" => $Product->getPriceBasicPrice(),
-                "seller" => [
-                    "@type" => "Organization",
-                    "name" => $Theme->getContactCompanyName(),
-                ]
-            ]
-        ]);
-    }
-
     public static function addModel($model)
     {
         self::addCustom($model->tryGetJsonLdData());
@@ -212,14 +170,12 @@ class SchemaGenerator
     {
         if ($model->hasThumbnail()) {
             $thumbnailSrc = Image::getImageSrc($model->getThumbnailId(), KT_WP_IMAGE_SIZE_THUBNAIL);
-            if (Util::issetAndNotEmpty($thumbnailSrc)) {
-                $data["image"] = [
-                    "@type" => "ImageObject",
-                    "url" => $thumbnailSrc,
-                    "width" => 150,
-                    "height" => 150,
-                ];
-            }
+            $data["image"] = [
+                "@type" => "ImageObject",
+                "url" => $thumbnailSrc,
+                "width" => 150,
+                "height" => 150,
+            ];
         }
         return $data;
     }

@@ -22,13 +22,15 @@ class QueryBase
     private $Template;
     private $Args;
 
+    private static $currentQueryLoopIndex;
+    private static $currentQueryLoopCount;
+
     public function __construct($maxCount = self::DEFAULT_COUNT)
     {
         $this->maxCount = Util::tryGetInt($maxCount) ?: self::DEFAULT_COUNT;
         $this->setPostType(Post::KEY);
         $this->setComponent(Post::class);
         $this->setTemplate(Post::TEMPLATE);
-        $this->initArgs();
     }
 
 
@@ -122,7 +124,7 @@ class QueryBase
         return $this->maxCount = $maxCount;
     }
 
-    private function setOffset($value)
+    public function setOffset($value)
     {
         $this->Offset = Util::tryGetInt($value);
         return $this;
@@ -212,10 +214,63 @@ class QueryBase
 
     // --- veřejné metody ------------------------------
 
-    public function thePosts($Count = null, $Offset = null)
+    protected function tryGetUrlParamValue($requestKey)
+    {
+        $requestValue = Util::arrayTryGetValue($_REQUEST, $requestKey);
+        if (Util::issetAndNotEmpty($requestValue)) {
+            return $requestValue;
+        }
+        return null;
+    }
+
+    public function thePosts($Count = null, $Offset = null, $Template = null)
+    {
+
+
+        if (Util::issetAndNotEmpty($Template)) {
+            $Template = $Template;
+        } else {
+            $Template = $this->getTemplate();
+        }
+
+        if ($this->hasPosts()) {
+            $this->itemsLoop($this->getPosts(), $Template, $Count, $Offset);
+        }
+    }
+
+    public function getPostsOutput()
     {
         if ($this->hasPosts()) {
-            $this->itemsLoop($this->getPosts(), $this->getTemplate(), $Count, $Offset);
+            ob_start();
+            $this->thePosts();
+            $output = ob_get_clean();
+            return $output;
+        }
+    }
+
+    /**
+     * Výpis postů podle zadané query v zadané loopě
+     * 
+     * @author Martin Hlaváč
+     * 
+     * @param \WP_Query $query
+     * @param string $LoopName
+     */
+    public static function queryLoops(\WP_Query $query, $LoopName)
+    {
+        $componentPath = locate_template(COMPONENTS_PATH . "$LoopName/$LoopName.php");
+        if (Util::issetAndNotEmpty($query) && $query->have_posts()) {
+            self::$currentQueryLoopIndex = 0;
+            self::$currentQueryLoopCount = count($query->get_posts());
+            while ($query->have_posts()) : $query->the_post();
+                global $post;
+                include($componentPath);
+                self::$currentQueryLoopIndex++;
+
+            endwhile;
+            self::$currentQueryLoopIndex = null;
+            self::$currentQueryLoopCount = null;
+            wp_reset_postdata();
         }
     }
 
@@ -261,6 +316,7 @@ class QueryBase
     private function initPosts()
     {
 
+        $this->initArgs();
         $args = $this->getArgs();
 
         $query = new \WP_Query();

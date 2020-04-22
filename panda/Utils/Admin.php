@@ -4,6 +4,12 @@ namespace Utils;
 
 class Admin
 {
+
+    public static function getEditLink($Id)
+    {
+        return $Url = get_site_url() . "/wp-admin/post.php?post=" . $Id . "&action=edit";
+    }
+
     //? Issets
 
     public static function isPageTemplate($TemplateName)
@@ -21,11 +27,6 @@ class Admin
         }
 
         return false;
-    }
-
-    public static function getEditLink($Id)
-    {
-        return $Url = get_site_url() . "/wp-admin/post.php?post=" . $Id . "&action=edit";
     }
 
     public static function isPostType(string $Key)

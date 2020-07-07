@@ -22,7 +22,7 @@ class ImageCreator
 
     private $Class;
     private $Title;
-    private $Draggable = true;
+    private $Draggable = false;
     private $AriaHidden = false;
     private $NoScript = true;
 

@@ -48,10 +48,10 @@ class ThemeSettingsConfig implements Configable
 
     // --- SOCIÁLNÍ SÍTĚ ------------------------
 
-    const SOCIAL_FIELDSET = self::FORM_PREFIX . "-social";
-    const SOCIAL_FACEBOOK = self::SOCIAL_FIELDSET . "-facebook";
+    const SOCIAL_FIELDSET  = self::FORM_PREFIX . "-social";
+    const SOCIAL_FACEBOOK  = self::SOCIAL_FIELDSET . "-facebook";
     const SOCIAL_INSTAGRAM = self::SOCIAL_FIELDSET . "-instagram";
-    const SOCIAL_YOUTUBE = self::SOCIAL_FIELDSET . "-youtube";
+    const SOCIAL_YOUTUBE   = self::SOCIAL_FIELDSET . "-youtube";
 
 
     public static function getSocialFieldset()
@@ -72,18 +72,18 @@ class ThemeSettingsConfig implements Configable
 
     // --- KONTAKTY ------------------------
 
-    const CONTACT_FIELDSET = self::FORM_PREFIX . "-contact";
-    const CONTACT_COMPANY_NAME = self::CONTACT_FIELDSET . "-name";
-    const CONTACT_STREET = self::CONTACT_FIELDSET . "-street";
-    const CONTACT_CITY = self::CONTACT_FIELDSET . "-city";
-    const CONTACT_ZIP = self::CONTACT_FIELDSET . "-zip";
-    const CONTACT_PHONE = self::CONTACT_FIELDSET . "-contact-phone";
-    const CONTACT_EMAIL = self::CONTACT_FIELDSET . "-contact-email";
-    const CONTACT_DESCRIPTION = self::CONTACT_FIELDSET . "-description";
-    const CONTACT_DIC = self::CONTACT_FIELDSET . "-dic";
-    const CONTACT_ICO = self::CONTACT_FIELDSET . "-ico";
+    const CONTACT_FIELDSET      = self::FORM_PREFIX . "-contact";
+    const CONTACT_COMPANY_NAME  = self::CONTACT_FIELDSET . "-name";
+    const CONTACT_STREET        = self::CONTACT_FIELDSET . "-street";
+    const CONTACT_CITY          = self::CONTACT_FIELDSET . "-city";
+    const CONTACT_ZIP           = self::CONTACT_FIELDSET . "-zip";
+    const CONTACT_PHONE         = self::CONTACT_FIELDSET . "-contact-phone";
+    const CONTACT_EMAIL         = self::CONTACT_FIELDSET . "-contact-email";
+    const CONTACT_DESCRIPTION   = self::CONTACT_FIELDSET . "-description";
+    const CONTACT_DIC           = self::CONTACT_FIELDSET . "-dic";
+    const CONTACT_ICO           = self::CONTACT_FIELDSET . "-ico";
     const CONTACT_ESTABLISHMENT = self::CONTACT_FIELDSET . "-establishment";
-    const CONTACT_LOGO_ID = self::CONTACT_FIELDSET . "-logo-id";
+    const CONTACT_LOGO_ID       = self::CONTACT_FIELDSET . "-logo-id";
 
     public static function getContactFieldset()
     {
@@ -110,15 +110,15 @@ class ThemeSettingsConfig implements Configable
 
     // --- Otevírací doba ------------------------
 
-    const OPENING_HOURS_FIELDSET = self::FORM_PREFIX . "-opening-hours";
-    const OPENING_HOURS_MON_FRI = self::OPENING_HOURS_FIELDSET . "-mon-fri";
-    const OPENING_HOURS_MONDAY = self::OPENING_HOURS_FIELDSET . "-monday";
-    const OPENING_HOURS_TUESDAY = self::OPENING_HOURS_FIELDSET . "-tuesday";
+    const OPENING_HOURS_FIELDSET  = self::FORM_PREFIX . "-opening-hours";
+    const OPENING_HOURS_MON_FRI   = self::OPENING_HOURS_FIELDSET . "-mon-fri";
+    const OPENING_HOURS_MONDAY    = self::OPENING_HOURS_FIELDSET . "-monday";
+    const OPENING_HOURS_TUESDAY   = self::OPENING_HOURS_FIELDSET . "-tuesday";
     const OPENING_HOURS_WEDNESDAY = self::OPENING_HOURS_FIELDSET . "-wednesday";
-    const OPENING_HOURS_THURSDAY = self::OPENING_HOURS_FIELDSET . "-thursday";
-    const OPENING_HOURS_FRIDAY = self::OPENING_HOURS_FIELDSET . "-friday";
-    const OPENING_HOURS_SATURDAY = self::OPENING_HOURS_FIELDSET . "-saturday";
-    const OPENING_HOURS_SUNDAY = self::OPENING_HOURS_FIELDSET . "-sunday";
+    const OPENING_HOURS_THURSDAY  = self::OPENING_HOURS_FIELDSET . "-thursday";
+    const OPENING_HOURS_FRIDAY    = self::OPENING_HOURS_FIELDSET . "-friday";
+    const OPENING_HOURS_SATURDAY  = self::OPENING_HOURS_FIELDSET . "-saturday";
+    const OPENING_HOURS_SUNDAY    = self::OPENING_HOURS_FIELDSET . "-sunday";
 
     public static function getOpeningHoursFieldset()
     {
@@ -139,9 +139,9 @@ class ThemeSettingsConfig implements Configable
 
     // --- ANALYTIKA ------------------------
 
-    const ANALYTICS_FIELDSET = self::FORM_PREFIX . "-analytics";
+    const ANALYTICS_FIELDSET    = self::FORM_PREFIX . "-analytics";
     const ANALYTICS_HEADER_CODE = self::ANALYTICS_FIELDSET . "-header-code";
-    const ANALYTICS_BODY_CODE = self::ANALYTICS_FIELDSET . "-body-code";
+    const ANALYTICS_BODY_CODE   = self::ANALYTICS_FIELDSET . "-body-code";
 
     public static function getAnalyticsFieldset()
     {

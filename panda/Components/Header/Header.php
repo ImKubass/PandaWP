@@ -1,4 +1,5 @@
 <?php
+
 use Utils\Util;
 use Components\SchemaGenerator\SchemaGenerator;
 use Components\ContactForm\ContactFormFactory;

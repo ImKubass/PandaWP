@@ -38,7 +38,7 @@ class PageModel extends \KT_WP_Post_Base_Model
     }
 
 
-    //* --- Setters ------------------------ 
+    //* --- Setters ------------------------
 
 
 }

@@ -48,7 +48,7 @@ class EmployeeConfig implements Configable
         $fieldset->addText(self::PARAMS_JOB, __("Pracovní pozice:", ADMIN_DOMAIN));
         $fieldset->addText(self::PARAMS_PHONE, __("Telefon:", ADMIN_DOMAIN));
         $fieldset->addText(self::PARAMS_EMAIL, __("Email:", ADMIN_DOMAIN));
-        $fieldset->addText(self::PARAMS_GMAIL, __("Gmail:", ADMIN_DOMAIN));
+        $fieldset->addTrumbowygTextarea(self::PARAMS_GMAIL, __("Gmail:", ADMIN_DOMAIN));
 
         return $fieldset;
     }

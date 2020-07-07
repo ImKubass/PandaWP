@@ -39,10 +39,10 @@ class ImageCreator
     //* ---- Public functions --------------
 
     /**
-     * 
-     * @param string $Size 
-     * @param string|null $Postfix 
-     * @return array 
+     *
+     * @param string $Size
+     * @param string|null $Postfix
+     * @return array
      */
     public function addToSrcsetBySize($Size, $Postfix = null)
     {
@@ -78,9 +78,9 @@ class ImageCreator
     }
 
     /**
-     * @param string $Size 
-     * @param string $Media 
-     * @return array 
+     * @param string $Size
+     * @param string $Media
+     * @return array
      */
     public function addSourceBySize($Size, $Media)
     {
@@ -348,8 +348,8 @@ class ImageCreator
     }
 
     /**
-     * @param array $Srcset 
-     * @return array 
+     * @param array $Srcset
+     * @return array
      */
     public function setSrcset($Srcset)
     {
@@ -357,8 +357,8 @@ class ImageCreator
     }
 
     /**
-     * @param array $Sources 
-     * @return array 
+     * @param array $Sources
+     * @return array
      */
     private function setSources($Sources)
     {
@@ -366,8 +366,8 @@ class ImageCreator
     }
 
     /**
-     * @param bool $NoScript 
-     * @return bool 
+     * @param bool $NoScript
+     * @return bool
      */
     public function setNoScript($NoScript)
     {
@@ -385,8 +385,8 @@ class ImageCreator
     }
 
     /**
-     * @param bool $Draggable 
-     * @return bool 
+     * @param bool $Draggable
+     * @return bool
      */
     public function setDraggable($Draggable)
     {
@@ -394,8 +394,8 @@ class ImageCreator
     }
 
     /**
-     * @param bool $AriaHidden 
-     * @return bool 
+     * @param bool $AriaHidden
+     * @return bool
      */
     public function setAriaHidden($AriaHidden)
     {

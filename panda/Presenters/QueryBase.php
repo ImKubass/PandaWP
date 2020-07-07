@@ -250,9 +250,9 @@ class QueryBase
 
     /**
      * Výpis postů podle zadané query v zadané loopě
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param \WP_Query $query
      * @param string $LoopName
      */

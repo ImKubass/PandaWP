@@ -1,4 +1,5 @@
 <?php
+
 namespace Components\ContactForm;
 
 class ContactFormFactory

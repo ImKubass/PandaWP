@@ -1,41 +1,41 @@
 {
-	"name": "panda-wp/panda",
-	"description": "",
-	"authors": [
-		{
-			"name": "Jakub Jetleb",
-			"email": "jakubjetleb@gmail.com"
-		}
-	],
-	"config": {
-		"vendor-dir": "Vendor",
-		"optimize-autoloader": true,
-		"classmap-authoritative": true,
-		"notify-on-install": false
-	},
-	"require": {
-		"php": ">=5.4.0"
-	},
-	"autoload": {
-		"files": [
-			"Init.php"
-		],
-		"psr-4": {
-			"Components\\": "Components",
-			"Services\\": "Services",
-			"Extensions\\": "Extensions",
-			"Utils\\": "Utils",
-			"Enums\\": "Enums",
-			"Presenters\\": "Presenters",
-			"Models\\": "Models",
-			"Configs\\": "Configs",
-			"Interfaces\\": "Interfaces",
-			"Layouts\\": "Layouts",
-			"Admin\\": "Admin",
-			"Helpers\\": "Helpers"
-		}
-	},
-	"require-dev": {
-		"symfony/var-dumper": "^4.3"
-	}
+    "name": "panda-wp/panda",
+    "description": "",
+    "authors": [
+        {
+            "name": "Jakub Jetleb",
+            "email": "jakubjetleb@gmail.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "Vendor",
+        "optimize-autoloader": true,
+        "classmap-authoritative": true,
+        "notify-on-install": false
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "files": [
+            "Init.php"
+        ],
+        "psr-4": {
+            "Components\\": "Components",
+            "Services\\": "Services",
+            "Extensions\\": "Extensions",
+            "Utils\\": "Utils",
+            "Enums\\": "Enums",
+            "Presenters\\": "Presenters",
+            "Models\\": "Models",
+            "Configs\\": "Configs",
+            "Interfaces\\": "Interfaces",
+            "Layouts\\": "Layouts",
+            "Admin\\": "Admin",
+            "Helpers\\": "Helpers"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.3"
+    }
 }

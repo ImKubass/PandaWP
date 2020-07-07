@@ -19,24 +19,6 @@ class FooterHeaderSettingsModel extends KT_WP_Options_Base_Model
     //? --- Hlavička
     //? --- Prefix: Header
 
-    public function getHeaderLogoId()
-    {
-        return $this->getOption(FooterHeaderSettingsConfig::HEADER_LOGO_ID);
-    }
-
-    public function getHeaderLogoSrc()
-    {
-        if (isset($this->headerLogo)) {
-            return $this->headerLogo;
-        }
-
-        $src = wp_get_attachment_image_src($this->getHeaderLogoId(), KT_WP_IMAGE_SIZE_ORIGINAL);
-        if (Util::arrayIssetAndNotEmpty($src)) {
-            return $this->headerLogoPermalink = reset($src);
-        }
-
-        return $this->headerLogo = "";
-    }
 
     //? --- Patička První sloupec
     //? --- Prefix: FooterFirstCol

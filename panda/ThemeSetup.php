@@ -26,12 +26,6 @@ $config->metaboxRemover()
 
 // --- images ------------------------------
 
-//? -- FancyboxPreview size
-add_image_size(IMAGE_SIZE_1920xauto, 1920);
-
-$config->addImageSize(IMAGE_SIZE_300x300, 300, 300, true);
-
-
 $config->setImagesLazyLoading(true)
     ->setImagesLinkClasses(true);
 

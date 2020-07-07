@@ -1,34 +1,34 @@
 (function () {
-	let fancyAreaSelector = ".fancy-textarea";
+  let fancyAreaSelector = ".fancy-textarea";
 
-	document.addEventListener("DOMContentLoaded", function (event) {
-		init();
-	});
+  document.addEventListener("DOMContentLoaded", function (event) {
+    init();
+  });
 
-	function init() {
-		if (isFancyTextarea() && isTrumowygLibrary()) {
+  function init() {
+    if (isFancyTextarea() && isTrumowygLibrary()) {
 
-			jQuery(fancyAreaSelector).trumbowyg({
-				lang: "cs",
-				btns: [
-					['viewHTML'],
-					['undo', 'redo'],
-					['strong'],
-					['link'],
-					['unorderedList', 'orderedList'],
-				],
-				removeformatPasted: true,
-			});
-		}
+      jQuery(fancyAreaSelector).trumbowyg({
+        lang: "cs",
+        btns: [
+          ['viewHTML'],
+          ['undo', 'redo'],
+          ['strong'],
+          ['link'],
+          ['unorderedList', 'orderedList'],
+        ],
+        removeformatPasted: true,
+      });
+    }
 
-	}
+  }
 
-	function isTrumowygLibrary() {
-		return typeof jQuery(fancyAreaSelector).trumbowyg !== "undefined";
-	}
+  function isTrumowygLibrary() {
+    return typeof jQuery(fancyAreaSelector).trumbowyg !== "undefined";
+  }
 
-	function isFancyTextarea() {
-		return jQuery(fancyAreaSelector).length;
-	}
+  function isFancyTextarea() {
+    return jQuery(fancyAreaSelector).length;
+  }
 
 })();

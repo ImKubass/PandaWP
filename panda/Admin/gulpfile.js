@@ -7,10 +7,10 @@
  */
 
 const {
-	src,
-	dest,
-	parallel,
-	series
+  src,
+  dest,
+  parallel,
+  series
 } = require("gulp")
 
 // Requires
@@ -53,60 +53,60 @@ const nodeModulesRoot = "node_modules/"
 // Paths
 
 const srcPaths = {
-	Scss: srcRoot + "Scss/",
-	Scripts: srcRoot + "Js/",
-	Components: srcRoot + "Components/",
+  Scss: srcRoot + "Scss/",
+  Scripts: srcRoot + "Js/",
+  Components: srcRoot + "Components/",
 }
 
 const buildPaths = {
-	Styles: buildRoot,
-	Scripts: buildRoot,
+  Styles: buildRoot,
+  Scripts: buildRoot,
 }
 
 const Settings = {
-	sass: {
-		outputStyle: "expanded",
-		includePaths: [
-			nodeModulesRoot,
-			srcPaths.Scss,
-			srcPaths.Components,
-		],
-	},
-	autoprefixer: {
-		overrideBrowserslist: [
-			"> 1%",
-			"last 2 versions",
-			"IE 11"
-		]
-	},
-	emMediaQuery: {
-		precision: 3
-	},
-	pxtorem: {
-		rootValue: 16,
-		propList: ['*'],
-		selectorBlackList: [/^body$/]
-	},
-	babel: {
-		presets: ['@babel/env'],
-		plugins: ["@babel/plugin-proposal-class-properties"]
-	},
-	include: {
-		includePaths: [nodeModulesRoot]
-	},
+  sass: {
+    outputStyle: "expanded",
+    includePaths: [
+      nodeModulesRoot,
+      srcPaths.Scss,
+      srcPaths.Components,
+    ],
+  },
+  autoprefixer: {
+    overrideBrowserslist: [
+      "> 1%",
+      "last 2 versions",
+      "IE 11"
+    ]
+  },
+  emMediaQuery: {
+    precision: 3
+  },
+  pxtorem: {
+    rootValue: 16,
+    propList: ['*'],
+    selectorBlackList: [/^body$/]
+  },
+  babel: {
+    presets: ['@babel/env'],
+    plugins: ["@babel/plugin-proposal-class-properties"]
+  },
+  include: {
+    includePaths: [nodeModulesRoot]
+  },
 
 }
 
 const Globs = {
-	ScriptsSrc: [
-		srcPaths.Components + "**/*.js",
-		srcPaths.Scripts + "*.js",
-		"!" + srcPaths.Scripts + "vendors.js"
-	],
-	ScriptsBundle: buildPaths.Scripts + "{vendors.js,extraAdmin.js}",
-	ScriptsVendors: srcPaths.Scripts + "vendors.js",
+  ScriptsSrc: [
+    srcPaths.Components + "**/*.js",
+    srcPaths.Scripts + "*.js",
+    "!" + srcPaths.Scripts + "vendors.js"
+  ],
+  ScriptsBundle: buildPaths.Scripts + "{vendors.js,extraAdmin.js}",
+  ScriptsVendors: srcPaths.Scripts + "vendors.js",
 
-	Scss: [srcPaths.Components + "**/*.scss", srcPaths.Scss + "**/*.scss"],
+  Scss: [srcPaths.Components + "**/*.scss", srcPaths.Scss + "**/*.scss"],
 }
 
 
@@ -117,71 +117,71 @@ const Globs = {
 //* --- Tasks ---------------------------
 
 function scripts() {
-	return src(Globs.ScriptsSrc)
-		.pipe(sourcemaps.init())
-		.pipe(plumber())
-		.pipe(clip())
-		.pipe(concat("extraAdmin.js"))
-		.pipe(babel(Settings.babel))
-		.pipe(sourcemaps.write("."))
-		.pipe(dest(buildPaths.Scripts))
-		.pipe(touch())
+  return src(Globs.ScriptsSrc)
+    .pipe(sourcemaps.init())
+    .pipe(plumber())
+    .pipe(clip())
+    .pipe(concat("extraAdmin.js"))
+    .pipe(babel(Settings.babel))
+    .pipe(sourcemaps.write("."))
+    .pipe(dest(buildPaths.Scripts))
+    .pipe(touch())
 }
 exports.scripts = scripts
 
 function scriptsVendors() {
 
-	return src(Globs.ScriptsVendors)
-		.pipe(plumber())
-		.pipe(include(Settings.include))
-		.pipe(dest(buildPaths.Scripts))
+  return src(Globs.ScriptsVendors)
+    .pipe(plumber())
+    .pipe(include(Settings.include))
+    .pipe(dest(buildPaths.Scripts))
 
 }
 exports.scriptsVendors = scriptsVendors
 
 function scriptsBundle() {
 
-	return src(Globs.ScriptsBundle)
-		.pipe(sourcemaps.init())
-		.pipe(plumber())
-		.pipe(clip())
-		.pipe(concat("extraAdminBundle.js"))
-		.pipe(uglify())
-		.pipe(sourcemaps.write("."))
-		.pipe(dest(buildPaths.Scripts))
-		.pipe(touch())
+  return src(Globs.ScriptsBundle)
+    .pipe(sourcemaps.init())
+    .pipe(plumber())
+    .pipe(clip())
+    .pipe(concat("extraAdminBundle.js"))
+    .pipe(uglify())
+    .pipe(sourcemaps.write("."))
+    .pipe(dest(buildPaths.Scripts))
+    .pipe(touch())
 
 }
 exports.scriptsBundle = scriptsBundle
 
 
 function css() {
-	return src(srcPaths.Scss + "extraAdmin.scss")
-		.pipe(plumber())
-		.pipe(bulkSass())
-		.pipe(sourcemaps.init())
-		.pipe(sass(Settings.sass))
-		.pipe(autoprefixer(Settings.autoprefixer))
-		.pipe(
-			postcss([
-				emMediaQuery(Settings.emMediaQuery),
-				cssImport(),
-				cssnano(),
-				pxtorem(Settings.pxtorem)
-			])
-		)
-		.pipe(sourcemaps.write("."))
-		.pipe(dest(buildPaths.Styles))
-		.pipe(touch())
+  return src(srcPaths.Scss + "extraAdmin.scss")
+    .pipe(plumber())
+    .pipe(bulkSass())
+    .pipe(sourcemaps.init())
+    .pipe(sass(Settings.sass))
+    .pipe(autoprefixer(Settings.autoprefixer))
+    .pipe(
+      postcss([
+        emMediaQuery(Settings.emMediaQuery),
+        cssImport(),
+        cssnano(),
+        pxtorem(Settings.pxtorem)
+      ])
+    )
+    .pipe(sourcemaps.write("."))
+    .pipe(dest(buildPaths.Styles))
+    .pipe(touch())
 }
 exports.css = css
 
 
 function watchAdminFiles() {
 
-	watch(Globs.Scss, css)
-	watch(Globs.ScriptsSrc, series(scripts, scriptsBundle))
-	watch(Globs.ScriptsVendors, series(scriptsVendors, scriptsBundle))
+  watch(Globs.Scss, css)
+  watch(Globs.ScriptsSrc, series(scripts, scriptsBundle))
+  watch(Globs.ScriptsVendors, series(scriptsVendors, scriptsBundle))
 
 }
 exports.watchAdminFiles = watchAdminFiles

@@ -32,6 +32,7 @@ const cssnano = require("cssnano")
 const cssImport = require("postcss-import")
 const pxtorem = require("postcss-pxtorem")
 const autoprefixer = require("gulp-autoprefixer")
+const stylelint = require('gulp-stylelint');
 
 // ------------ postcss plugins
 const emMediaQuery = require("postcss-em-media-query")
@@ -176,6 +177,17 @@ function css() {
 }
 exports.css = css
 
+function cssLint() {
+  return src(Globs.Scss)
+    .pipe(stylelint({
+      reporters: [{
+        formatter: 'string',
+        console: true
+      }]
+    }))
+}
+exports.cssLint = cssLint
+
 
 function watchAdminFiles() {
 
@@ -193,10 +205,13 @@ exports.watchAdminFiles = watchAdminFiles
 const buildJs = parallel(scripts, scriptsVendors)
 exports.buildJs = buildJs
 
+const buildCss = parallel(css, cssLint)
+exports.buildCss = buildCss
+
 const buildBundleJs = series(buildJs, scriptsBundle)
 exports.buildBundleJs = buildBundleJs
 
-const buildAdmin = parallel(css, buildBundleJs)
+const buildAdmin = parallel(buildCss, buildBundleJs)
 exports.buildAdmin = buildAdmin
 
 const watchAdmin = series(buildAdmin, watchAdminFiles)

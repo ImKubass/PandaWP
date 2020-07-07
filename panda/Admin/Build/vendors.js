@@ -53,3 +53,4 @@ jQuery.trumbowyg.langs.cs = {
     title: 'Nadpis',
     text: 'Text'
 };
+

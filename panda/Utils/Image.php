@@ -64,7 +64,7 @@ class Image
 
             // if "Auto Cloudinary" plugin doesn't exist but "Fly Dynamic Image Resizer" exists -> get the image with the specified width and height from local server
 
-            $img = fly_get_attachment_image_src($id, array($width, $height), true);
+            $img = fly_get_attachment_image_src($id, [$width, $height], true);
 
             $image_url = $img['src'];
         } else {

@@ -78,6 +78,27 @@ class ImageCreator
     }
 
     /**
+     * @param string $Url
+     * @param string $Media
+     * @return array
+     */
+    public function addSource($Url, $Media)
+    {
+        if ($this->isId()) {
+            if (!$this->isSources()) {
+                $this->setSources([]);
+            }
+            $Item = [
+                "Srcset" => $Url,
+                "Media" => $Media
+            ];
+            $Sources = $this->getSources();
+            array_push($Sources, $Item);
+            return $this->setSources($Sources);
+        }
+    }
+
+    /**
      * @param string $Size
      * @param string $Media
      * @return array

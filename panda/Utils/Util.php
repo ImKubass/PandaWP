@@ -56,14 +56,38 @@ class Util
         return $TermNames;
     }
 
+    public static function isDirEmpty($dir)
+    {
+        if (!is_readable($dir)) return NULL;
+        return (count(scandir($dir)) == 2);
+    }
+
+    public static function reArrayFiles(&$file_post)
+    {
+
+        $file_ary = array();
+        $file_count = count($file_post['name']);
+        $file_keys = array_keys($file_post);
+
+
+        for ($i = 0; $i < $file_count; $i++) {
+
+            foreach ($file_keys as $key) {
+                $file_ary[$i][$key] = array_values($file_post[$key])[$i];
+            }
+        }
+
+        return $file_ary;
+    }
+
 
     //? --- KT FUNCTIONS --------------------------------
 
     /**
      * Kontrola na isset a ! empty v "jednom" kroku
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param mixed $value
      * @return boolean
      */
@@ -74,9 +98,9 @@ class Util
 
     /**
      * Kontrola, zda je zadaný parameter přiřezený, typu pole a má jeden nebo více záznamů
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param array $array
      * @return boolean
      */
@@ -87,9 +111,9 @@ class Util
 
     /**
      * Ze zadaného pole odstraní zadaný klíč (i s hodnotou)
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param array $haystack
      * @param int|string $needle
      * @return array
@@ -105,10 +129,10 @@ class Util
 
     /**
      * Kontrola na ! isset nebo empty v "jednom" kroku
-     * 
+     *
      * @author Martin Hlaváč
      * @link http://www.ktstudio.cz
-     * 
+     *
      * @param mixed $value
      * @return boolean
      */
@@ -120,9 +144,9 @@ class Util
 
     /**
      * Kontrola hodnoty, jestli je číselného typu, resp. int a případné přetypování nebo rovnou návrat, jinak null
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param number $value
      * @return integer|null
      */
@@ -142,9 +166,9 @@ class Util
 
     /**
      * Vrátí hodnotu pro zadaný klíč pokud existuje nebo výchozí zadanou hodnotu (NULL)
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param array $array
      * @param string $key
      * @param string $defaultValue
@@ -163,9 +187,9 @@ class Util
 
     /**
      * Na základě zadaných parametrů vrátí řetezec pro programové odsazení tabulátorů s případnými novými řádky
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param integer $tabsCount
      * @param string $content
      * @param boolean $newLineBefore
@@ -191,7 +215,7 @@ class Util
     /**
      * Prověří, zda zadaný parametr je ve formátu pro ID v databázi
      * Je: Setnutý, není prázdný a je větší než 0
-     * 
+     *
      * @author Tomáš Kocifaj
      *
      * @param mixed $value
@@ -208,9 +232,9 @@ class Util
 
     /**
      * Vrátí aktuální URL na základě nastavení APACHE HTTP_HOST a REQUEST_URI
-     * 
+     *
      * @author Martin Hlaváč
-     * 
+     *
      * @param boolean $fullUrl - true i s pametry, false bez
      * @return string
      */
@@ -236,10 +260,10 @@ class Util
 
     /**
      * Vrátí (aktuální) IP adresu z pole $_SERVER
-     * 
+     *
      * @author Martin Hlaváč
      * @link http://www.ktstudio.cz
-     * 
+     *
      * @return string
      */
     public static function getIpAddress()
@@ -248,5 +272,51 @@ class Util
             ?: self::arrayTryGetValue($_SERVER, "HTTP_X_FORWARDED_FOR")
             ?: self::arrayTryGetValue($_SERVER, "REMOTE_ADDR");
         return $ip;
+    }
+
+    /**
+     * Escapování HTML atribuntů v zadaném textu (+ trim) nebo null
+     *
+     * @author Martin Hlaváč
+     * @link http://www.ktstudio.cz
+     *
+     * @param string $text
+     * @return string
+     */
+    public static function stringEscape($text)
+    {
+        if (self::issetAndNotEmpty($text)) {
+            return esc_attr(trim($text));
+        }
+        return null;
+    }
+
+    public static function tryGetUrlParamValue($requestKey)
+    {
+        $requestValue = self::arrayTryGetValue($_REQUEST, $requestKey);
+        if (self::issetAndNotEmpty($requestValue)) {
+            return $requestValue;
+        }
+        return null;
+    }
+
+    public static function multiKeyExists(array $arr, $key)
+    {
+
+        // is in base array?
+        if (array_key_exists($key, $arr)) {
+            return true;
+        }
+
+        // check arrays contained in this array
+        foreach ($arr as $element) {
+            if (is_array($element)) {
+                if (self::multiKeyExists($element, $key)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

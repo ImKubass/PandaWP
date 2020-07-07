@@ -3,10 +3,11 @@
 namespace Components\Employee;
 
 use Utils\Util;
+use Utils\Image;
+use Utils\uString;
+use Helpers\ImageCreator;
 use Components\Employee\EmployeeConfig;
 use Components\SchemaGenerator\SchemaGenerator;
-use Helpers\ImageCreator;
-use Utils\uString;
 
 class EmployeeModel extends \KT_WP_Post_Base_Model
 {
@@ -15,15 +16,19 @@ class EmployeeModel extends \KT_WP_Post_Base_Model
         parent::__construct($post, EmployeeConfig::FORM_PREFIX);
     }
 
+    public function getThumnailBySize($width, $height = null)
+    {
+        return Image::getCloudImage($this->getThumbnailId(), $width, $height);
+    }
+
 
     public function renderThumbnail()
     {
         $Image = new ImageCreator($this->getThumbnailId());
 
-        $Image->setSize(KT_WP_IMAGE_SIZE_THUBNAIL);
-        $Image->addToSrcsetBySize(IMAGE_SIZE_300x300, "2x");
-        $Image->addToSrcsetBySize(IMAGE_SIZE_1920xauto);
-        $Image->setDraggable(false);
+        $Image->setSrc($this->getThumnailBySize(150, 150));
+        $Image->addToSrcset($this->getThumnailBySize(300, 300), "2x");
+        $Image->addSource($this->getThumnailBySize(1920), "(min-width: 600px)");
         $Image->setAriaHidden(true);
 
         return $Image->render();

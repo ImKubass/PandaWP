@@ -1,7 +1,8 @@
 (function () {
+
   let fancyAreaSelector = ".fancy-textarea";
 
-  document.addEventListener("DOMContentLoaded", function (event) {
+  document.addEventListener("DOMContentLoaded", function () {
     init();
   });
 

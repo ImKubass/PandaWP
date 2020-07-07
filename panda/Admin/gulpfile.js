@@ -42,6 +42,7 @@ const concat = require("gulp-concat")
 const uglify = require("gulp-uglify")
 const babel = require("gulp-babel")
 const include = require("gulp-include")
+const eslint = require('gulp-eslint');
 
 
 //* --- Paths  ---------------------------
@@ -140,6 +141,13 @@ function scriptsVendors() {
 }
 exports.scriptsVendors = scriptsVendors
 
+function scriptsLint() {
+  return src(Globs.ScriptsSrc)
+    .pipe(eslint())
+    .pipe(eslint.format())
+}
+exports.scriptsLint = scriptsLint
+
 function scriptsBundle() {
 
   return src(Globs.ScriptsBundle)
@@ -192,7 +200,7 @@ exports.cssLint = cssLint
 function watchAdminFiles() {
 
   watch(Globs.Scss, css)
-  watch(Globs.ScriptsSrc, series(scripts, scriptsBundle))
+  watch(Globs.ScriptsSrc, parallel(scriptsLint, series(scripts, scriptsBundle)))
   watch(Globs.ScriptsVendors, series(scriptsVendors, scriptsBundle))
 
 }
@@ -202,7 +210,7 @@ exports.watchAdminFiles = watchAdminFiles
 //* --- Complex tasks ---------------------------
 
 
-const buildJs = parallel(scripts, scriptsVendors)
+const buildJs = parallel(scriptsLint, scripts, scriptsVendors)
 exports.buildJs = buildJs
 
 const buildCss = parallel(css, cssLint)

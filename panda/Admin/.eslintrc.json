@@ -1,0 +1,11 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "env": {
+    "jquery": true,
+    "es6": true,
+    "browser": true
+  }
+}

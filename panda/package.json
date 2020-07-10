@@ -1,0 +1,10 @@
+{
+  "name": "panda",
+  "description": "Simple watch for new and deleted php files",
+  "author": "Jakub Jetleb",
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-watch": "^5.0.1"
+  }
+}

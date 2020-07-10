@@ -9,6 +9,7 @@ define("REQUIRES_FOLDER", "Requires");
 define("REQUIRES_PATH", PANDA_BASE_PATH . DIRECTORY_SEPARATOR . REQUIRES_FOLDER . DIRECTORY_SEPARATOR);
 
 
+
 //? Components Constants
 define("COMPONENTS_FOLDER", "Components");
 define("COMPONENTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
@@ -23,43 +24,31 @@ define("LAYOUTS_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR .  LAYOUTS
 define("ADMIN_FOLDER", "Admin");
 define("ADMIN_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR .  ADMIN_FOLDER . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
 
-//? JavascriptPath
-// Deprecated
-define("PANDA_MAIN_JS_URL", get_template_directory_uri() . "/panda/Js");
+//? Cache files
+define("PANDA_CACHE_PATH", PANDA_BASE_PATH . "/Cache" . "/");
+define("PANDA_REQUIRED_FILES_PATH", PANDA_CACHE_PATH . "RequiredFilesCache.php");
+define("PANDA_CLASSES_CONFIGABLE_PATH", PANDA_CACHE_PATH . "ClassesConfigableCache.php");
 
 
-//* List of files that needs to bee required
-$requiredFilesArray = array_merge(
-    [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "Admin/Hooks.php"],
-    [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ProjectConstants.php"],
-    [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
-    // get All files from panda/Components ending with Constants.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Constants.php"),
-    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Constants.php"),
-    // get All files from panda/Components ending with Definition.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Definition.php"),
-    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Definition.php"),
-    // get All files from panda/Requires ending with .php
-    glob_recursive(REQUIRES_PATH . "*.php"),
-    // get All files from panda/Components ending with Hook.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php"),
-    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Hook.php"),
-    glob_recursive(ADMIN_PATH_ABSOLUTE . "*Hook.php"),
 
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Config.php"),
-    glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Config.php"),
+if (!file_exists(PANDA_REQUIRED_FILES_PATH)) {
+    pandaGenerateRequireList();
+}
+require_once(PANDA_REQUIRED_FILES_PATH);
 
-    // get All files from panda/Components ending with Metabox.php
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metabox.php"),
-    glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metaboxes.php")
-);
-
-
-define("PANDA_REQUIRED_FILES", $requiredFilesArray);
+$pandaRequiredFiles = unserialize($pandaRequiredFiles);
+define("PANDA_REQUIRED_FILES", $pandaRequiredFiles);
 requireFilesFromArray(PANDA_REQUIRED_FILES);
 
-$ClassesConfigable = getImplementingClasses(Configable::class);
-define("PANDA_CLASSES_CONFIGABLE", $ClassesConfigable);
+
+
+if (!file_exists(PANDA_CLASSES_CONFIGABLE_PATH)) {
+    pandaGenerateConfigableClassesList();
+}
+require_once(PANDA_CLASSES_CONFIGABLE_PATH);
+
+$pandaClassesConfigable = unserialize($pandaClassesConfigable);
+define("PANDA_CLASSES_CONFIGABLE", $pandaClassesConfigable);
 callRegisterMetaboxes(PANDA_CLASSES_CONFIGABLE);
 
 
@@ -87,7 +76,7 @@ function glob_recursive(string $pattern, int $flags = 0)
  */
 function requireFilesFromArray(array $files)
 {
-    if (!empty($files)) {
+    if (is_array($files) && count($files) > 0) {
         foreach ($files as $file) {
             if (file_exists($file)) {
                 require_once $file;
@@ -97,7 +86,7 @@ function requireFilesFromArray(array $files)
 }
 
 
-/** 
+/**
  * Shortcut for registration basic metaboxes
  */
 function registerMetabox($configName, $key)
@@ -108,9 +97,9 @@ function registerMetabox($configName, $key)
 }
 
 /**
- * 
- * @param string $interfaceName 
- * @return array 
+ *
+ * @param string $interfaceName
+ * @return array
  */
 function getImplementingClasses($interfaceName)
 {
@@ -128,4 +117,55 @@ function callRegisterMetaboxes(array $Classes)
         /** @var Configable $Class */
         $Class::registerMetaboxes();
     }
+}
+
+function pandaGenerateRequireList()
+{
+    //* List of files that needs to bee required
+    $requiredFilesArray = array_merge(
+        [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "Admin/Hooks.php"],
+        [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ProjectConstants.php"],
+        [PANDA_BASE_PATH . DIRECTORY_SEPARATOR . "ThemeSetup.php"],
+        // get All files from panda/Components ending with Constants.php
+        glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Constants.php"),
+        glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Constants.php"),
+        // get All files from panda/Components ending with Definition.php
+        glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Definition.php"),
+        glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Definition.php"),
+        // get All files from panda/Requires ending with .php
+        glob_recursive(REQUIRES_PATH . "*.php"),
+        // get All files from panda/Components ending with Hook.php
+        glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Hook.php"),
+        glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Hook.php"),
+        glob_recursive(ADMIN_PATH_ABSOLUTE . "*Hook.php"),
+
+        glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Config.php"),
+        glob_recursive(LAYOUTS_PATH_ABSOLUTE . "*Config.php"),
+
+        // get All files from panda/Components ending with Metabox.php
+        glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metabox.php"),
+        glob_recursive(COMPONENTS_PATH_ABSOLUTE . "*Metaboxes.php")
+    );
+
+    $pandaRequiredFiles = serialize($requiredFilesArray);
+
+    $File = "";
+    $File .= "<?php \n";
+    $File .= '$pandaRequiredFiles = \'' . $pandaRequiredFiles . '\';';
+    $File .= "\n";
+
+    file_put_contents(PANDA_REQUIRED_FILES_PATH, $File);
+}
+
+function pandaGenerateConfigableClassesList()
+{
+    $pandaClassesConfigable = getImplementingClasses(Configable::class);
+    $pandaClassesConfigable = serialize($pandaClassesConfigable);
+
+    $File = "";
+    $File .= "<?php \n";
+    $File .= '$pandaClassesConfigable = \'' . $pandaClassesConfigable . '\';';
+    $File .= "\n";
+
+    file_put_contents(PANDA_CLASSES_CONFIGABLE_PATH, $File);
 }

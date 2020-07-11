@@ -25,11 +25,13 @@ define("ADMIN_FOLDER", "Admin");
 define("ADMIN_PATH_ABSOLUTE", PANDA_BASE_PATH . DIRECTORY_SEPARATOR .  ADMIN_FOLDER . DIRECTORY_SEPARATOR . COMPONENTS_FOLDER . DIRECTORY_SEPARATOR);
 
 //? Cache files
-define("PANDA_CACHE_PATH", PANDA_BASE_PATH . "/Cache" . "/");
+define("PANDA_CACHE_PATH", "wp-content/cache/");
 define("PANDA_REQUIRED_FILES_PATH", PANDA_CACHE_PATH . "RequiredFilesCache.php");
 define("PANDA_CLASSES_CONFIGABLE_PATH", PANDA_CACHE_PATH . "ClassesConfigableCache.php");
 
-
+if (!file_exists(PANDA_CACHE_PATH)) {
+    mkdir(PANDA_CACHE_PATH, 0777, true);
+}
 
 if (!file_exists(PANDA_REQUIRED_FILES_PATH)) {
     pandaGenerateRequireList();

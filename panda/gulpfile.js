@@ -12,7 +12,7 @@ const del = require("del")
 // --- Gulp
 const watch = require("gulp-watch")
 
-const CachePath = "Cache/"
+const CachePath = "../../../cache/"
 const ComponentsPath = "Components/"
 const LayoutsPath = "Layouts/"
 const RequiresPath = "Requires/"

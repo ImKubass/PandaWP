@@ -247,6 +247,7 @@ class ComposerStaticInit65e2771d7c7f7b40604050f991d0e75a
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Utils\\Admin' => __DIR__ . '/../..' . '/Utils/Admin.php',
         'Utils\\Blog' => __DIR__ . '/../..' . '/Utils/Blog.php',
+        'Utils\\Cache' => __DIR__ . '/../..' . '/Utils/Cache.php',
         'Utils\\Image' => __DIR__ . '/../..' . '/Utils/Image.php',
         'Utils\\Svg' => __DIR__ . '/../..' . '/Utils/Svg.php',
         'Utils\\Util' => __DIR__ . '/../..' . '/Utils/Util.php',

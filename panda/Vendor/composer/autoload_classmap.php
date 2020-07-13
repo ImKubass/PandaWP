@@ -122,6 +122,7 @@ return array(
     'Symfony\\Polyfill\\Php80\\Php80' => $vendorDir . '/symfony/polyfill-php80/Php80.php',
     'Utils\\Admin' => $baseDir . '/Utils/Admin.php',
     'Utils\\Blog' => $baseDir . '/Utils/Blog.php',
+    'Utils\\Cache' => $baseDir . '/Utils/Cache.php',
     'Utils\\Image' => $baseDir . '/Utils/Image.php',
     'Utils\\Svg' => $baseDir . '/Utils/Svg.php',
     'Utils\\Util' => $baseDir . '/Utils/Util.php',

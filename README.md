@@ -44,8 +44,6 @@ Framework PandaWP má zavislost (dočastně) na [WPframework](http://www.wpframe
 
 [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser)
 
-[Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
-
 
 #### Potřebné nastavení
 	"[php]": {
@@ -61,7 +59,7 @@ Framework PandaWP má zavislost (dočastně) na [WPframework](http://www.wpframe
 	"editor.renderControlCharacters": false,
 	"editor.detectIndentation": false,
 	"editor.tabSize": 2,
-	"editor.insertSpaces": false,
+	"editor.insertSpaces": true,
 	"[php]": {
 		"editor.insertSpaces": true,
 		"editor.tabSize": 4,
